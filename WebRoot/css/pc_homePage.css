@@ -1,0 +1,243 @@
+*{
+	padding: 0px;
+	margin: 0px;
+	background-color: #FFFFFF;
+	font-family: "微软雅黑";
+}
+a{
+	font-size: inherit;
+	text-decoration: none;
+	color: black;
+}
+#head .top *{
+	font-size: 15px;
+	background-color: inherit;
+	line-height: 15px;
+}
+#head,#center,#footer{
+	width: 1000px;
+	margin: 0px auto 0px auto;
+}
+#head .top{
+	width:100%;
+	height: 21px;
+	background-color: #f5f5f5;
+}
+#head .center{
+	width:100%;
+	height: 52px;
+	background-color: white;
+}
+#head .center>*:not(.logo):hover{
+	border-bottom: solid #fbf063 5px
+}
+#head .footer{
+	width:100%;
+	height:25px;
+	background-color: black;
+}
+#center .top{
+	width:100%;
+	height: 337px;
+	background-color: white;
+}
+#center .footer{
+	width:100%;
+	height: 370px;
+	background-color: black;
+}
+#footer{
+	height: 173px;
+	background-color: white;
+}
+#head .logo{
+	margin-left:114px;
+	padding: 0px 14px 0px 0px;
+	width: 107px;
+	font-size: 40px;
+	text-align: center;
+	line-height: 52px;
+	
+}
+#head p{
+	float: left;
+	font-size: 16px;
+	margin-left: 50px;
+	padding: 25px 14px 5px 14px;
+	cursor: pointer;
+}
+#center .content{
+	margin: 34px 0px 54px 114px;
+	float: left;
+	width: 270px;
+}
+#center .title{
+	margin-bottom: 8px;
+	font-size: 20px;
+}
+#center .inner_content{
+	margin:18px 20px 0px 0px;
+	line-height: 20px;
+	font-size: 13px;
+	height: 229px;
+	overflow: hidden;
+}
+#center .imgs{
+	margin-top: 34px;
+	float: left;
+	width: 518px;
+	height: 270px;
+	background-color: gray;
+	overflow: hidden;
+}
+#center .imgs div *{
+	float: left;
+	width: 518px;
+	height: 100%;
+	background-size: 518px 270px;
+}
+#center .imgs div{
+	height: 100%;
+	position: relative;
+}
+#center .footer{
+	padding-top: 14px;
+}
+#center .contents{
+	margin: 39px 15px 0px 82px;
+	background-color: inherit;
+}
+#products{
+	margin: 39px 15px 0px 15px;
+	text-align: center;
+	background-color: inherit;
+	color: white;
+	font-size: 22px;
+}
+#center .contents>div{
+	margin: 0px 15px 0px 15px;
+	float: left;
+	width: 180px;
+	height: 248px;
+	background-color: inherit;
+}
+.contents>div>div{
+	background-color: inherit;
+}
+.logo_into{
+	margin: 0px;
+	height: 188px;
+	background-image: url(../img/Products_into.png);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	background-color: inherit;
+}
+.logo_into div{
+	margin: 0px;
+	height: 178px;
+	background-color: white;
+}
+#hWord_b_logo div{
+	height: 46px;
+	width: 46px;
+	margin: 10px auto;
+	background-repeat: no-repeat;
+	background-image: url(../img/footLogos.png);
+	background-color: inherit;
+}
+#hExcel_b_logo div{
+	height: 46px;
+	width: 46px;
+	margin: 10px auto;
+	background-repeat: no-repeat;
+	background-image: url(../img/footLogos.png);
+	background-color: inherit;
+	background-position-x: -46px;
+}
+#hPPT_b_logo div{
+	height: 46px;
+	width: 46px;
+	margin: 10px auto;
+	background-repeat: no-repeat;
+	background-image: url(../img/footLogos.png);
+	background-color: inherit;
+	background-position-x: -92px;
+}
+#help_b_logo div{
+	height: 46px;
+	width: 46px;
+	margin: 10px auto;
+	background-repeat: no-repeat;
+	background-image: url(../img/footLogos.png);
+	background-color: inherit;
+	background-position-x: -138px;
+}
+#footer *{
+	font-size: 12px;
+	color: gray;
+}
+#footer .leftSide{
+	width: 40%;
+	margin: 40px 0px 0px 170px;
+	float: left;
+}
+#footer .rightSide{
+	margin:40px 0px;
+	float: left;
+}
+.contents .logo{
+	height: 117px;
+	overflow: hidden;
+}
+.contents hr,.contents a{
+	float: left;
+	display: block;
+	margin-bottom: 6px;
+}
+.contents a{
+	position: relative;
+	left: -55px;
+	top: 3px;
+}
+.contents hr{
+	width: 55px;
+	margin-left: 13px;
+}
+.contents *{
+	font-size: 12px;
+}
+.contents a:hover{
+	text-decoration: underline;
+}
+.contents .logo .img{
+	width: 68px;
+	height: 68px;
+	margin: 28px auto 0px auto;
+	background-image: url(../img/logos.jpg);
+}
+#hExcel_logo .img{
+	background-position-x: -136px;
+}
+#hPPT_logo .img{
+	background-position-x: -68px;
+}
+#help_logo .img{
+	background-position-x: -204px;
+}
+.contents .logo span{
+	display: block;
+	margin-left: 13px;
+	margin-top: 4px;
+}
+.logo{
+	cursor: pointer;
+}
+.contents .logo{
+	opacity: 0.85;
+}
+.contents .logo:hover{
+	opacity: 1;
+}
+.inner_content{
+	text-align: justify;
+}

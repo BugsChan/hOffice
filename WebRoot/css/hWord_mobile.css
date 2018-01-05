@@ -1,0 +1,40 @@
+#other,#requstFullScreen,#help,#login{
+	display: none !important;
+}
+#items span{
+	display: inline-block;
+	padding: 0.15rem 0.1rem;
+	float: left !important;
+	font-size: 0.3rem !important;
+	font-weight: bold;
+	width: 0.7rem;
+}
+#lists *{
+	font-size: 0.3rem;
+}
+#papers *{
+	font-size: 0.3rem !important;
+	line-height: 0.35rem;
+}
+#flag img{
+	display: none;
+}
+#title{
+	position:relative;
+	bottom: 0.15rem;
+	right:0.1rem;
+	float: left;
+	margin-top: 0.2rem;
+	width: 2rem !important;
+	line-height: 0.3rem !important;
+	height: 0.3rem !important;
+	font-size: 0.3rem !important;
+}
+#headTable_list{
+	position: relative;
+	left: 2rem;
+}
+#insert_list{
+	position: relative;
+	left: 1.2rem;
+}

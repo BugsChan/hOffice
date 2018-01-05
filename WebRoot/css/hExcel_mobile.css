@@ -1,0 +1,63 @@
+#other,#requstFullScreen,#help,#start,#login{
+	display: none !important;
+}
+body{
+	width: 100%;
+}
+#flag img{
+	display: none;
+}
+#items span{
+	display: inline-block;
+	padding: 0.15rem 0.1rem;
+	float: left !important;
+	font-size: 0.3rem !important;
+	font-weight: bold;
+	width: 0.7rem;
+}
+#lists *{
+	font-size: 0.3rem;
+}
+#table td:not(.rowCount){
+	font-size: 0.25rem !important;
+	line-height: 0.25rem;
+	width: 1rem !important;
+}
+#table .rowCount{
+	font-size:0.25rem !important;
+	width:0.3rem !important;
+}
+#table td{
+	height: 0.25rem !important;
+	padding: 0px !important;
+}
+#tableButton_list{
+	position: relative;
+	left: 0.8rem;
+}
+#funs_list{
+	position: relative;
+	left: 1rem;
+}
+#sum_list,#count_list,#logic_list,#statistics_list,#math_list{
+	position: relative !important;
+	right: 2.5rem !important;
+}
+body #table_input{
+	font-size:0.25rem !important;
+	height:0.25rem ;
+	margin:0px !important;
+	padding:0px !important;
+	line-height: 0.25rem !important;
+}
+#title{
+	position:relative;
+	bottom: 0.15rem;
+	right:0.1rem;
+	float: left;
+	margin-top: 0.2rem;
+	width: 2rem !important;
+	line-height: 0.3rem !important;
+	height: 0.3rem !important;
+	font-size: 0.3rem !important;
+}

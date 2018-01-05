@@ -1,0 +1,59 @@
+#headTable,#requstFullScreen,#headTable,#login,#help{
+	display: none !important;
+}
+#flag img{
+	display: none;
+}
+#items span{
+	display: inline-block;
+	padding: 0.15rem 0.1rem;
+	float: left !important;
+	font-size: 0.3rem !important;
+	font-weight: bold;
+	width: 0.7rem;
+}
+#lists *{
+	font-size: 0.3rem;
+}
+#title{
+	position:relative;
+	bottom: 0.15rem;
+	right:0.1rem;
+	float: left;
+	margin-top: 0.2rem;
+	width: 2rem !important;
+	line-height: 0.3rem !important;
+	height: 0.3rem !important;
+	font-size: 0.3rem !important;
+}
+#sideBar li:not(#fenYe),#sideBar hr,#sideBar ul,#sideBar span:first-child{
+	display: none;
+}
+#sideBar{
+	height: 0.5rem;
+	width: 100%;
+	padding: 0px;
+	position: absolute;
+	top: 570px;
+}
+#sideBar span{
+	width: 23%;
+	font-size: 0.3rem;
+	padding-bottom: 0px;
+	line-height: 0.4rem;
+}
+#upwoard,#downwoard{
+	display:none !important;
+}
+#ctrl{
+	display: block !important;
+	position: absolute;
+	top: 570px !important;
+	bottom: auto !important;
+}
+#ctrl *{
+	font-size: 0.3rem !important;
+}
+#cEXIT{
+	display: none;
+}
