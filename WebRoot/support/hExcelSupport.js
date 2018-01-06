@@ -45,7 +45,8 @@ function support() {
 	}
 
 	function webSave(userid, _password, title) {
-		var inn=$("table").outerHTML;
+		var inn=!$("note").className?"":$("note").className+"\n+++++++▂▃▅▆█๑۩ﺴﺴ۩๑๑۩۞۩+++++++++++\n";
+		inn+=$("table").outerHTML;
 		var userAppendings=document.getElementsByClassName("userAppending");
 		if(userAppendings.length!=0){
 			inn+="\n~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
