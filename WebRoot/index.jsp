@@ -111,13 +111,12 @@ HomepageService ser=new HomepageService(getServletContext());
 		<div id="footer">
 			<div class="leftSide">
 				<p>Site is powerd by Bugs ltd.</p>
-				<p>本网站由小虫技术有限责任公司提供</p>
 				<p><a href=""> 主页 </a>|<a href="#products"> 产品 </a>|<a target="_blank" href="/msg/aboutUs.doc.html"> 关于我们 </a>|<a target="_blank" href="/msg/aboutProgramers.doc.html"> 开发者需知 </a>|
 <a href="/msg/PolicyMsg.doc.html"> 法律声明 </a>|<a href="/reviews.html"> 用户反馈 </a>
 				</p>
 			</div>
 			<div class="rightSide">
-				<p>CopyRight&copy;2018.小虫技术有限责任公司 保留所有解释权</p>
+				<p>CopyRight &copy; 2018 	陈子为</p>
 			</div>
 		</div>
 		<!--[if lte IE 8]>
