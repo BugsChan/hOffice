@@ -51,6 +51,7 @@ function support() {
 		myPost(
 			getURL("/support/saveSupport") + "?method=webSave&userid=" + userid +
 			"&password=" + _password + "&title=" + title + '.doc.html',
+			//Saving text
 			'<!doctype html>' + document.documentElement.outerHTML,
 			function(res2) {
 				if(res2.isOk) {
@@ -69,8 +70,8 @@ function support() {
 			8,
 			function(jsessionid) {
 				myPost(
-					getURL("/support/saveSupport") +
-					"?method=localSaveUpload&JSESSIONID=" + jsessionid + "&title=" + $("title").innerText + ".doc.html", '<!doctype html>' + document.documentElement.outerHTML,
+					getURL("/support/saveSupport;jsessionid=") + jsessionid +
+					"?method=localSaveUpload" + "&title=" + $("title").innerText + ".doc.html", '<!doctype html>' + document.documentElement.outerHTML,
 					function(res) {
 						if(res.isOk) {
 							window.open(getURL("/support/saveSupport") + "?method=localSaveDownload&JSESSIONID=" + jsessionid);

@@ -11,14 +11,13 @@ function getUserMsg() {
 	return !document.userMsg ? null : JSON.parse(document.userMsg);
 }
 
-function auto_login() {
+(function(){
 	try {
 		var userMsg = getUserMsg();
 		var res_show = $("username") || $("login");
 		res_show.innerText = userMsg.username;
 	} catch(e) {}
-}
-auto_login();
+})();
 
 function setCookie(_key, _value) {
 	var _date = new Date();

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" metadata-complete="true" version="3.0">
+  <!-- 配置404错误页面 -->
   <error-page>
     <error-code>404</error-code>
     <location>/support/Error404.html</location>
   </error-page>
+  
+  <!--手机页面引导(将页面从电脑页面引入手机页面) -->
   <filter>
     <filter-name>mobileLeader</filter-name>
     <filter-class>Filters.MobileLeader</filter-class>
@@ -16,6 +19,8 @@
     <filter-name>mobileLeader</filter-name>
     <url-pattern>/index.html</url-pattern>
   </filter-mapping>
+  
+  <!-- 电脑页面静态化 -->
   <filter>
     <filter-name>homepageStatic</filter-name>
     <filter-class>Filters.HomepageStatic</filter-class>
@@ -32,6 +37,8 @@
     <filter-name>homepageLeader</filter-name>
     <url-pattern>/index.html</url-pattern>
   </filter-mapping>
+  
+  <!-- 手机页面静态化 -->
   <filter>
     <filter-name>MobileHomepageStatic</filter-name>
     <filter-class>Filters.MobileHomepageStatic</filter-class>
@@ -48,14 +55,18 @@
     <filter-name>MobileHomepageLeader</filter-name>
     <url-pattern>/mobile_homepage.html</url-pattern>
   </filter-mapping>
+  
+  <!-- 防止盗链 -->
   <filter>
     <filter-name>Keeper</filter-name>
     <filter-class>Filters.imgKeeper</filter-class>
   </filter>
+  	<!-- 防止图片盗链 -->
   <filter-mapping>
     <filter-name>Keeper</filter-name>
     <url-pattern>/img/advs/*</url-pattern>
   </filter-mapping>
+  	<!-- 防止工作区盗链(貌似没有多大作用) -->
   <filter-mapping>
     <filter-name>Keeper</filter-name>
     <url-pattern>/hWord.html</url-pattern>
@@ -68,6 +79,8 @@
     <filter-name>Keeper</filter-name>
     <url-pattern>/hPPT.html</url-pattern>
   </filter-mapping>
+  
+  <!-- 对手机样式表进行隔离 -->
   <filter>
     <filter-name>WorkSpaceServer</filter-name>
     <filter-class>Filters.WorkSpaceServer</filter-class>
@@ -84,6 +97,8 @@
     <filter-name>WorkSpaceServer</filter-name>
     <url-pattern>/css/hWord_mobile.css</url-pattern>
   </filter-mapping>
+  
+  
   <servlet>
     <servlet-name>getSession</servlet-name>
     <servlet-class>Servlets.getSession</servlet-class>
@@ -92,6 +107,7 @@
     <servlet-name>getSession</servlet-name>
     <url-pattern>/support/getSession</url-pattern>
   </servlet-mapping>
+ 
   <servlet>
     <servlet-name>saveSupport</servlet-name>
     <servlet-class>Servlets.saveSupport</servlet-class>
@@ -100,6 +116,7 @@
     <servlet-name>saveSupport</servlet-name>
     <url-pattern>/support/saveSupport</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>UserSupport</servlet-name>
     <servlet-class>Servlets.UserSupport</servlet-class>
@@ -108,6 +125,7 @@
     <servlet-name>UserSupport</servlet-name>
     <url-pattern>/support/UserSupport</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>sureImgSupport</servlet-name>
     <servlet-class>Servlets.sureImgSupport</servlet-class>
@@ -116,6 +134,7 @@
     <servlet-name>sureImgSupport</servlet-name>
     <url-pattern>/support/sureImgSupport</url-pattern>
   </servlet-mapping>
+  
   <servlet>
     <servlet-name>OnlineDoc</servlet-name>
     <servlet-class>Servlets.OnlineDoc</servlet-class>
@@ -124,6 +143,7 @@
     <servlet-name>OnlineDoc</servlet-name>
     <url-pattern>/OnlineDoc</url-pattern>
   </servlet-mapping>
+  
   <listener>
     <listener-class>Listeners.FileDeleter</listener-class>
   </listener>
