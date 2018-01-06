@@ -16,7 +16,7 @@ public class Tongji implements ServletRequestListener{
 	@Override
 	public void requestInitialized(ServletRequestEvent sre) {
 		String url=((HttpServletRequest)sre.getServletRequest()).getRequestURI();
-		System.out.println(url);
+//		System.out.println(url);
 		url=url.substring(url.lastIndexOf("/")+1);
 		if(url.equals("")||url.endsWith("index.html")){
 			homepagePc=add(homepagePc,"pcHome");
