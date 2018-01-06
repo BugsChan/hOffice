@@ -6,12 +6,13 @@ String path=(String)request.getAttribute("path");
 if(path==null){
 	response.sendError(404);
 }
+String name=path.substring(path.indexOf("_")+1);
 FileInputStream input=null;
 InputStreamReader reader=null;
 BufferedReader br=null;
 try{
 input=new FileInputStream(application.getRealPath(path));
-reader=new InputStreamReader(input);
+reader=new InputStreamReader(input,"utf-8");
 br=new BufferedReader(reader);
 %>
 <!DOCTYPE html>
@@ -25,7 +26,7 @@ br=new BufferedReader(reader);
 (c) 陈子为
 -->
 	<head>
-		<title>hPPT</title>
+		<title><%=name %></title>
 		<meta charset="UTF-8">
 		<style type="text/css" id="printStylesheet" media="print">
 			#head{
@@ -292,7 +293,7 @@ br=new BufferedReader(reader);
 		<div id="head">
 			<div id="flag">
 				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEEAAAAVCAYAAAAZ6IOkAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA+dpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSIgeG1wOkNyZWF0ZURhdGU9IjIwMTctMTEtMjZUMTE6MTY6MjgrMDg6MDAiIHhtcDpNb2RpZnlEYXRlPSIyMDE3LTExLTI2VDExOjE2OjM0KzA4OjAwIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDE3LTExLTI2VDExOjE2OjM0KzA4OjAwIiBkYzpmb3JtYXQ9ImltYWdlL3BuZyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozNTAwN0VEN0QyNTgxMUU3OTgxRTg0QkU3NkQ4OUU4RiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozNTAwN0VEOEQyNTgxMUU3OTgxRTg0QkU3NkQ4OUU4RiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjM1MDA3RUQ1RDI1ODExRTc5ODFFODRCRTc2RDg5RThGIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjM1MDA3RUQ2RDI1ODExRTc5ODFFODRCRTc2RDg5RThGIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+IZ7hawAAAVNJREFUeNrsWIENgyAQVNMF7AiuYEfQEVzBjqAj6Ah1BB2hjlBHqCs4AoXkST5EwKpFSfnk0mAfhfP//tEnhHj/bhf4rShihV9JMaBxTpEp/DuKxjYSGAGJwi+cGav8e5siITD4rCfFm4IgsHGrIDSHeUQAu1bMvBxvxleFwjQJbKORcC2CtGKbekgiMJHcqwISY5siAeuLD7ghrckBMuNzrnAPTlIr+KUCGsV/HdaEo2yAxbxQVOgEdaKokaBHEBm9RI9inVYFJ9Clib8RjdiK1kg2uro66KyCxeJc3psIE3M2kRD/OBo4qeOKOZsJOUM6hKjx+qa/yPbqS44mgZdHXu/rhRFQQIpybRhNpMOeVqEN4HAuNZshks60NNUnpKhO+3s8GJXIGvqFpWcNXk3usK7NAnlEJJQLw36uWbL+7OAOUI4ER4IjwQrz3TdGz/sIMAAkX1KOd/P4zAAAAABJRU5ErkJggg=="/>
-				<span id="title" title="点击修改文件名">hPPT</span>
+				<span id="title" title="点击修改文件名"><%=name %></span>
 			</div>
 			<div id="items">
 				<span id="document">文件</span><span id="start">样式</span><span id="insert">插入</span><span id="headTable">表格</span><span id="other">其他</span><span title="使用全屏,编辑更方便" id="requstFullScreen">全屏</span><span id="help">帮助</span><span id="login" style="float: right;margin-right: 50px;">登录</span>

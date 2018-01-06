@@ -6,12 +6,13 @@ String path=(String)request.getAttribute("path");
 if(path==null){
 	response.sendError(404);
 }
+String name=path.substring(path.indexOf("_")+1);
 FileInputStream input=null;
 InputStreamReader reader=null;
 BufferedReader br=null;
 try{
 input=new FileInputStream(application.getRealPath(path));
-reader=new InputStreamReader(input);
+reader=new InputStreamReader(input,"utf-8");
 br=new BufferedReader(reader);
 %>
 <!DOCTYPE html>
@@ -26,7 +27,7 @@ br=new BufferedReader(reader);
 -->
 	<head>
 		<meta charset="UTF-8">
-		<title>hExcel</title>
+		<title><%=name %></title>
 		<style id="peintStyle" media="print">
 			#head{
 				display: none;
@@ -220,7 +221,7 @@ br=new BufferedReader(reader);
 		<div id="head">
 			<div id="flag">
 				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFYAAAAXCAYAAACRUrg+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA+dpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSIgeG1wOkNyZWF0ZURhdGU9IjIwMTctMTEtMjRUMDk6NDM6MjIrMDg6MDAiIHhtcDpNb2RpZnlEYXRlPSIyMDE3LTExLTI0VDA5OjQzOjM4KzA4OjAwIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDE3LTExLTI0VDA5OjQzOjM4KzA4OjAwIiBkYzpmb3JtYXQ9ImltYWdlL3BuZyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFNDgwRkYzQUQwQjgxMUU3QjQ0NTg0QTFBODBCQkE3MCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFNDgwRkYzQkQwQjgxMUU3QjQ0NTg0QTFBODBCQkE3MCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkU0ODBGRjM4RDBCODExRTdCNDQ1ODRBMUE4MEJCQTcwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkU0ODBGRjM5RDBCODExRTdCNDQ1ODRBMUE4MEJCQTcwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+TUATwQAAAg9JREFUeNrsWYuNgzAMTatbgBVyI3AjsEJWoCPQEegIZYR2BBjhOgIdoYzABcmRXi0HgtqKo40lqyJxPjzs+Dnd9H2vojxfvug3tVpO2J6tVqytnhhzsbr/ZGATq9mEbSO0ZdE3VU74DXJwjdsFNjJ4eT+hxYqANRTtdxG/jQ732qNgKdm8K7DRYyOw7wusJhaAukTC0wIzcX1Hz/iM+tw8rdUT0UwuCSVPZ3sjWzNrx0OBYDXrXyM1zY9aQ78K1HRkTjffzWrC+obn48j+tLDODeYb5m7Bvgx9n7UAq+ilnGTUZqDNCGNO0H8i4BQBmgsfwYH4yz5SIaz9r4H1iQQsf3EFz9I6GQN16sPlI56vaM2eImAS2DUlrw7K45TOQE3tO09F5CSkrDZQuneekj642pzDY6+kzyxp5/LYM5XWmDwPwr5wbxdPP5cUxtWe5K2E5PkwsBXWwi73LeC5FfugZ49dAp4eIgkApx/d5Bp5LL9HKAMBC5U9RdKYvh2wBYVsB9FjPEdSAyEeAm7DztqP8VgN3nogdWF+nLjmLGcAmz6j+FkTsCV5XkfnLLIELRwRFSStnFVamrEGbl9DdGAyDL/OnMFjC4HbvYrHci5rRvbRAv+UKql2ZI10pPIKHbNaHptAKF8FZrIT7BRQrR/y7AaOjga8ntt/g/0V1m2oPYS6qU38MzFeG65K/gQYAIkWIBiH2BUZAAAAAElFTkSuQmCC" />
-				<span id="title" title="点击修改文件名">hExcel</span>
+				<span id="title" title="点击修改文件名"><%=name %></span>
 			</div>
 			<div id="items">
 				<span id="document">文件</span><span id="start">样式</span><span id="insert">插入</span><span id="tableButton">表格</span><span id="funs">函数</span><span id="other">其他</span><span title="使用全屏,编辑更方便" id="requstFullScreen">全屏</span><span id="help">帮助</span><span id="login" style="float: right;margin-right: 50px;">登录</span>

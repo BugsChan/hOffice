@@ -6,12 +6,13 @@ String path=(String)request.getAttribute("path");
 if(path==null){
 	response.sendError(404);
 }
+String name=path.substring(path.indexOf("_")+1);
 FileInputStream input=null;
 InputStreamReader reader=null;
 BufferedReader br=null;
 try{
 input=new FileInputStream(application.getRealPath(path));
-reader=new InputStreamReader(input);
+reader=new InputStreamReader(input,"utf-8");
 br=new BufferedReader(reader);
 %>
 <!DOCTYPE html>
@@ -26,7 +27,7 @@ br=new BufferedReader(reader);
 -->
 	<head>
 		<meta charset="UTF-8">
-		<title>hWord</title>
+		<title><%=name %></title>
 		<style id="printStylesheet" media="print">
 			#head{
 				display: none;
@@ -211,7 +212,7 @@ br=new BufferedReader(reader);
 		<div id="head">
 			<div id="flag">
 				<img  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFQAAAAVCAYAAADYb8kIAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA+dpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSIgeG1wOkNyZWF0ZURhdGU9IjIwMTctMTEtMjNUMDM6MDk6NTgrMDg6MDAiIHhtcDpNb2RpZnlEYXRlPSIyMDE3LTExLTIzVDA0OjA2OjMwLTE2OjAwIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDE3LTExLTIzVDA0OjA2OjMwLTE2OjAwIiBkYzpmb3JtYXQ9ImltYWdlL3BuZyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBMTFBMkM2OUNGQzAxMUU3QTFFRkZDMjhFRTg1ODc1MyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBMTFBMkM2QUNGQzAxMUU3QTFFRkZDMjhFRTg1ODc1MyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkExMUEyQzY3Q0ZDMDExRTdBMUVGRkMyOEVFODU4NzUzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkExMUEyQzY4Q0ZDMDExRTdBMUVGRkMyOEVFODU4NzUzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+ymPwLAAAAkhJREFUeNrsWYFxwjAMdLgukI7gjuCOEEbICukIyQjpCDACjIBHwCPACDBC6twpd19VdgjhEqDoTiSxLMe835IMSdM0yovxWqu4LNlz4TWP9HdeK/XP5I2uqddsoO81Ps8mmrQV234sJnz5wWtDV0kKsjd0L0lnr+8E0HaH7kjV1IBaWNVUsJvAfScZCyd3KVMC6gYAZnoAty9Af4NgArHIXQBo2+f8AlSpIwBhAuxEsLJAn7tl51BAd0yLESyVGNqBLrEU466LZNwVJL+T102A7TzJdQnmAM+8oinBvg+WjG0d6jVrbi87Ghu1BHsK7Xtqa+dR0/0G7EXAD+d/isylEHwU2EvWH/ukMD8ue+6zmHhHOGELp8AiSyzlW15H4qcmJqZk//Ca0LV7Xw1jSFLSuN/CYaSG+VU09rvXtcj+iRnKWdE+56y/gT6aMbiOsP4ksDcF5q4ic2novUrwbyL+szNUiqOatTsheZlI/MzBn7P3DOPGTnXrwNgZ68NlOyYpJUyrGwGaQULioUGzL2V7yqlYmNE9FUgo0Q06TMzB0CPL3FI5hKx6iPpzTkAtO79LYDmhXNr2LFCoPDJDGCaEDHUBw2cF9AxfLlSsI6B9gGwhlmphy+YjDgRWiNUq1raYaWdY4YQ0FHRMFh2TNgBqV04pKImuCU8WyqcSSr2VtCvmAvQYYYKUBGzPWBVsb/yZ0BCYyxHx9wt8aziFFdIizc3QWLK5FNCOpZ+MrUdodyMXn49taZH+lFIJ/QXykgfO8k8tPwIMAIMK6cjibKkTAAAAAElFTkSuQmCC"/>
-				<span id="title" title="点击修改文件名">hWord</span>
+				<span id="title" title="点击修改文件名"><%=name %></span>
 			</div>
 			<div id="items">
 				<span id="document">文件</span><span id="start">样式</span><span id="insert">插入</span><span id="headTable">表格</span><span id="other">其他</span><span title="使用全屏,编辑更方便" id="requstFullScreen">全屏</span><span id="help">帮助</span><span id="login" style="float: right;margin-right: 50px;">登录</span>
