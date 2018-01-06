@@ -48,12 +48,11 @@ function support() {
 	}
 
 	function webSave(userid, _password, title) {
-		var inn="";
-		if($("node").className)
-		inn+=$("papers").outerHTML;
+		var inn=$("papers").outerHTML;
+		inn+=!$("note").className?"":"\n~~~~~~~~~node~1~~~~~~~\n"+$("note").className;
 		var userAppendings=document.getElementsByClassName("userAppending");
 		if(userAppendings.length!=0){
-			inn+="\n~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+			inn+="\n~userApp~2~▂▃▅▆█๑۩ﺴﺴ۩๑๑۩۞۩~\n";
 			for(var i=0;i<userAppendings.length;i++){
 				inn+=userAppendings[i].outerHTML;
 			}
