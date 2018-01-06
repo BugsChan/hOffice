@@ -1,3 +1,19 @@
+<%@ page session="false" language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@page import="java.io.FileInputStream,java.io.InputStreamReader,java.io.BufferedReader"%>
+<%
+String path=(String)request.getAttribute("path");
+if(path==null){
+	response.sendError(404);
+}
+FileInputStream input=null;
+InputStreamReader reader=null;
+BufferedReader br=null;
+try{
+input=new FileInputStream(application.getRealPath(path));
+reader=new InputStreamReader(input);
+br=new BufferedReader(reader);
+%>
 <!DOCTYPE html>
 <html id="version:2.0|hPPT">
 <!--
@@ -421,9 +437,14 @@
 					<span id="addNew">新增</span><span id="upwoard">向上移动</span><span id="downwoard">向下移动</span><span id="delete">删除</span>
 				</li>
 			</ul>
-			<div id="ppts">
-				<div id="ppt" style="width: 0px;"></div>
-			</div>
+			<%--ppts.outerHTML --%>
+			<%
+			String myOut=br.readLine();
+			while(myOut!=null&&!myOut.equals("~~~~~~~~~~~~~~~~~~~~~~~~~~~")){
+				out.print(myOut);
+				myOut=br.readLine();
+			}
+			 %>
 		</div>
 		<textarea id="note" placeholder="笔记本" style="position: fixed;display:none;height: 70px;width: 250px;right: 20px;top: 30px;z-index: 10000;"></textarea>
 		<!--该ul用于展示PPT-->
@@ -1876,6 +1897,18 @@
 			  });
 			}
 		</script>
+		<%--userAppending代码 --%>
+		<%myOut=br.readLine();
+			while(myOut!=null){
+				out.print(myOut);
+				myOut=br.readLine();
+			}
+		}catch(Exception e){}finally{
+			if(br!=null)br.close();
+			if(reader!=null)reader.close();
+			if(input!=null)input.close();
+		}
+		 %>
 		<script id="fromNet" type="text/javascript"></script>
 		<script type="text/javascript" id="LocalSupport">
 			function getURL(relativeURL){
@@ -1891,4 +1924,3 @@
 		</script>
 	</body>
 </html>
-

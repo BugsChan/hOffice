@@ -9,6 +9,7 @@ import java.util.UUID;
 import javax.servlet.ServletContext;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.junit.Test;
 
 import Dao.FileSave;
 import Dao.JdbcUtils;
@@ -77,6 +78,7 @@ public class Doc {
 	private static String getUUID(){
 		return UUID.randomUUID().toString().replaceAll("-", "");
 	}
+	
 	/**
 	 * 自动生成文件路径
 	 * @param name

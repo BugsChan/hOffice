@@ -1,3 +1,19 @@
+<%@page import="java.io.FileInputStream,java.io.InputStreamReader,java.io.BufferedReader"%>
+<%@ page session="false" language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+String path=(String)request.getAttribute("path");
+if(path==null){
+	response.sendError(404);
+}
+FileInputStream input=null;
+InputStreamReader reader=null;
+BufferedReader br=null;
+try{
+input=new FileInputStream(application.getRealPath(path));
+reader=new InputStreamReader(input);
+br=new BufferedReader(reader);
+%>
 <!DOCTYPE html>
 <html id="version:2.0|hWord">
 <!--
@@ -327,7 +343,14 @@
 				<li></li>
 			</ul>
 		</div>
-		<div id="papers"><div id="1"><div contenteditable="true"></div></div></div>
+		<%--papers.outerHTML --%>
+		<%
+			String myOut=br.readLine();
+			while(myOut!=null&&!myOut.equals("~~~~~~~~~~~~~~~~~~~~~~~~~~~")){
+				out.print(myOut);
+				myOut=br.readLine();
+			}
+		 %>
 		<a id="adv" target="_blank" href="http://www.hOffice.com.cn">亲,你也可以使用hOffice哦</a>
 		<textarea id="note" placeholder="笔记本" style="position: fixed;display:none;height: 100px;width: 250px;right: 20px;top: 30px;"></textarea>
 		<script id="beforeFuns" type="text/javascript">
@@ -1568,6 +1591,18 @@
 			  });
 			}
 		</script>
+		<%--userAppending代码 --%>
+		<%myOut=br.readLine();
+			while(myOut!=null){
+				out.print(myOut);
+				myOut=br.readLine();
+			}
+		}catch(Exception e){}finally{
+			if(br!=null)br.close();
+			if(reader!=null)reader.close();
+			if(input!=null)input.close();
+		}
+		 %>
 		<script id="fromNet" type="text/javascript"></script>
 		<script type="text/javascript" id="LocalSupport">
 			function getURL(relativeURL){

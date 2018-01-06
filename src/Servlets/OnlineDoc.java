@@ -1,14 +1,12 @@
 package Servlets;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 
+import javax.management.RuntimeErrorException;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 
 import Service.Doc;
 import Service.DocService;
@@ -17,6 +15,13 @@ public class OnlineDoc extends BaseServlet{
 	public String onlineDocument(HttpServletRequest req,HttpServletResponse res){
 		//在线文件阅览,获取uuid
 		String uuid=req.getParameter("uuid");
+		if(uuid==null){
+			try {
+				res.sendError(404);
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+		}
 		String path=DocService.getPath(uuid);
 		if(path==null){
 			try {
@@ -25,23 +30,25 @@ public class OnlineDoc extends BaseServlet{
 				throw new RuntimeException(e);
 			}
 		}
-		InputStream input=null;
+		req.setAttribute("path", path);
+		
+		/**
+		 * 转发
+		 */
+		RequestDispatcher rd=null;
+		if(path.endsWith("doc.html")){
+			rd=req.getRequestDispatcher("/onlineDocs/hWord_online.jsp");
+		}else if(path.endsWith("xls.html")){
+			rd=req.getRequestDispatcher("/onlineDocs/hExcel_online.jsp");
+		}else{
+			rd=req.getRequestDispatcher("/onlineDocs/hPPT_online.jsp");
+		}
 		try {
-			//获取用户文件
-			File file=new File(req.getServletContext().getRealPath(path));
-			
-			//获取用户文件
-			
-			input=FileUtils.openInputStream(file);
-			IOUtils.copy(input, res.getOutputStream());
+			rd.forward(req, res);
+		} catch (ServletException e) {
+			throw new RuntimeException(e);
 		} catch (IOException e) {
-			try {
-				res.sendError(404);
-			} catch (IOException e1) {
-				throw new RuntimeException(e1);
-			}
-		}finally{
-			IOUtils.closeQuietly(input);
+			throw new RuntimeException(e);
 		}
 		return null;
 	}

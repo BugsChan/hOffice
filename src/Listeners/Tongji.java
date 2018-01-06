@@ -34,6 +34,11 @@ public class Tongji implements ServletRequestListener{
 	public void requestInitialized(ServletRequestEvent arg0) {}
 	
 	private int add(int i,String type){
+		
+		
+		//test
+		//System.out.println(type);
+		
 		if(i<100){
 			i++;
 		}else{

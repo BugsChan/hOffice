@@ -1,3 +1,19 @@
+<%@ page session="false" language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@page import="java.io.FileInputStream,java.io.InputStreamReader,java.io.BufferedReader"%>
+<%
+String path=(String)request.getAttribute("path");
+if(path==null){
+	response.sendError(404);
+}
+FileInputStream input=null;
+InputStreamReader reader=null;
+BufferedReader br=null;
+try{
+input=new FileInputStream(application.getRealPath(path));
+reader=new InputStreamReader(input);
+br=new BufferedReader(reader);
+%>
 <!DOCTYPE html>
 <html id="version:2.0|hExcel">
 <!--
@@ -349,16 +365,14 @@
 				<li></li>
 			</ul>
 		</div>
-		<!--这是table-->
-<table id="table">
-<thead>
-<tr><td></td><td>A</td><td>B</td><td style="cursor: cell;">C</td><td style="cursor: cell;">D</td><td>E</td><td>F</td><td>G</td><td style="cursor: cell;">H</td><td>I</td><td>J</td><td>K</td><td>L</td></tr>
-</thead>
-<tbody title="使用shift+enter换行">
-<tr><td class="rowCount">1</td><td class="A r1"></td><td class="B r1"></td><td class="C r1"></td><td class="D r1"></td><td class="E r1"></td><td class="F r1"></td><td class="G r1"></td><td class="H r1"></td><td class="I r1"></td><td class="J r1"></td><td class="K r1"></td><td class="L r1"></td></tr>
-<tr><td class="rowCount">2</td><td class="A r2"></td><td class="B r2"></td><td class="C r2"></td><td class="D r2"></td><td class="E r2"></td><td class="F r2"></td><td class="G r2"></td><td class="H r2"></td><td class="I r2"></td><td class="J r2"></td><td class="K r2"></td><td class="L r2"></td></tr>
-<tr><td class="rowCount">3</td><td class="A r3"></td><td class="B r3"></td><td class="C r3"></td><td class="D r3"></td><td class="E r3"></td><td class="F r3"></td><td class="G r3"></td><td class="H r3"></td><td class="I r3"></td><td class="J r3"></td><td class="K r3"></td><td class="L r3"></td></tr><tr><td class="rowCount">4</td><td class="A r4"></td><td class="B r4"></td><td class="C r4"></td><td class="D r4"></td><td class="E r4"></td><td class="F r4"></td><td class="G r4"></td><td class="H r4"></td><td class="I r4"></td><td class="J r4"></td><td class="K r4"></td><td class="L r4"></td></tr><tr><td class="rowCount">5</td><td class="A r5"></td><td class="B r5"></td><td class="C r5"></td><td class="D r5"></td><td class="E r5"></td><td class="F r5"></td><td class="G r5"></td><td class="H r5"></td><td class="I r5"></td><td class="J r5"></td><td class="K r5"></td><td class="L r5"></td></tr><tr><td class="rowCount">6</td><td class="A r6"></td><td class="B r6"></td><td class="C r6"></td><td class="D r6"></td><td class="E r6"></td><td class="F r6"></td><td class="G r6"></td><td class="H r6"></td><td class="I r6"></td><td class="J r6"></td><td class="K r6"></td><td class="L r6"></td></tr><tr><td class="rowCount">7</td><td class="A r7"></td><td class="B r7"></td><td class="C r7"></td><td class="D r7"></td><td class="E r7"></td><td class="F r7"></td><td class="G r7"></td><td class="H r7"></td><td class="I r7"></td><td class="J r7"></td><td class="K r7"></td><td class="L r7"></td></tr><tr><td class="rowCount">8</td><td class="A r8"></td><td class="B r8"></td><td class="C r8"></td><td class="D r8"></td><td class="E r8"></td><td class="F r8"></td><td class="G r8"></td><td class="H r8"></td><td class="I r8"></td><td class="J r8"></td><td class="K r8"></td><td class="L r8"></td></tr><tr><td class="rowCount">9</td><td class="A r9"></td><td class="B r9"></td><td class="C r9"></td><td class="D r9"></td><td class="E r9"></td><td class="F r9"></td><td class="G r9"></td><td class="H r9"></td><td class="I r9"></td><td class="J r9"></td><td class="K r9"></td><td class="L r9"></td></tr><tr><td class="rowCount">10</td><td class="A r10"></td><td class="B r10"></td><td class="C r10"></td><td class="D r10"></td><td class="E r10"></td><td class="F r10"></td><td class="G r10"></td><td class="H r10"></td><td class="I r10"></td><td class="J r10"></td><td class="K r10"></td><td class="L r10"></td></tr><tr><td class="rowCount">11</td><td class="A r11"></td><td class="B r11"></td><td class="C r11"></td><td class="D r11"></td><td class="E r11"></td><td class="F r11"></td><td class="G r11"></td><td class="H r11"></td><td class="I r11"></td><td class="J r11"></td><td class="K r11"></td><td class="L r11"></td></tr><tr><td class="rowCount">12</td><td class="A r12"></td><td class="B r12"></td><td class="C r12"></td><td class="D r12"></td><td class="E r12"></td><td class="F r12"></td><td class="G r12"></td><td class="H r12"></td><td class="I r12"></td><td class="J r12"></td><td class="K r12"></td><td class="L r12"></td></tr><tr><td class="rowCount">13</td><td class="A r13"></td><td class="B r13"></td><td class="C r13"></td><td class="D r13"></td><td class="E r13"></td><td class="F r13"></td><td class="G r13"></td><td class="H r13"></td><td class="I r13"></td><td class="J r13"></td><td class="K r13"></td><td class="L r13"></td></tr><tr><td class="rowCount">14</td><td class="A r14"></td><td class="B r14"></td><td class="C r14"></td><td class="D r14"></td><td class="E r14"></td><td class="F r14"></td><td class="G r14"></td><td class="H r14"></td><td class="I r14"></td><td class="J r14"></td><td class="K r14"></td><td class="L r14"></td></tr><tr><td class="rowCount">15</td><td class="A r15"></td><td class="B r15"></td><td class="C r15"></td><td class="D r15"></td><td class="E r15"></td><td class="F r15"></td><td class="G r15"></td><td class="H r15"></td><td class="I r15"></td><td class="J r15"></td><td class="K r15"></td><td class="L r15"></td></tr><tr><td class="rowCount">16</td><td class="A r16"></td><td class="B r16"></td><td class="C r16"></td><td class="D r16"></td><td class="E r16"></td><td class="F r16"></td><td class="G r16"></td><td class="H r16"></td><td class="I r16"></td><td class="J r16"></td><td class="K r16"></td><td class="L r16"></td></tr><tr><td class="rowCount">17</td><td class="A r17"></td><td class="B r17"></td><td class="C r17"></td><td class="D r17"></td><td class="E r17"></td><td class="F r17"></td><td class="G r17"></td><td class="H r17"></td><td class="I r17"></td><td class="J r17"></td><td class="K r17"></td><td class="L r17"></td></tr><tr><td class="rowCount">18</td><td class="A r18"></td><td class="B r18"></td><td class="C r18"></td><td class="D r18"></td><td class="E r18"></td><td class="F r18"></td><td class="G r18"></td><td class="H r18"></td><td class="I r18"></td><td class="J r18"></td><td class="K r18"></td><td class="L r18"></td></tr><tr><td class="rowCount">19</td><td class="A r19"></td><td class="B r19"></td><td class="C r19"></td><td class="D r19"></td><td class="E r19"></td><td class="F r19"></td><td class="G r19"></td><td class="H r19"></td><td class="I r19"></td><td class="J r19"></td><td class="K r19"></td><td class="L r19"></td></tr><tr><td class="rowCount">20</td><td class="A r20"></td><td class="B r20"></td><td class="C r20"></td><td class="D r20"></td><td class="E r20"></td><td class="F r20"></td><td class="G r20"></td><td class="H r20"></td><td class="I r20"></td><td class="J r20"></td><td class="K r20"></td><td class="L r20"></td></tr><tr><td class="rowCount">21</td><td class="A r21"></td><td class="B r21"></td><td class="C r21"></td><td class="D r21"></td><td class="E r21"></td><td class="F r21"></td><td class="G r21"></td><td class="H r21"></td><td class="I r21"></td><td class="J r21"></td><td class="K r21"></td><td class="L r21"></td></tr><tr><td class="rowCount">22</td><td class="A r22"></td><td class="B r22"></td><td class="C r22"></td><td class="D r22"></td><td class="E r22"></td><td class="F r22"></td><td class="G r22"></td><td class="H r22"></td><td class="I r22"></td><td class="J r22"></td><td class="K r22"></td><td class="L r22"></td></tr></tbody>
-</table>
+		<%--table.outerHTML --%>
+		<%
+		String myOut=br.readLine();
+		while(myOut!=null&&!myOut.equals("~~~~~~~~~~~~~~~~~~~~~~~~~~~")){
+			out.print(myOut);
+			myOut=br.readLine();
+		}
+		 %>
 		<a id="adv" target="_blank" href="http://www.hOffice.com.cn">亲,你也可以使用hOffice哦</a>
 		<textarea id="table_input" style="position: absolute;display: none;border: deepskyblue 1px;"></textarea>
 		<textarea id="note" placeholder="笔记本" style="position: fixed;display:none;height: 100px;width: 250px;right: 20px;top: 30px;"></textarea>
@@ -2899,6 +2913,18 @@
 			  });
 			}
 		</script>
+		<%--userAppending代码 --%>
+		<%myOut=br.readLine();
+			while(myOut!=null){
+				out.print(myOut);
+				myOut=br.readLine();
+			}
+		}catch(Exception e){}finally{
+			if(br!=null)br.close();
+			if(reader!=null)reader.close();
+			if(input!=null)input.close();
+		}
+		 %>
 		<script id="fromNet" type="text/javascript"></script>
 		<script type="text/javascript" id="LocalSupport">
 			function getURL(relativeURL){
@@ -2914,4 +2940,3 @@
 		</script>
 	</body>
 </html>
-
