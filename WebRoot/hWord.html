@@ -1278,15 +1278,9 @@
 							}
 							return;
 						}
-						//如果开始的标签==结束的标签
-						if(userRange.startOffset==0&&userRange.endOffset==userRange.startContainer.length&&nodeType!="div"){
-							var parent=userRange.startContainer.parentNode;
-							parent.style[type_str]=setting_str;
-						}else{
-							var myNode=document.createElement(nodeType);
-							myNode.style[type_str]=setting_str;
-							userRange.surroundContents(myNode);
-						}
+						var myNode=document.createElement(nodeType);
+						myNode.style[type_str]=setting_str;
+						userRange.surroundContents(myNode);
 					}else if(nodeType=="span"){
 						var myNode=document.createElement(nodeType);
 						myNode.style[type_str]=setting_str;

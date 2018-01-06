@@ -521,11 +521,12 @@ String str1="~~~~~~~~~node~1~~~~~~~"
 			}
 			%>
 		</div>
-		<textarea id="note" <%if(myOut.equals(str1)){
+		<textarea id="note" <%if(myOut!=null&&myOut.equals(str1)){
 			out.print("class=\"");
 			myOut=br.readLine();
 			while(myOut!=null&&!myOut.equals(str2)){
 				out.print(myOut+"\n");
+				myOut=br.readLine();
 			}
 			out.print("\"");
 		} %> placeholder="笔记本" style="position: fixed;display:none;height: 70px;width: 250px;right: 20px;top: 30px;z-index: 10000;"></textarea>

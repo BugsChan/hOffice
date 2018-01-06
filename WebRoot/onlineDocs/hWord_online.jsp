@@ -408,11 +408,12 @@ myOut=br.readLine();
 }
 %>
 		<a id="adv" target="_blank" href="http://www.hOffice.com.cn">亲,你也可以使用hOffice哦</a>
-		<textarea id="note" <%if(myOut.equals(str1)){
+		<textarea id="note" <%if(myOut!=null&&myOut.equals(str1)){
 			out.print("class=\"");
 			myOut=br.readLine();
 			while(myOut!=null&&!myOut.equals(str2)){
 				out.print(myOut+"\n");
+				myOut=br.readLine();
 			}
 			out.print("\"");
 		} %> placeholder="笔记本" style="position: fixed;display:none;height: 100px;width: 250px;right: 20px;top: 30px;"></textarea>
@@ -1377,15 +1378,9 @@ alert("Sorry,本网站不支持IE8及几下版本浏览器,请更新你的浏览
 							}
 							return;
 						}
-						//如果开始的标签==结束的标签
-						if(userRange.startOffset == 0 && userRange.endOffset == userRange.startContainer.length && nodeType != "div") {
-							var parent = userRange.startContainer.parentNode;
-							parent.style[type_str] = setting_str;
-						} else {
-							var myNode = document.createElement(nodeType);
-							myNode.style[type_str] = setting_str;
-							userRange.surroundContents(myNode);
-						}
+						var myNode = document.createElement(nodeType);
+						myNode.style[type_str] = setting_str;
+						userRange.surroundContents(myNode);
 					} else if(nodeType == "span") {
 						var myNode = document.createElement(nodeType);
 						myNode.style[type_str] = setting_str;
