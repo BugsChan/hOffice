@@ -72,9 +72,6 @@ function openUserCenter() {
 			this.value = "";
 		}
 	};
-	/**
-	 * 为寂寞的夜空画上一个月亮
-	 */
 	var _link = document.createElement("link");
 	_link.rel = "stylesheet";
 	_link.type = "text/css";
