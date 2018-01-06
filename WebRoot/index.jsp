@@ -58,7 +58,7 @@ HomepageService ser=new HomepageService(getServletContext());
 								</div>
 								
 								<hr>
-								<a href="hWord.html">点击下载hWord<br>源文件</a>
+								<a href="hWord.html"  download="hWord.html">点击下载hWord<br>源文件</a>
 							</div>
 						</div>
 						<div id="hWord_b_logo"><div></div></div>
@@ -72,7 +72,7 @@ HomepageService ser=new HomepageService(getServletContext());
 									<span>使用hPPT</span>
 								</div>
 								<hr>
-								<a href="hPPT.html">点击下载hPPT<br>源文件</a>
+								<a href="hPPT.html" download="hPPT.html">点击下载hPPT<br>源文件</a>
 							</div>
 						</div>
 						<div id="hExcel_b_logo"><div></div></div>
@@ -86,7 +86,7 @@ HomepageService ser=new HomepageService(getServletContext());
 									<span>使用hExcel</span>
 								</div>
 								<hr>
-								<a href="hExcel.html">点击下载hExcel<br>源文件</a>
+								<a href="hExcel.html"  download="hExcel.html">点击下载hExcel<br>源文件</a>
 							</div>
 						</div>
 						<div id="hPPT_b_logo"><div></div></div>
@@ -100,7 +100,7 @@ HomepageService ser=new HomepageService(getServletContext());
 									<span>查看帮助文档</span>
 								</div>
 								<hr>
-								<a href="/downLoads/install.exe">安装包下载<br>仅支持windows</a>
+								<a href="/downLoads/install.exe" download="install.exe">安装包下载<br>仅支持windows</a>
 							</div>
 						</div>
 						<div id="help_b_logo"><div></div></div>

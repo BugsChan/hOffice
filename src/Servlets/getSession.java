@@ -22,7 +22,6 @@ public class getSession extends HttpServlet{
 		}
 		second=second>60?120:10;
 		session.setMaxInactiveInterval(second);
-		System.out.println(res.encodeURL("index.html?test=3&test2=5"));
 		res.getWriter().write("{\"isOk\":true,\"jsessionid\":\""+session.getId()+"\"}");
 	}
 }
