@@ -419,6 +419,8 @@ myOut=br.readLine();
 		<script id="beforeFuns" type="text/javascript">
 			//设置before_save()方法,以免出错
 			function before_save() {
+				var note=$("note");
+				note.className=note.value;
 				var netJs = document.getElementsByClassName("fromNet");
 				while(netJs.length > 0) {
 					netJs[0].parentNode.removeChild(netJs[0]);
@@ -678,8 +680,6 @@ alert("Sorry,本网站不支持IE8及几下版本浏览器,请更新你的浏览
 						break;
 					case "save":
 						target.parentNode.style.display = "none";
-						var note = $("note");
-						note.className = note.value;
 						before_save();
 						var blob = new Blob(['<!doctype html>' + document.documentElement.outerHTML], {
 							type: "text/plain;charset=utf-8"
