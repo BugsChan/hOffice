@@ -440,13 +440,7 @@
 				while(netJs.length>0){
 					netJs[0].parentNode.removeChild(netJs[0]);
 				}
-				var fromNet=$("fromNet");
-				var script=document.createElement("script");
-				document.body.insertBefore(script,fromNet);
-				document.body.removeChild(fromNet);
-				script.type="text/javascript";
-				script.id="fromNet";
-				$("document_list").style.display="none";
+				$("fromNet").removeAttribute("src");
 			}
 		</script>
 		<!--[if gt IE8]>
