@@ -110,13 +110,15 @@ HomepageService ser=new HomepageService(getServletContext());
 		</div>
 		<div id="footer">
 			<div class="leftSide">
-				<p>Site is powerd by Bugs ltd.</p>
+				<p>Site is powerd by Bugs </p>
 				<p><a href=""> 主页 </a>|<a href="#products"> 产品 </a>|<a target="_blank" href="/msg/aboutUs.doc.html"> 关于我们 </a>|<a target="_blank" href="/msg/aboutProgramers.doc.html"> 开发者需知 </a>|
 <a href="/msg/PolicyMsg.doc.html"> 法律声明 </a>|<a href="/reviews.html"> 用户反馈 </a>
 				</p>
+				<p><a target="_blank" href="http://www.miitbeian.gov.cn/">鲁ICP备18001086号</a></p>
 			</div>
 			<div class="rightSide">
 				<p>CopyRight &copy; 2018 	陈子为</p>
+				<p>公安网备第 51011202000195号</p>
 			</div>
 		</div>
 		<!--[if lte IE 8]>
