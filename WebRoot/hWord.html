@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html id="version:2.0|hWord">
+<html id="version:2.3|hWord">
 <!--
 作者：陈子为	山东师范大学2016级 食工一班 学号:201613010147 QQ:3502318983 Email:3502318983@qq.com
 时间：2017-8-25~2017-11-24
@@ -7,6 +7,7 @@
 美工：李萌
 (c) www.hoffice.com.cn
 (c) 陈子为
+(c) 小虫技术有限责任公司
 -->
 	<head>
 		<meta charset="UTF-8">
@@ -42,6 +43,19 @@
 				margin-left: 152px;
 				margin-top: 6px;
 			}
+			#items button{
+				width: 25px;
+				height: 15px;
+				line-height: 12px;
+				font-size: 15px;
+				background-color: #4d86a0;
+				color: #FFF;
+				border: none;
+				cursor:pointer;
+			}
+			#items button:hover{
+				font-size: 10px;
+			}
 			#head{
 				width: 100%;
 				height: 60px;
@@ -70,7 +84,7 @@
 			}
 			#head #title{
 				display: inline-block;
-				width:145px;
+				width:165px;
 				height: 20px;
 				color: black;
 				overflow: hidden;
@@ -188,7 +202,7 @@
 				background-color: #b9c8ca;
 			}
 		</style>
-		<link class="mobile" rel="stylesheet" type="text/css" href="css/hWord_mobile.css" />
+		<!--<link class="mobile" rel="stylesheet" type="text/css" href="css/hWord_mobile.css" />-->
 	</head>
 	<body>
 		<!--该div为标题栏,包括了关闭按钮,文件名和操作按钮-->
@@ -198,13 +212,13 @@
 				<span id="title" title="点击修改文件名">hWord</span>
 			</div>
 			<div id="items">
-				<span id="document">文件</span><span id="start">样式</span><span id="insert">插入</span><span id="headTable">表格</span><span id="other">其他</span><span title="使用全屏,编辑更方便" id="requstFullScreen">全屏</span><span id="help">帮助</span><span id="login" style="float: right;margin-right: 50px;">登录</span>
+				<button id="prev">↺</button><button id="next">↻</button><span id="document">文件</span><span id="start">样式</span><span id="insert">插入</span><span id="headTable">表格</span><span id="other">其他</span><span title="使用全屏,编辑更方便" id="requstFullScreen">全屏</span><span id="help">帮助</span><span id="login" style="float: right;margin-right: 50px;">登录</span>
 			</div>
 		</div>
 		<!--这个div标签中装的是菜单-->
 		<div id="lists">
 			<!--这是文件的下拉菜单-->
-			<ul id="document_list" style="margin-left: 162px;">
+			<ul id="document_list" style="margin-left: 222px;">
 				<li id="lock" title="在输入框中不填入任何值则会取消加密">加密</li>
 				<li id="save">保存(下载)</li>
 				<li id="saveInBrowser" style="display: none;">存为浏览器文件</li>
@@ -212,7 +226,7 @@
 				<li id="myDoc" style="display: none;">我的文件</li>
 			</ul>
 			<!--这是"开始"按钮的下拉菜单-->
-			<ul id="start_list" style="margin-left: 216px;">
+			<ul id="start_list" style="margin-left: 256px;">
 				<li id="fontFamily">字体</li>
 				<li id="fontSize">字号</li>
 				<li id="color">颜色</li>
@@ -224,7 +238,7 @@
 				<li id="search">查找替换</li>
 			</ul>
 			<!--这是"插入"按钮的下拉菜单-->
-			<ul id="insert_list" style="margin-left: 270px;">
+			<ul id="insert_list" style="margin-left: 310px;">
 				<li id="fenShu" title='三击可去除分数'>分数</li>
 				<li id="table">表格</li>
 				<li id="img">
@@ -238,7 +252,7 @@
 				<li id="link"  title="注意:兼容性不佳,仅火狐浏览器和Chrome浏览器(含其他火狐或Chrome内核浏览器)兼容">超链接</li>
 				<li id="textArea">文本框</li>
 			</ul>
-			<ul id="headTable_list" style="margin-left: 328px;">
+			<ul id="headTable_list" style="margin-left: 368px;">
 				<li id="collaspe_right">向右合并</li>
 				<li id="collaspe_down">向下合并</li>
 				<li id="cutLine">删除此行</li>
@@ -247,7 +261,7 @@
 				<li id="cutRow">删除一列</li>
 			</ul>
 			<!--这是"其他"按钮的下拉菜单-->
-			<ul id="other_list" style="margin-left: 380px;">
+			<ul id="other_list" style="margin-left: 420px;">
 				<!--<li>纸张大小</li>-->
 				<li id="print">打印</li>
 				<li id="playNote">打开笔记本</li>
@@ -256,10 +270,10 @@
 					<label for="install">引入插件</label><input type="button" value="确定" id="install_enter" />
 				</li>
 			</ul>
-			<ul id="help_list" style="margin-left:485px;">
+			<ul id="help_list" style="margin-left:525px;">
 				<li id="unable_to_save">无法保存(下载)?</li>
 			</ul>
-			<ul id="fontFamily_list" style="margin-left: 336px;margin-top: 0.5em;">
+			<ul id="fontFamily_list" style="margin-left: 376px;margin-top: 0.5em;">
 				<li style="font-family: 'Consolas';">Consolas</li>
 				<li style="font-family: 'courier new';">courier new</li>
 				<li style="font-family: '微软雅黑';">微软雅黑</li>
@@ -278,21 +292,21 @@
 				<li style="font-family: '楷体';">楷体</li>
 				<li><input id="fontFamily_input" type="text" style="width: 7em;border: solid 0.5px;" placeholder="请输入其他字体" /><input type="button" id="fontFamily_enter" value="确定"/></li>
 			</ul>
-			<ul id="color_list" style="margin-left: 336px;margin-top: 1.5em;">
+			<ul id="color_list" style="margin-left: 376px;margin-top: 1.5em;">
 				<li id="fontColor">字体颜色</li>
 				<li id="bgColor">背景颜色</li>
 			</ul>
-			<ul id="fontSize_list" style="margin-left: 336px;margin-top: 1.5em;">
+			<ul id="fontSize_list" style="margin-left: 376px;margin-top: 1.5em;">
 				<li>12</li><li>14</li><li>16</li><li>18</li><li>20</li><li>22</li><li>24</li><li>26</li><li>28</li>
 				<li><input type="text" style="width: 7em;border: solid 0.5px;" placeholder="请输入其他字号" id="fontSize_input" /><input type="button" id="fontSize_enter" value="确定"/></li>
 			</ul>
-			<ul id="textAlign_list" style="margin-left: 336px;margin-top: 1.5em;">
+			<ul id="textAlign_list" style="margin-left: 376px;margin-top: 1.5em;">
 				<li class="left">左对齐</li>
 				<li class="right">右对齐</li>
 				<li class="center">居中对齐</li>
 				<li class="justify">两端对齐</li>
 			</ul>
-			<ul id="lineHeight_list" style="margin: 2.5em 0px 0px 336px;">
+			<ul id="lineHeight_list" style="margin: 2.5em 0px 0px 376px;">
 				<li>2</li>
 				<li>3</li>
 				<li>8</li>
@@ -300,29 +314,29 @@
 				<li>15</li>
 				<li id="lineHeight_other">其他</li>
 			</ul>
-			<ul id="fontStyle_list" style="margin-left: 336px;margin-top: 5em;">
+			<ul id="fontStyle_list" style="margin-left: 376px;margin-top: 5em;">
 				<li id="bold" style="font-weight: bold;">加粗</li>
 				<li id="null">正常</li>
 				<li id='italic' style="font-style: italic;">斜体</li>
 				<li id="underline" style="text-decoration: underline;">下划线</li>
 				<li id="line-through" style="text-decoration: line-through;">删除线</li>
 			</ul>
-			<ul id="search_list" style="margin: 10em 0px 0px 336px;">
+			<ul id="search_list" style="margin: 10em 0px 0px 376px;">
 				<li><input id="searching" type="text" placeholder="查找内容"></li>
 				<li><input id="replaceTo" type="text" placeholder="替换为"/></li>
 				<li><input id="replace" type="button" style="width: 3em;" value="替换"><input id="searchNext" type="button" style="width: 7em;" value="查找下一处"></li>
 			</ul>
-			<ul id="fenShu_list" style="margin:0.5em 0px 0px 390px;">
+			<ul id="fenShu_list" style="margin:0.5em 0px 0px 430px;">
 				<li><input id="numerator" style="border:solid 0.5px;" type="text" placeholder="请输入分子" /></li>
 				<li><input id="denominator" style="border:solid 0.5px;" type="text" placeholder="请输入分母" /></li>
 				<li><input type="button" style="width: 10em;" value="确定"/></li>
 			</ul>
-			<ul id="table_list" style="margin:1.5em 0px 0px 390px;">
+			<ul id="table_list" style="margin:1.5em 0px 0px 430px;">
 				<li><input id="rowCount" type="text" placeholder="行数"/></li>
 				<li><input id="lineCount" type="text" placeholder="列数"/></li>
 				<li><input id="table_enter" type="button" style="width: 10em;" value="确定"/></li>
 			</ul>
-			<ul id="colorList" style="margin-left: 436px;width: 150px;overflow: hidden;">
+			<ul id="colorList" style="margin-left: 476px;width: 150px;overflow: hidden;">
 				<li><span style="background-color: #000000;"></span><span style="background-color: #993300;"></span><span style="background-color: #333300;"></span><span style="background-color: #000080;"></span><span style="background-color: #333399;"></span><span style="background-color: #333333;"></span></li><li><span style="background-color: #800000;"></span><span style="background-color: #FF6600;"></span><span style="background-color: #808000;"></span><span style="background-color: #008000;"></span><span style="background-color: #008080;"></span><span style="background-color: #0000FF;"></span></li><li><span style="background-color: #666699;"></span><span style="background-color: #808080;"></span><span style="background-color: #FF0000;"></span><span style="background-color: #FF9900;"></span><span style="background-color: #99CC00;"></span><span style="background-color: #339966;"></span></li><li><span style="background-color: #33CCCC;"></span><span style="background-color: #3366FF;"></span><span style="background-color: #800080;"></span><span style="background-color: #999999;"></span><span style="background-color: #FF00FF;"></span><span style="background-color: #FFCC00;"></span></li><li><span style="background-color: #FFFF00;"></span><span style="background-color: #00FF00;"></span><span style="background-color: #00FFFF;"></span><span style="background-color: #00CCFF;"></span><span style="background-color: #993366;"></span><span style="background-color: #C0C0C0;"></span></li><li><span style="background-color: #FF99CC;"></span><span style="background-color: #FFCC99;"></span><span style="background-color: #FFFF99;"></span><span style="background-color: #CCFFFF;"></span><span style="background-color: #99CCFF;"></span><span style="background-color: #FFFFFF;"></span></li>
 				<li></li>
 			</ul>
@@ -351,18 +365,8 @@
 			if(window.jQuery){
 				JQuery.noConflict();
 			}
-			//定义自己的$方法
-			function $(div_str,p2,p3,p4,p5,p6,p7){
-				if(window.JQuery){
-					if(/^[A-z0-9]/.test(div_str)){
-						div_str="#"+div_str;
-					}
-					return JQuery(div_str,p2,p3,p4,p5,p6,p7);
-				}
-				if(/^#/.test(div_str)){
-					div_str=div_str.slice(1);
-				}
-				return document.getElementById(div_str);
+			function $(str){
+				return document.getElementById(str);
 			}
 			//定义userRange,用于表述用户输入区域;
 			var userRange;
@@ -479,8 +483,7 @@
 			/**
 			 * 该方法用于给title属性插入文件名
 			 */
-			var title=$("title");
-			title.changeName=function(innerText){
+			$("title").changeName=function(innerText){
 				this.innerText=innerText;
 			}
 			function myRequestFullScreen(isNotExit){
@@ -875,8 +878,8 @@
 						}
 						break;
 					case "lineHeight_list":
+						var userRange=getUserRange();
 						if(target.id=="lineHeight_other"){
-							var userRange=getUserRange();
 							var fontSize=getFontSize(userRange.startContainer);
 							var add=prompt("请输入所需行间距:");
 							if(!/[0-9]+/.test(add)){
@@ -885,7 +888,7 @@
 							}
 							setStyle("lineHeight",fontSize+(+add)+"px",userRange);
 						}else{
-							var fontSize=getFontSize();
+							var fontSize=getFontSize(userRange.startContainer);
 							var userRange=getUserRange();
 							setStyle("lineHeight",fontSize+(+target.innerText)+"px",userRange);
 						}
@@ -918,9 +921,7 @@
 					}
 					userRange=true;
 				}else if(target.parentNode.parentNode.id=="fenShu_list"&&target.type!="text"){
-					//插入分数
-					//获取字体大小
-					var fontSize=getFontSize()+2;
+					var fontSize=getFontSize(window.userRange.startContainer)+2;
 					var denominatorLength=$("denominator").value.length;//获取分母长度
 					var numeratorLength=$("numerator").value.length;//获取分子长度
 					var userSelection=getSelection();
@@ -931,7 +932,7 @@
 					var canvas=$("c");
 					var sub=canvas.parentNode;
 					var context=canvas.getContext("2d");
-					context.font=[fontSize*3/2];
+					context.font=fontSize*2/5+"pt 微软雅黑";
 					context.fillText($("numerator").value,(parseInt(canvas.width)-numeratorLength*fontSize*0.5)/2,parseInt(canvas.height)*0.5);
 					context.stroke();
 					context.fillText($("denominator").value,(parseInt(canvas.width)-denominatorLength*fontSize*0.5)/2,parseInt(canvas.height));
@@ -1041,6 +1042,138 @@
 				return fontSize;
 			}
 			
+			//version control
+			/**
+			 * 该类负责版本控制
+			 * 	-prev负责存储前15个版本
+			 * 	-next负责存储后15个版本
+			 * 	数组内为{_node://标签,type://种类,outer://message}
+			 * 	-种类:
+			 * 		1.#text
+			 * 		2.#node
+			 */
+			var versionControl=new (function(){
+				this._prev=[]
+				,this._next=[]
+				,this._prev._continue=false
+				,this._prev.add=true
+				,this.prev=function(event,arg0,arg1){
+					arg0=arg0||"_prev"
+					,arg1=arg1||"addNext";
+					var rem=this[arg0].shift();
+					if(!rem)return;
+					switch(rem.type){
+						case "#node":
+							var _node=rem._node;
+							if(rem.outer==""||rem.outer=="<br>"){
+								rem.outer+=" ";
+							}
+							_node.innerHTML=rem.outer;
+							break;
+						case "#changeAttr":
+							//需要 attrName,attrValue
+							var nowAttr=rem._node[rem.attrName];
+							if(!rem.attrValue){
+								rem._node.removeAttribute(rem.attrName);
+							}else{
+								rem._node[rem.attrName]=rem.attrValue;
+							}
+							rem.attrValue=nowAttr;
+							break;
+					}
+					this[arg1](rem);
+				}
+				,this.next=function(){
+					versionControl.prev(null,"_next","addPrev");
+				}
+				,this.addPrev=function(rem,arg0,maxLen){
+					arg0=arg0||"_prev"
+					,maxLen=maxLen||15;
+					if(this[arg0].length>maxLen){
+						this[arg0].pop();
+					}
+					this[arg0].unshift(rem);
+				}
+				,this.changePrev=function(rem,no_turn,add){
+					if(add&&this._prev.add){
+						this.addPrev(rem);
+						this._prev._continue=false;
+						this._prev.add=false;
+					}else if(!add){
+						this._prev.add=true;
+					}
+					if(!no_turn){
+						this._prev[0]=rem;
+						this._prev._continue=false;
+					}else{
+						if(this._prev._continue){
+							this._prev[0]=rem;
+						}else{
+							this.addPrev(rem);
+							this._prev._continue=true;
+						}
+					}
+				}
+				,this.addNext=function(rem){
+					this.addPrev(rem,"_next",16);
+				}
+				,this.typeAdd=function(keyCode){
+					var p=getUserRange().startContainer
+					,add_change="changePrev"
+					,p1=p;
+					if($("papers").getElementsByTagName("img").length==0){
+						add_change="addPrev"
+						,p=$("papers");
+					}else if(p.nodeName=="#text"||p.tagName=='br'){
+						p=p.parentNode;
+					}
+					if(add_change=="changePrev"||/[,。，]$|[^0-9]\.$/.test(p1.nodeValue||p1.innerText)||keyCode==13)
+						this[add_change](
+							{
+								_node:p
+								,type:"#node"
+								,outer:p.innerHTML||""
+							}
+							,add_change=="addPrev"?null:!/[,。，?？！!]$|[^0-9]\.$/.test(p.innerText)&&keyCode!=13
+							,add_change=="addPrev"?null:p.innerText==""||p.innerText=="\n"
+						);
+				}
+				,this.styleChange=function(_node,rem_style){
+					if(_node!=$("papers")&&$("papers").getElementsByTagName("img").length==0){
+						this.addPrev(
+							{
+								_node:$("papers")
+								,type:"#node"
+								,outer:$("papers").innerHTML
+							}
+						);
+						return;
+					}
+					if(rem_style){
+						//记录style
+						this.addPrev(
+							{
+								_node:_node
+								,type:"#changeAttr"
+								,attrName:"style"
+								,attrValue:_node.style
+							}
+						);
+					}else{
+						//记录innerHTML
+						this.addPrev(
+							{
+								_node:_node
+								,type:"#node"
+								,outer:_node.innerHTML
+							}
+						);
+					}
+				}
+			})();
+			$("next").onclick=versionControl.next;
+			$("prev").onclick=function(){versionControl.prev()};
+			
 			//head标题栏中的所有按钮统一用此方法绑定事件
 			$("head").onclick=function(event){
 				event=event||window.event;
@@ -1061,8 +1194,8 @@
 						target.innerText="全屏";
 						break;
 					case "title":
-						var titleName=prompt("请输入文件名").replace(/\n/g,"");
-						title.changeName(titleName);
+						var titleName=prompt("请输入文件名",$("title").innerText).replace(/\n/g,"");
+						$("title").changeName(titleName);
 						document.head.getElementsByTagName("title")[0].innerText=titleName;
 						break;
 					case "start":
@@ -1093,12 +1226,9 @@
 			
 		<script id="callbacksOfKeydown" type="text/javascript">
 			//定义平常的papers中的onkeydown方法
-			$("papers").onkeydown=function(event){
+			$("papers").onkeyup=function(event){
 				event=event||window.event;
 				var target=event.target||event.srcElement;
-				if(event.keyCode==9){
-					insertHtmlAtCaret("　　");
-				}
 				var eleHeight=target.offsetHeight;
 				var eleParent=target.parentNode;
 				var maxHeight=parseInt(eleParent.style.height)||870;
@@ -1114,8 +1244,16 @@
 					}
 					target.focus();
 				}
-				if(event.keyCode==9)return false;
+				versionControl.typeAdd(event.keyCode);
 			};
+			
+			$("papers").onkeydown=function(event){
+				event=event||window.event;
+				if(event.keyCode==9){
+					insertHtmlAtCaret("　　");
+					return;
+				}
+			}
 			
 			/**
 			 * 该方法用返回上一张纸的末尾的光标对象
@@ -1257,6 +1395,7 @@
 					if(!userRange){
 						//如果用户没有选择,则进行全局设置
 						if(!window.userRange){
+							versionControl.styleChange($("papers"),true);
 							$("papers").style[type_str]=setting_str;
 							return;
 						}else{
@@ -1266,6 +1405,7 @@
 					if(userRange.startContainer==userRange.endContainer){
 						if(userRange.startOffset==userRange.endOffset){
 							if(userRange.startContainer.nodeName!="#text"){
+								versionControl.styleChange(userRange.startContainer,true);
 								userRange.startContainer.style[type_str]=setting_str;
 							}else{
 								alert("请选择后再进行设置,谢谢!");
@@ -1274,6 +1414,7 @@
 						}
 						var myNode=document.createElement(nodeType);
 						myNode.style[type_str]=setting_str;
+						versionControl.styleChange(userRange.startContainer.parentNode,false);
 						userRange.surroundContents(myNode);
 					}else if(nodeType=="span"){
 						var myNode=document.createElement(nodeType);
@@ -1283,11 +1424,11 @@
 						,startOffset=userRange.startOffset
 						,endOffset=userRange.endOffset
 						,commonAncestorContainer=userRange.commonAncestorContainer;
-						
 						var _node=startContainer;
 						while(_node.parentNode!=commonAncestorContainer){
 							_node=_node.parentNode;
 						}
+						versionControl.styleChange(_node.parentNode,false);
 						var list=[];
 						_node=_node.nextSibling;
 						while(!contains(_node,endContainer)){
@@ -1313,8 +1454,9 @@
 					}else{
 						var startContainer=userRange.startContainer
 						,startOffset=userRange.startOffset
-						,myNode=document.createElement(nodeType)
-						,frag=userRange.extractContents();
+						,myNode=document.createElement(nodeType);
+						versionControl.styleChange(startContainer.parentNode,false);
+						var frag=userRange.extractContents();
 						if(startOffset==0&&!startContainer.previousSibling){
 							startContainer=startContainer.parentNode;
 							startContainer.appendChild(myNode);
@@ -1496,7 +1638,6 @@
 							}
 						;
 						filesaver.readyState = filesaver.INIT;
-			
 						if (can_use_save_link) {
 							object_url = get_URL().createObjectURL(blob);
 							setTimeout(function() {
@@ -1527,21 +1668,17 @@
 						return navigator.msSaveOrOpenBlob(blob, name);
 					};
 				}
-			
 				FS_proto.abort = function(){};
 				FS_proto.readyState = FS_proto.INIT = 0;
 				FS_proto.WRITING = 1;
 				FS_proto.DONE = 2;
-			
 				FS_proto.error =
 				FS_proto.onwritestart =
 				FS_proto.onprogress =
 				FS_proto.onwrite =
 				FS_proto.onabort =
 				FS_proto.onerror =
-				FS_proto.onwriteend =
-					null;
-			
+				FS_proto.onwriteend =null;
 				return saveAs;
 			}(
 				   typeof self !== "undefined" && self
@@ -1563,11 +1700,10 @@
 				_location=/^http/.test(location.toString())?_location.slice(0,_location.lastIndexOf("/")):"http://www.hOffice.com.cn";
 				return _location+relativeURL;
 			}
-			function localSupport(){
+			(function(){
 				var fromNet=$("fromNet");
 				fromNet.src=getURL("/support/hWordSupport.js");
-			}
-			localSupport();
+			})();
 		</script>
 	</body>
 </html>

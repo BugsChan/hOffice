@@ -59,6 +59,19 @@
 				margin-left: 152px;
 				margin-top: 6px;
 			}
+			#items button{
+				width: 25px;
+				height: 15px;
+				line-height: 12px;
+				font-size: 15px;
+				background-color: #e06b2f;
+				color: #FFF;
+				border: none;
+				cursor:pointer;
+			}
+			#items button:hover{
+				font-size: 10px;
+			}
 			#head{
 				width: 100%;
 				height: 60px;
@@ -86,7 +99,7 @@
 			}
 			#head #title{
 				display: inline-block;
-				width:145px;
+				width:165px;
 				height: 20px;
 				color: black;
 				overflow: hidden;
@@ -270,7 +283,7 @@
 				background-color: #E3C9BA;
 			}
 		</style>
-		<link class="mobile" rel="stylesheet" type="text/css" href="css/hPPT_mobile.css" />
+		<!--<link class="mobile" rel="stylesheet" type="text/css" href="css/hPPT_mobile.css" />-->
 	</head>
 	<body>
 		<div id="head">
@@ -279,13 +292,13 @@
 				<span id="title" title="点击修改文件名">hPPT</span>
 			</div>
 			<div id="items">
-				<span id="document">文件</span><span id="start">样式</span><span id="insert">插入</span><span id="headTable">表格</span><span id="other">其他</span><span title="使用全屏,编辑更方便" id="requstFullScreen">全屏</span><span id="help">帮助</span><span id="login" style="float: right;margin-right: 50px;">登录</span>
+				<button id="prev">↺</button><button id="next">↻</button><span id="document">文件</span><span id="start">样式</span><span id="insert">插入</span><span id="headTable">表格</span><span id="other">其他</span><span title="使用全屏,编辑更方便" id="requstFullScreen">全屏</span><span id="help">帮助</span><span id="login" style="float: right;margin-right: 50px;">登录</span>
 			</div>
 		</div>
 		<!--这个div标签中装的是菜单-->
 		<div id="lists">
 			<!--这是文件的下拉菜单-->
-			<ul id="document_list" style="margin-left:162px;">
+			<ul id="document_list" style="margin-left:202px;">
 				<li id="lock" title="在输入框中不填入任何值则会取消加密">加密</li>
 				<li id="save">保存(下载)</li>
 				<li id="saveInBrowser" style="display: none;">存为浏览器文件</li>
@@ -293,7 +306,7 @@
 				<li id="myDoc" style="display: none;">我的文件</li>
 			</ul>
 			<!--这是"开始"按钮的下拉菜单-->
-			<ul id="start_list" style="margin-left:216px;">
+			<ul id="start_list" style="margin-left:256px;">
 				<li id="fontFamily">字体</li>
 				<li id="fontSize">字号</li>
 				<li id="color">颜色</li>
@@ -304,7 +317,7 @@
 				<li id="sub">下标</li>
 			</ul>
 			<!--这是"插入"按钮的下拉菜单-->
-			<ul id="insert_list" style="margin-left: 270px;">
+			<ul id="insert_list" style="margin-left: 310px;">
 				<li id="fenShu">分数</li>
 				<li id="table">表格</li>
 				<li id="img">
@@ -318,7 +331,7 @@
 				<li id="link" title="注意:超链接仅在压缩后能使用!">超链接</li>
 				<li id="textArea">文本框</li>
 			</ul>
-			<ul id="headTable_list" style="margin-left: 328px;">
+			<ul id="headTable_list" style="margin-left: 368px;">
 				<li id="collaspe_right">向右合并</li>
 				<li id="collaspe_down">向下合并</li>
 				<li id="cutLine">删除此行</li>
@@ -327,7 +340,7 @@
 				<li id="cutRow">删除一列</li>
 			</ul>
 			<!--这是"其他"按钮的下拉菜单-->
-			<ul id="other_list" style="margin-left: 380px;">
+			<ul id="other_list" style="margin-left: 420px;">
 				<li id="print">打印</li>
 				<li id="play">从头播放</li>
 				<li id="playOn">从现在开始播放</li>
@@ -338,10 +351,10 @@
 					<label for="install">引入插件</label><input type="button" value="确定" id="install_enter" />
 				</li>
 			</ul>
-			<ul id="help_list" style="margin-left:485px;">
+			<ul id="help_list" style="margin-left:525px;">
 				<li id="unable_to_save">无法保存(下载)?</li>
 			</ul>
-			<ul id="fontFamily_list" style="margin-left:336px;margin-top: 0.5em;">
+			<ul id="fontFamily_list" style="margin-left:376px;margin-top: 0.5em;">
 				<li style="font-family: 'Consolas';">Consolas</li>
 				<li style="font-family: 'courier new';">courier new</li>
 				<li style="font-family: '微软雅黑';">微软雅黑</li>
@@ -360,22 +373,22 @@
 				<li style="font-family: '楷体';">楷体</li>
 				<li><input id="fontFamily_input" type="text" style="width: 7em;border: solid 0.5px;" placeholder="请输入其他字体" /><input type="button" id="fontFamily_enter" value="确定"/></li>
 			</ul>
-			<ul id="color_list" style="margin-left: 336px;margin-top: 1.5em;">
+			<ul id="color_list" style="margin-left: 376px;margin-top: 1.5em;">
 				<li id="fontColor">字体颜色</li>
 				<li id="bgColor">背景颜色</li>
 				<li id="pageColor">页面颜色</li>
 			</ul>
-			<ul id="fontSize_list" style="margin-left: 336px;margin-top: 1.5em;">
+			<ul id="fontSize_list" style="margin-left: 376px;margin-top: 1.5em;">
 				<li>12</li><li>14</li><li>16</li><li>18</li><li>20</li><li>22</li><li>24</li><li>26</li><li>28</li>
 				<li><input type="text" style="width: 7em;border: solid 0.5px;" placeholder="请输入其他字号" id="fontSize_input" /><input type="button" id="fontSize_enter" value="确定"/></li>
 			</ul>
-			<ul id="textAlign_list" style="margin-left: 336px;margin-top: 1.5em;">
+			<ul id="textAlign_list" style="margin-left: 376px;margin-top: 1.5em;">
 				<li class="left">左对齐</li>
 				<li class="right">右对齐</li>
 				<li class="center">居中对齐</li>
 				<li class="justify">两端对齐</li>
 			</ul>
-			<ul id="lineHeight_list" style="margin: 2.5em 0px 0px 336px;">
+			<ul id="lineHeight_list" style="margin: 2.5em 0px 0px 376px;">
 				<li>2</li>
 				<li>3</li>
 				<li>8</li>
@@ -383,29 +396,28 @@
 				<li>15</li>
 				<li id="lineHeight_other">其他</li>
 			</ul>
-			<ul id="fontStyle_list" style="margin-left: 336px;margin-top: 5em;">
+			<ul id="fontStyle_list" style="margin-left: 376px;margin-top: 5em;">
 				<li id="bold" style="font-weight: bold;">加粗</li>
 				<li id="null">正常</li>
 				<li id='italic' style="font-style: italic;">斜体</li>
 				<li id="underline" style="text-decoration: underline;">下划线</li>
 				<li id="line-through" style="text-decoration: line-through;">删除线</li>
 			</ul>
-			<ul id="fenShu_list" style="margin:0.5em 0px 0px 390px;">
+			<ul id="fenShu_list" style="margin:0.5em 0px 0px 430px;">
 				<li><input id="numerator" style="border:solid 0.5px;" type="text" placeholder="请输入分子" /></li>
 				<li><input id="denominator" style="border:solid 0.5px;" type="text" placeholder="请输入分母" /></li>
 				<li><input type="button" style="width: 10em;" value="确定"/></li>
 			</ul>
-			<ul id="table_list" style="margin:1.5em 0px 0px 390px;">
+			<ul id="table_list" style="margin:1.5em 0px 0px 430px;">
 				<li><input id="rowCount" type="text" placeholder="行数"/></li>
 				<li><input id="lineCount" type="text" placeholder="列数"/></li>
 				<li><input id="table_enter" type="button" style="width: 10em;" value="确定"/></li>
 			</ul>
-			<ul id="colorList" style="margin-left: 436px;width: 150px;overflow: hidden;">
+			<ul id="colorList" style="margin-left: 476px;width: 150px;overflow: hidden;">
 				<li><span style="background-color: #000000;"></span><span style="background-color: #993300;"></span><span style="background-color: #333300;"></span><span style="background-color: #000080;"></span><span style="background-color: #333399;"></span><span style="background-color: #333333;"></span></li><li><span style="background-color: #800000;"></span><span style="background-color: #FF6600;"></span><span style="background-color: #808000;"></span><span style="background-color: #008000;"></span><span style="background-color: #008080;"></span><span style="background-color: #0000FF;"></span></li><li><span style="background-color: #666699;"></span><span style="background-color: #808080;"></span><span style="background-color: #FF0000;"></span><span style="background-color: #FF9900;"></span><span style="background-color: #99CC00;"></span><span style="background-color: #339966;"></span></li><li><span style="background-color: #33CCCC;"></span><span style="background-color: #3366FF;"></span><span style="background-color: #800080;"></span><span style="background-color: #999999;"></span><span style="background-color: #FF00FF;"></span><span style="background-color: #FFCC00;"></span></li><li><span style="background-color: #FFFF00;"></span><span style="background-color: #00FF00;"></span><span style="background-color: #00FFFF;"></span><span style="background-color: #00CCFF;"></span><span style="background-color: #993366;"></span><span style="background-color: #C0C0C0;"></span></li><li><span style="background-color: #FF99CC;"></span><span style="background-color: #FFCC99;"></span><span style="background-color: #FFFF99;"></span><span style="background-color: #CCFFFF;"></span><span style="background-color: #99CCFF;"></span><span style="background-color: #FFFFFF;"></span></li>
 				<li><button style="background-color: null;display:block;margin: 0px auto 0px auto;width:4em;height:1.2em;line-height:1.2em;font-size: 15px;border: solid 0.5px;">透明</button></li>
 			</ul>
 		</div>
-		
 		<div id="main_content">
 			<ul id="sideBar">
 				<li>页面布局</li>
@@ -455,17 +467,8 @@
 				JQuery.noConflict();
 			}
 			//定义自己的$方法
-			function $(div_str,p2,p3,p4,p5,p6,p7){
-				if(window.JQuery){
-					if(/^[A-z0-9]/.test(div_str)){
-						div_str="#"+div_str;
-					}
-					return JQuery(div_str,p2,p3,p4,p5,p6,p7);
-				}
-				if(/^#/.test(div_str)){
-					div_str=div_str.slice(1);
-				}
-				return document.getElementById(div_str);
+			function $(str){
+				return document.getElementById(str);
 			}
 			//定义userRange,用于表述用户输入区域;
 			var userRange;
@@ -485,16 +488,6 @@
 				}
 			}
 			
-			if(document.body.id&&document.body.id!="keyword:"){
-				var body=document.body;
-				body.style.display="none";
-				setTimeout(function(){
-					var keyword=prompt("该文件已加密,请输入密码:");
-					if(("keyword:"+keyword)==document.body.id){
-						body.style.display="block";
-					}
-				},500);
-			}
 			$("head").onmousedown
 			=$("lists").onmousedown
 			=function(event){
@@ -514,8 +507,7 @@
 				}
 			};
 			setMainHeight();
-			var title=$("title");
-			title.changeName=function(innerText){
+			$("title").changeName=function(innerText){
 				this.innerText=innerText;
 			}
 			function getElement(obj,des_str){
@@ -565,33 +557,21 @@
 						setMainHeight();
 						break;
 					case "title":
-						var titleName=prompt("请输入文件名").replace(/\n/g,"");
-						title.changeName(titleName);
+						var titleName=prompt("请输入文件名",$("title").innerText).replace(/\n/g,"");
+						$("title").changeName(titleName);
 						document.head.getElementsByTagName("title")[0].innerText=titleName;
 						break;
 					case "start":
-						myChangeDisplay($("start_list"));
-						break;
 					case "insert":
-						myChangeDisplay($("insert_list"));
-						break;
 					case "layout":
-						myChangeDisplay($("layout_list"));
-						break;
 					case "other":
-						myChangeDisplay($("other_list"));
-						break;
 					case "headTable":
-						myChangeDisplay($("headTable_list"));
-						break;
 					case "help":
-						myChangeDisplay($("help_list"));
+						myChangeDisplay($(target.id+"_list"));
 						break;
 				}
 			}
-			var note=$("note");
-			note.value=note.className;
-			note=null;
+			$("note").value=$("note").className;
 			window.onbeforeunload=function(event){
 				event=event||window.event;
 				var msg="关闭或刷新可能会导致您的数据丢失,请确保您的文件已经保存(如果你已经保存请忽略这条提示).";
@@ -636,7 +616,32 @@
 				    }
 				}
 			}
-			var time=0;
+			var time=0;//very important! 表示当前幻灯片的张数
+			//init
+			(function(){
+				if(document.body.id&&document.body.id!="keyword:"){
+					var body=document.body;
+					body.style.display="none";
+					setTimeout(function(){
+						var keyword=prompt("该文件已加密,请输入密码:");
+						if(("keyword:"+keyword)==document.body.id){
+							body.style.display="block";
+						}
+					},500);
+				}
+			})();
+			/**
+			 * 此方法用于获取当前PPT
+			 */
+			function getMyPPT(type){
+				if(type=="getDes"){
+					return $("fenYe").getElementsByTagName("ul")[0].getElementsByClassName(time+"")[0];
+				}else if(type=="getDesUL"){
+					return $("fenYe").getElementsByTagName("ul")[0];
+				}else{
+					return $("ppt").getElementsByClassName(time+"")[0];
+				}
+			}
 			$("sideBar").onclick=function(event){
 				event=event||window.event;
 				var target=event.target||event.srcElement;
@@ -693,7 +698,7 @@
 						break;
 					case "delete":
 						var ppt=$("ppt");
-						ppt.removeChild(ppt.getElementsByClassName(time+"")[0]);
+						ppt.removeChild(getMyPPT());
 						ppt.style.width=parseInt(ppt.style.width)-740+"px";
 						var children=ppt.childNodes;
 						for(var i=0,rem=1;i<children.length;i++){
@@ -704,8 +709,8 @@
 								rem++;
 							}catch(e){}
 						}
-						var ul=$("fenYe").getElementsByTagName("ul")[0];
-						ul.removeChild(ul.getElementsByClassName(time+"")[0]);
+						var ul=getMyPPT("getDesUL");
+						ul.removeChild(getMyPPT("getDes"));
 						var children=ul.childNodes;
 						for(var i=0,rem=1;i<children.length;i++){
 							try{
@@ -716,63 +721,53 @@
 							}catch(e){}
 						}
 						time--;
-						myChangeColor(ul.getElementsByClassName(time+""));
+						myChangeColor(getMyPPT("getDes"));
 						break;
 					case "downwoard":
 						var ppt=$("ppt");
 						var div=ppt.getElementsByClassName(+time+1+"")[0];
 						ppt.removeChild(div);
-						ppt.insertBefore(div,ppt.getElementsByClassName(time+"")[0]);
-						ppt.getElementsByClassName(time+"")[0].className=+time+1+"";
+						ppt.insertBefore(div,getMyPPT());
+						getMyPPT().className=+time+1+"";
 						div.className=time+"";
-						var ul=$("fenYe").getElementsByTagName("ul")[0];
+						var ul=getMyPPT("getDesUL");
 						myChangeColor(ul.getElementsByClassName(+div.className+1+"")[0]);
 						$("ppt").style.right=(+div.className)*740+"px";
 						ul.getElementsByClassName(div.className+"")[0].innerText=div.getElementsByClassName("title")[0].innerText;
 						ul.getElementsByClassName(+div.className+1+"")[0].innerText=ppt.getElementsByClassName(+div.className+1+"")[0].getElementsByClassName("title")[0].innerText;
+						time++;
 						break;
 					case "upwoard":
 						var ppt=$("ppt");
-						var div=ppt.getElementsByClassName(time+"")[0];
+						var div=getMyPPT();
 						ppt.removeChild(div);
 						ppt.insertBefore(div,ppt.getElementsByClassName(+time-1+"")[0]);
 						ppt.getElementsByClassName(+time-1+"")[0].className=+time+"";
 						div.className=+time-1+"";
-						var ul=$("fenYe").getElementsByTagName("ul")[0];
+						var ul=getMyPPT("getDesUL");
 						myChangeColor(ul.getElementsByClassName(div.className+"")[0]);
 						ul.getElementsByClassName(div.className+"")[0].innerText=div.getElementsByClassName("title")[0].innerText;
 						ul.getElementsByClassName(+div.className+1+"")[0].innerText=ppt.getElementsByClassName(+div.className+1+"")[0].getElementsByClassName("title")[0].innerText;
 						$("ppt").style.right=(+div.className-1)*740+"px";
+						time--;
 						break;
 				}
 				switch(target.parentNode.id){
 					case "layout1":
-						var ppt=$("ppt");
-						var myPPT=ppt.getElementsByClassName(time)[0];
-						var str="<div class='title' contenteditable='true' style='text-align: center; width: 640px;height:60px;position: absolute;left: 50px;top:20px;font-size: 28px;'>单击此处添加标题</div>"
+						getMyPPT().innerHTML="<div class='title' contenteditable='true' style='text-align: center; width: 640px;height:60px;position: absolute;left: 50px;top:20px;font-size: 28px;'>单击此处添加标题</div>"
 						+"<div class='content' contenteditable='true' style='float:left;width:300px;height:350px;position:absolute;left:50px;top:115px;'></div><div class='content' contenteditable='true' style='float:left; width:300px;height:350px;position:absolute;left:390px;top:115px;'></div>";
-						myPPT.innerHTML=str;
 						break;
 					case "layout2":
-						var ppt=$("ppt");
-						var myPPT=ppt.getElementsByClassName(time)[0];
-						var str="<div class='title' contenteditable='true' style='width:640px;height:60px;text-align: center;position:absolute;left:50px;top:20px;font-size: 28px;'>单击此处添加标题</div>"
+						getMyPPT().innerHTML="<div class='title' contenteditable='true' style='width:640px;height:60px;text-align: center;position:absolute;left:50px;top:20px;font-size: 28px;'>单击此处添加标题</div>"
 						+"<div class='content' contenteditable='true' style='width:640px;height:350px;position:absolute;top:115px;left:50px;'></div>";
-						myPPT.innerHTML=str;
 						break;
 					case "layout3":
-						var ppt=$("ppt");
-						var myPPT=ppt.getElementsByClassName(time)[0];
-						var str="<div class='title' contenteditable='true' style='text-align: center; width: 640px;height:60px;position:absolute;left:50px;top:70px;font-size: 28px;'>单击此处添加标题</div>";
-						myPPT.innerHTML=str;
+						getMyPPT().innerHTML="<div class='title' contenteditable='true' style='text-align: center; width: 640px;height:60px;position:absolute;left:50px;top:70px;font-size: 28px;'>单击此处添加标题</div>";
 						break;
 					case "layout4":
-						var ppt=$("ppt");
-						var myPPT=ppt.getElementsByClassName(time)[0];
-						var str="<div class='title' contenteditable='true' style='text-align: center; width: 650px;height:60px;position:absolute;left:50px;top:20px;font-size: 28px;'>单击此处添加标题</div>"
+						getMyPPT().innerHTML="<div class='title' contenteditable='true' style='text-align: center; width: 640px;height:60px;position:absolute;left:50px;top:20px;font-size: 28px;'>单击此处添加标题</div>"
 						+"<div class='content' contenteditable='true' style='float:left;width:300px;height:130px;position:absolute;left:50px;top:115px;'></div><div class='content' contenteditable='true' style='float:left; width:300px;height:130px;position:absolute;left:390px;top:115px;'></div>"
 						+"<div class='content' contenteditable='true' style='float:left;width:300px;height:180px;position:absolute;left:50px;top:275px;'></div><div class='content' contenteditable='true' style='float:left; width:300px;height:180px;position:absolute;left:390px;top:275px;'></div>";
-						myPPT.innerHTML=str;
 						break;
 				}
 			}
@@ -792,29 +787,39 @@
 					obj.style.backgroundColor="inherit";
 				}
 			}
+			function writeTitle(){
+				var classNameOfParent=this.parentNode.className;
+				var img=this.getElementsByTagName("img")[0];
+				var video=this.getElementsByClassName("video")[0];
+				if(img||video){
+					if(img){
+						$("fenYe").getElementsByClassName(classNameOfParent)[0].innerText="图片";
+					}else{
+						$("fenYe").getElementsByClassName(classNameOfParent)[0].innerText="视频";
+					}
+				}else{
+					var inn=this.innerText;
+					$("fenYe").getElementsByClassName(classNameOfParent)[0].innerText
+						=/^[\w\s,.?~`\\/;:!@#$%\^<>。，？；、+\-&*()]+$/i.test(inn)
+							?inn.length>22
+								?inn.slice(0,22)+"..."
+								:inn
+							:inn.length>12?
+								inn.replace(/\s/g,"").slice(0,10)+"..."
+								:inn;
+				}
+				versionControl._prev._continue=false;
+				this.onblur=null;
+			}
 			$("ppt").onclick=function(event){
 				event=event||window.event;
-				var target=event.target||event.srcElement;
-				if(/\btitle\b/.test(target.parentNode.className)){
-					target=target.parentNode;
-				}else if(target.className=="content"){
-					target=target.parentNode.getElementsByClassName("title")[0];
-				}else if(target.parentNode.className=="content"){
-					target=target.parentNode.parentNode.getElementsByClassName("title")[0];
-				}
-				if(/\btitle\b/.test(target.className)){
-					var parent=target.parentNode;
-					var classNameOfParent=parent.className;
-					var img=target.getElementsByTagName("img")[0];
-					var video=target.getElementsByClassName("video")[0];
-					if(img||video){
-						if(img){
-							$("fenYe").getElementsByClassName(classNameOfParent)[0].innerText="图片";
-						}else{
-							$("fenYe").getElementsByClassName(classNameOfParent)[0].innerText="视频";
-						}
-					}else{
-						$("fenYe").getElementsByClassName(classNameOfParent)[0].innerText=target.innerText.replace(/\s/g,"").slice(0,10);
+				var target=getDiv(event.target||event.srcElement);
+				if(target&&/\btitle\b/.test(target.className)){
+					target.onblur=writeTitle;
+				}else if(target){
+					target.onblur=function(){
+						versionControl._prev._continue=false;
+						target.onblur=null;
 					}
 				}
 			}
@@ -850,6 +855,112 @@
 					}
 				}
 			};
+			
+			//version control
+			/**
+			 * 该类负责版本控制
+			 * 	-prev负责存储前15个版本
+			 * 	-next负责存储后15个版本
+			 * 	数组内为{_node://标签,type://种类,outer://message}
+			 * 	-种类:
+			 * 		1.#text
+			 * 		2.#node
+			 */
+			var versionControl=new (function(){
+				this._prev=[]
+				,this._next=[]
+				,this._prev._continue=false
+				,this._prev.add=true
+				,this.prev=function(event,arg0,arg1){
+					arg0=arg0||"_prev"
+					,arg1=arg1||"addNext";
+					if(this[arg0].length==0)return;
+					var rem=this[arg0].shift();
+					if(!rem)return;
+					switch(rem.type){
+						case "#node":
+							rem._node.innerHTML=rem.outer;
+							if(/\bcontent\b|\btitle\b/.test(rem._node.className)){
+								getMyPPT("getDesUL").onmousedown(
+									{
+										target:getMyPPT("getDesUL").getElementsByClassName(rem._node.parentNode.className)[0]
+									}
+								);
+							}
+							break;
+						case "#changeAttr":
+							//需要 attrName,attrValue
+							var nowAttr=rem._node[rem.attrName];
+							if(!rem.attrValue){
+								rem._node.removeAttribute(rem.attrName);
+							}else{
+								rem._node[rem.attrName]=rem.attrValue;
+							}
+							rem.attrValue=nowAttr;
+							break;
+					}
+					this[arg1](rem);
+				}
+				,this.next=function(){
+					versionControl.prev(null,"_next","addPrev");
+				}
+				,this.addPrev=function(rem,arg0,maxLen){
+					arg0=arg0||"_prev"
+					,maxLen=maxLen||15;
+					if(this[arg0].length>maxLen){
+						this[arg0].pop();
+					}
+					this[arg0].unshift(rem);
+				}
+				,this.changePrev=function(rem,no_turn,add){
+					if(add&&this._prev.add){
+						this.addPrev(rem);
+						this._prev._continue=false;
+						this._prev.add=false;
+					}else if(!add){
+						this._prev.add=true;
+					}
+					if(!no_turn){
+						this._prev[0]=rem;
+						this._prev._continue=false;
+					}else{
+						if(this._prev._continue){
+							this._prev[0]=rem;
+						}else{
+							this.addPrev(rem);
+							this._prev._continue=true;
+						}
+					}
+				}
+				,this.addNext=function(rem){
+					this.addPrev(rem,"_next",16);
+				}
+				,this.typeAdd=function(keyCode){
+					var p=getDiv(getUserRange().startContainer);
+					if(p.getElementsByTagName("img").length!=0)return;
+					this.changePrev(
+						{
+							_node:p
+							,type:"#node"
+							,outer:p.innerHTML||""
+						}
+						,!/[,。，、?？！!：:;；]$|[^0-9]\.$/.test(p.innerText)&&keyCode!=13
+						,p.innerText==""||p.innerText=="\n"
+					);
+				}
+				,this.styleChange=function(_node){
+					if(!_node.getElementsByTagName("img")[0])
+						this.addPrev(
+							{
+								_node:_node
+								,type:"#node"
+								,outer:_node.innerHTML
+							}
+						);
+				}
+			})();
+			$("next").onclick=versionControl.next;
+			$("prev").onclick=function(){versionControl.prev()};
 			
 			var drag={
 				offsetLeft:$("ppts").offsetLeft
@@ -944,18 +1055,27 @@
 				}
 			};
 			
-			$("fenYe").getElementsByTagName("ul")[0].onmousedown=function(event){
+			getMyPPT("getDesUL").onmousedown=function(event){
 				event=event||window.event;
 				var target=event.target||event.srcElement;
 				var className=target.className;
 				if(/li/i.test(target.tagName)){
 					$("ppt").style.right=(+className-1)*740+"px";
 					time=className;
-					myChangeColor(target);
+					if(!target.style.backgroundColor||target.style.backgroundColor=="inherit")myChangeColor(target);
 				}else{
 					return false;
 				}
 			}
+			(function(){
+				if($("ppt").childNodes.length>=1){
+					getMyPPT("getDesUL").onmousedown(
+						{
+							target:{className:"1"}
+						}
+					);
+				}
+			})();
 			/**
 			 * 该方法用于更改元素的display属性,如果display为none,则改为block,反之亦然
 			 * 但当setNone==true时,obj的display属性将被改为none
@@ -1081,9 +1201,8 @@
 					case "sub":
 						$("start_list").style.display="none";
 						var innertext=prompt("请输入"+target.innerText+"内容:");
-						var id=target.id;
 						var userRange=getUserRange();
-						insertHtmlAtCaret("<"+id+" style='font-size:"+(getFontSize(userRange.startContainer)/5*3)+"px;' contenteditable='false'>"+innertext+"</"+id+">");
+						insertHtmlAtCaret("<"+target.id+" style='font-size:"+(getFontSize(userRange.startContainer)/5*3)+"px;' contenteditable='false'>"+innertext+"</"+target.id+">");
 						break;
 					case "textArea":
 						insertHtmlAtCaret("<table><tr><td>&nbsp;&nbsp;&nbsp;</td></tr></table>");
@@ -1199,7 +1318,8 @@
 						window.print();
 						break;
 					case "play":
-						$("ppt").style.right="0px";
+						$("ppt").style.right="0px"
+						,time=1;
 					case "playOn":
 						if(/msie/i.test(navigator.userAgent)&&!/msie 9\.0|msie 10\.0|msie 11\.0/i.test(navigator.userAgent)){
 							$("head").style.display="none";
@@ -1329,8 +1449,8 @@
 						$("start_list").style.display="none";
 						break;
 					case "lineHeight_list":
+						var userRange=getUserRange();
 						if(target.id=="lineHeight_other"){
-							var userRange=getUserRange();
 							var fontSize=getFontSize(userRange.startContainer);
 							var add=prompt("请输入所需行间距:");
 							if(!/[0-9]+/.test(add)){
@@ -1339,16 +1459,14 @@
 							}
 							setStyle("lineHeight",fontSize+(+add)+"px",userRange);
 						}else{
-							var fontSize=getFontSize();
+							var fontSize=getFontSize(userRange.startContainer);
 							var userRange=getUserRange();
 							setStyle("lineHeight",fontSize+(+target.innerText)+"px",userRange);
 						}
 						break;
 				}
 				if(target.parentNode.parentNode.id=="fenShu_list"&&target.type!="text"){
-					//插入分数
-					//获取字体大小
-					var fontSize=getFontSize()+2;
+					var fontSize=getFontSize(window.userRange.startContainer)+2;
 					var denominatorLength=$("denominator").value.length;//获取分母长度
 					var numeratorLength=$("numerator").value.length;//获取分子长度
 					var userSelection=getSelection();
@@ -1359,7 +1477,7 @@
 					var canvas=$("c");
 					var sub=canvas.parentNode;
 					var context=canvas.getContext("2d");
-					context.font=[fontSize*3/2];
+					context.font=fontSize*2/5+"pt 微软雅黑";
 					context.fillText($("numerator").value,(parseInt(canvas.width)-numeratorLength*fontSize*0.5)/2,parseInt(canvas.height)*0.5);
 					context.stroke();
 					context.fillText($("denominator").value,(parseInt(canvas.width)-denominatorLength*fontSize*0.5)/2,parseInt(canvas.height));
@@ -1427,8 +1545,9 @@
 				myRequestFullScreen(true,true);
 				var ppt=$("ppt");
 				var right=parseInt(ppt.style.right);
-				if((parseInt(ppt.style.width)-740)>=right){
+				if((parseInt(ppt.style.width)-740)>right){
 					changeRight(ppt,right,right+740);
+					time++;
 				}else{
 					alert("Sorry,您的幻灯片已经播放完成!");
 				}
@@ -1439,6 +1558,7 @@
 				var right=parseInt(ppt.style.right);
 				if(right>=740){
 					changeRight(ppt,right,right-740);
+					time--;
 				}else{
 					alert("Sorry,您的幻灯片已是第一张,无法向前!");
 				}
@@ -1451,6 +1571,7 @@
 				window.onclick=null;
 				window.onmousedown=null;
 				window.onkeydown=null;
+				myChangeColor(getMyPPT("getDes"));
 			}
 			
 			function changeRight(obj,nowRight,aimRight){
@@ -1479,10 +1600,10 @@
 			}
 			function getDiv(target){
 				try{
-					while(true){
-						if(/\btitle\b/.test(target.className)||target.className=="content")return target;
+					while(target.nodeName=="#text"||!/\btitle\b|\bcontent\b/.test(target.className)){
 						target=target.parentNode;
 					}
+					return target;
 				}catch(e){
 					return false;
 				}
@@ -1498,8 +1619,6 @@
 				}
 				return td;
 			}
-			
-			//此方法用于获取一个元素的字体大小
 			function getFontSize(obj){
 				var fontSize;
 				try{
@@ -1516,7 +1635,6 @@
 			}
 		</script>
 		<script id="callbacksOfKeydown" type="text/javascript">
-			
 			$("ppt").onkeydown=function(event){
 				event=event||window.event;
 				if(event.keyCode==9){
@@ -1524,7 +1642,10 @@
 					return false;
 				}
 			}
-			
+			$("ppt").onkeyup=function(event){
+				event=event||window.event;
+				versionControl.typeAdd(event.keyCode);
+			}
 			/**
 			 * 这是一个给光标处插入 html 的方法
 			 * @param {Object} html
@@ -1536,15 +1657,15 @@
 					userRange.deleteContents();
 					var el=document.createElement("div");
 					el.innerHTML=html;
-					var frag = document.createDocumentFragment(), node, lastNode;
-					while ( (node = el.firstChild) ) {
-						lastNode = frag.appendChild(node);
+					var frag=document.createDocumentFragment(), node, lastNode;
+					while((node=el.firstChild)){
+						lastNode=frag.appendChild(node);
 		            }
 		            userRange.insertNode(frag);
 		            if(lastNode){
 		            	userRange.setStartAfter(lastNode);
 		            }
-				}else if(document.selection && document.selection.type != "Control"){
+				}else if(document.selection&&document.selection.type!="Control"){
 					document.selection.createRange().pasteHTML(html);
 				}else{
 					alert("对不起,您的浏览器版本太低,请及时更新!");
@@ -1562,14 +1683,11 @@
 				}
 				if(window.getSelection){
 					if(!userRange){
-						//如果用户没有选择,则进行全局设置
-						if(!window.userRange){
-							$("papers").style[type_str]=setting_str;
-							return;
-						}else{
-							userRange=window.userRange;
-						}
+						userRange=window.userRange||getUserRange();
+						if(!userRange)return;
 					}
+					//版本控制
+					versionControl.styleChange(userRange.startContainer);
 					if(userRange.startContainer==userRange.endContainer){
 						if(userRange.startOffset==userRange.endOffset){
 							if(userRange.startContainer.nodeName!="#text"){
@@ -1579,15 +1697,9 @@
 							}
 							return;
 						}
-						//如果开始的标签==结束的标签
-						if(userRange.startOffset==0&&userRange.endOffset==userRange.startContainer.length&&nodeType!="div"){
-							var parent=userRange.startContainer.parentNode;
-							parent.style[type_str]=setting_str;
-						}else{
-							var myNode=document.createElement(nodeType);
-							myNode.style[type_str]=setting_str;
-							userRange.surroundContents(myNode);
-						}
+						var myNode=document.createElement(nodeType);
+						myNode.style[type_str]=setting_str;
+						userRange.surroundContents(myNode);
 					}else if(nodeType=="span"){
 						var myNode=document.createElement(nodeType);
 						myNode.style[type_str]=setting_str;
@@ -1823,7 +1935,6 @@
 							});
 							return;
 						}
-			
 						fs_error();
 					}
 					, FS_proto = FileSaver.prototype
@@ -1877,11 +1988,10 @@
 				_location=/^http/.test(location.toString())?_location.slice(0,_location.lastIndexOf("/")):"http://www.hOffice.com.cn";
 				return _location+relativeURL;
 			}
-			function localSupport(){
+			(function(){
 				var fromNet=$("fromNet");
 				fromNet.src=getURL("/support/hPPTSupport.js");
-			}
-			localSupport();
+			})();
 		</script>
 	</body>
 </html>
