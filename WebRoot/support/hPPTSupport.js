@@ -43,6 +43,24 @@ function support() {
 			}
 		);
 	}
+	
+	//根据ppt给ul添加li
+	(function(){
+		var ul=getMyPPT("getDesUL");
+		var children=$("ppt").childNodes;
+		var totle=0;
+		for(var i=0;i<children.length;i++){
+			if(children[i].nodeName!="#text")totle++;
+		}
+		for(var i=0,li;i<totle;i++){
+			li=document.createElement("li");
+			li.className=(i+1)+"";
+			ul.appendChild(li);
+			time=i+1;
+			writeTitle.call(getMyPPT().getElementsByClassName("title")[0]);
+		}
+		if(i!=0)time=1;
+	})();
 
 	function webSave(userid, _password, title) {
 		var inn=$("ppts").outerHTML;

@@ -43,7 +43,7 @@ function support() {
 			}
 		);
 	}
-
+	
 	function webSave(userid, _password, title) {
 		var inn=$("table").outerHTML;
 		inn+=!$("note").className?"":"\n~~~~~~~~~node~1~~~~~~~\n"+$("note").className;
