@@ -7,6 +7,9 @@ body{
 #flag img{
 	display: none;
 }
+#items button{
+	display: none;
+}
 #items span{
 	display: inline-block;
 	padding: 0.15rem 0.1rem;

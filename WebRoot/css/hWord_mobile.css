@@ -9,8 +9,17 @@
 	font-weight: bold;
 	width: 0.7rem;
 }
+#items button{
+	display: none;
+}
 #lists *{
 	font-size: 0.3rem;
+}
+#papers{
+	width: 100% !important;
+}
+#papers>div{
+	width: 100% !important;
 }
 #papers *{
 	font-size: 0.3rem !important;

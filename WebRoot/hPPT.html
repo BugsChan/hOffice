@@ -283,7 +283,7 @@
 				background-color: #E3C9BA;
 			}
 		</style>
-		<!--<link class="mobile" rel="stylesheet" type="text/css" href="css/hPPT_mobile.css" />-->
+		<link class="mobile" rel="stylesheet" type="text/css" href="css/hPPT_mobile.css" />
 	</head>
 	<body>
 		<div id="head">
@@ -799,6 +799,7 @@
 					}
 				}else{
 					var inn=this.innerText;
+					inn=inn.replace(/\n/g," ");
 					$("fenYe").getElementsByClassName(classNameOfParent)[0].innerText
 						=/^[\w\s,.?~`\\/;:!@#$%\^<>。，？；、+\-&*()]+$/i.test(inn)
 							?inn.length>22
@@ -949,14 +950,16 @@
 					);
 				}
 				,this.styleChange=function(_node){
-					if(!_node.getElementsByTagName("img")[0])
-						this.addPrev(
-							{
-								_node:_node
-								,type:"#node"
-								,outer:_node.innerHTML
-							}
-						);
+					try{
+						if(!_node.getElementsByTagName("img")[0])
+							this.addPrev(
+								{
+									_node:_node
+									,type:"#node"
+									,outer:_node.innerHTML
+								}
+							);
+					}catch(e){}
 				}
 			})();
 			$("next").onclick=versionControl.next;
@@ -1066,14 +1069,11 @@
 				}else{
 					return false;
 				}
-			}
+			};
 			(function(){
 				if($("ppt").childNodes.length>=1){
-					getMyPPT("getDesUL").onmousedown(
-						{
-							target:{className:"1"}
-						}
-					);
+					var right=parseInt($("ppt").style.right);
+					time=right/740+1;
 				}
 			})();
 			/**
@@ -1995,4 +1995,3 @@
 		</script>
 	</body>
 </html>
-
