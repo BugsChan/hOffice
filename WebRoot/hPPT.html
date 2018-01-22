@@ -1158,7 +1158,7 @@
 					case "save":
 						target.parentNode.style.display="none";
 						before_save();
-						var blob = new Blob(['<!doctype html>'+document.documentElement.outerHTML], {type: "text/plain;charset=utf-8"});
+						var blob = new Blob(['<!doctype html>'+document.documentElement.outerHTML], {type: "text/html;charset=utf-8"});
 						saveAs(blob, $("title").innerText+".ppt.html");
 						alert("文件即将写入,请您在确保下载完成后关闭浏览器.");
 						break;

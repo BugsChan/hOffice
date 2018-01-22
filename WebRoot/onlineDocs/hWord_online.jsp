@@ -463,12 +463,69 @@ myOut=br.readLine();
 					searchTimeCopy=0;
 				}
 			}
-			$("papers").onmousedown=function(event){
-				event=event||window.event;
-				if(event.ctrlKey){
+			var drag={
+				paperMouseMove:function(event){
+					event=event||window.event;
+					var target=event.target||event.srcElement
+					if(!/img|video/i.test(target.tagName))return false;
+					var x=drag.getInnerPosition(target,"x",event.clientX)
+					,y=drag.getInnerPosition(target,"y",event.clientY);
+					if(target.clientWidth-x<8){
+						target.style.cursor="e-resize";
+						target.onmousedown=drag.md_x;
+					}else if(target.clientHeight-y<8){
+						target.style.cursor="n-resize";
+						target.onmousedown=drag.md_y;
+					}else{
+						target.style.cursor="default";
+						target.onmousedown=null;
+					}
+				}
+				,md_x:function(event){
+					event=event||window.event;
+					var target=event.target||event.srcElement;
+					window.onmouseup=drag.win_mouseup;
+					window.onmousemove=function(event){
+						drag.mm_x(event,target);
+					}
 					return false;
 				}
+				,md_y:function(event){
+					event=event||window.event;
+					var target=event.target||event.srcElement;
+					window.onmouseup=drag.win_mouseup;
+					window.onmousemove=function(event){
+						drag.mm_y(event,target);
+					}
+					return false;
+				}
+				,mm_x:function(event,target){
+					var width=drag.getInnerPosition(target,"x",event.clientX);
+					if(width>720||width<30)return;
+					target.width=width;
+				}
+				,mm_y:function(event,target){
+					var height=drag.getInnerPosition(target,"y",event.clientY);
+					if(height<30)return;
+					target.height=height;
+				}
+				,win_mouseup:function(event){
+					window.onmousemove
+					=window.onmousedown
+					=window.onmouseup
+					=null;
+				}
+				,getInnerPosition:function(obj,x_y_str,clientXY){
+					if(x_y_str==="x"){
+						return clientXY-obj.offsetLeft;
+					}else{
+						var y=document.body.scrollTop||document.documentElement.scrollTop;
+						y+=clientXY-obj.offsetTop;
+						return y;
+					}
+				}
 			};
+			$("papers").onmousemove=drag.paperMouseMove;
 			$("papers").onclick=function(event){
 				event=event||window.event;
 				var target=event.target||event.srcElement;
@@ -622,7 +679,7 @@ myOut=br.readLine();
 					case "save":
 						target.parentNode.style.display="none";
 						before_save();
-						var blob = new Blob(['<!doctype html>'+document.documentElement.outerHTML], {type: "text/plain;charset=utf-8"});
+						var blob = new Blob(['<!doctype html>'+document.documentElement.outerHTML], {type: "text/html;charset=utf-8"});
 						saveAs(blob, $("title").innerText+".doc.html");
 						alert("文件即将写入,请您在确保下载完成后关闭浏览器.");
 						break;
@@ -882,14 +939,7 @@ myOut=br.readLine();
 								alert("Sorry,您还没有选择本地照片,请点击左端'照片'字样选择后再点'确定'");
 								return;
 							}
-							var wh_str=prompt('请输入长,宽(参考:纸的宽度默认为560,如不输入,则图片长,宽默认为500,300):');
-							var width,height;
-							if(!/^[0-9]+[^0-9A-z]+[0-9]+$/.test(wh_str)){
-								width=500,height=300;
-							}else{
-								width=+wh_str.split(/[^0-9A-z]+/)[0];
-								height=+wh_str.split(/[^0-9A-z]+/)[1];
-							}
+							var width=300,height=200;
 							var maxHeight=window.getComputedStyle(getElement($("papers"),"firstElementChild"),null).height;
 							maxHeight=parseInt(maxHeight);
 							if(getContenteditable(getUserRange().startContainer).offsetHeight+height>maxHeight-50){
@@ -897,12 +947,11 @@ myOut=br.readLine();
 								return;
 							}
 							if(/image\/\w+/.test(file.type)){
-								alert("请勿使在图片文件前插入太多文字或换行,否则可能造成系统卡死.");
 								try{
 									var fr=new FileReader();
 									fr.readAsDataURL(file);
 									fr.onload=function(e){
-										insertHtmlAtCaret("<img contenteditable='false' title='三击可去除图片' width='"+width+"px' height='"+height+"' src='"+this.result+"'/>");
+										insertHtmlAtCaret("<img contenteditable='false' title='三击可去除图片,拖动可改变图片大小' width='"+width+"px' height='"+height+"' src='"+this.result+"'/>");
 									}
 								}catch(e){
 									alert("抱歉,你的光标还未在纸上留下痕迹");
