@@ -130,5 +130,6 @@ HomepageService ser=new HomepageService(getServletContext());
 		<script src="support/loginSupport.js" type="text/javascript"></script>
 		<script src="support/lib.js" type="text/javascript"></script>
 		<script src="support/UserCenter.js" type="text/javascript"></script>
+		<script src="support/adv_homepage_pc.js" type="text/javascript"></script>
 	</body>
 </html>

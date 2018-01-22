@@ -1286,7 +1286,7 @@ myOut=br.readLine();
 				event=event||window.event;
 				if(event.keyCode==9){
 					insertHtmlAtCaret("　　");
-					return;
+					return false;
 				}
 			}
 			

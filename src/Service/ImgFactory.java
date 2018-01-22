@@ -17,7 +17,7 @@ public class ImgFactory {
 		String[] fontTypes={"宋体","微软雅黑","Courier New"};
 		String contents="abdefghijkmnpqrtABDEFGHIJKMNPQRT123456789";
 		int[] fontStyles={0,1,2,3};
-		Color[] colors={Color.BLACK,Color.BLUE,Color.RED,Color.GREEN,Color.PINK,Color.YELLOW};
+		Color[] colors={Color.BLACK,Color.BLUE,Color.RED,Color.GREEN,Color.PINK};
 		
 		String content;
 		for(int i=0;i<4;i++){

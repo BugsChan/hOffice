@@ -72,5 +72,6 @@ HomepageService ser=new HomepageService(getServletContext());
 			<div><a href="javascript:openPage('homepage');">首页</a></div><div><a href="javascript:pageLogin();">登录</a></div><div><a href="javascript:openUserCenter();">用户中心</a></div><div><a href="javascript:openLib();">文件管理</a></div>
 		</div>
 		<script type="text/javascript" src="support/mobileSupport.js"></script>
+		<script type="text/javascript" src="support/adv_homepage_mobile.js"></script>
 	</body>
 </html>

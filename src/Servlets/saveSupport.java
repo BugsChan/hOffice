@@ -58,10 +58,10 @@ public class saveSupport extends BaseServlet{
 			if(userDocs.get(i).getName().equals(name)){
 				doc=userDocs.get(i);
 				try {
-					if(FileSave.save(req.getInputStream(), doc.getPath(), getServletContext(),1024*1024*6)){
+					if(FileSave.save(req.getInputStream(), doc.getPath(), getServletContext(),1024*1024*30)){
 						return "{\"isOk\":true}";
 					}else{
-						return "{\"isOk\":false,\"errorMsg\":\"您的文件不符合规范(文件大于6M),请保存在本地或者去掉不必要的照片,谢谢!\"}";
+						return "{\"isOk\":false,\"errorMsg\":\"您的文件不符合规范(文件大于30M),请保存在本地或者去掉不必要的照片,谢谢!\"}";
 					}
 				} catch (IOException e) {
 					return "{\"isOk\":false,\"errorMsg\":\"嗯...出了一点问题,请再试试看!\"}";
