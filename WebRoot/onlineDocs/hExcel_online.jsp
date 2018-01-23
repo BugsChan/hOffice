@@ -438,6 +438,7 @@ String str1="~~~~~~~~~node~1~~~~~~~"
 					}
 				}else{
 					var res="";
+					if(lineDes==1)return "A";
 					lineDes--;
 					while(lineDes>0){
 						res=String.fromCharCode(aNum+lineDes%26)+res;

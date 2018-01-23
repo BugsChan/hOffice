@@ -467,7 +467,7 @@ myOut=br.readLine();
 				paperMouseMove:function(event){
 					event=event||window.event;
 					var target=event.target||event.srcElement
-					if(!/img|video/i.test(target.tagName))return false;
+					if(!/img|video/i.test(target.tagName))return;
 					var x=drag.getInnerPosition(target,"x",event.clientX)
 					,y=drag.getInnerPosition(target,"y",event.clientY);
 					if(target.clientWidth-x<8){

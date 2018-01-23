@@ -30,6 +30,9 @@ body{
 	font-size:0.25rem !important;
 	width:0.3rem !important;
 }
+#table td:first-child{
+	width: 0.3rem !important;
+}
 #table td{
 	height: 0.25rem !important;
 	padding: 0px !important;
@@ -66,4 +69,8 @@ body #table_input{
 }
 #adv{
 	font-size:0.3rem;
+}
+#container_inner{
+	width: 35rem;
+	overflow: auto;
 }
