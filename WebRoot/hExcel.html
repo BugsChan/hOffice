@@ -193,7 +193,7 @@
 				line-height: 15px !important;
 			}
 			thead td:first-child{
-				width: 30px;
+				width: 30px !important;
 			}
 			table td{
 				font-size: 15px;
@@ -860,7 +860,7 @@
 									ans=callBack(ans,v,j);
 								}
 							}else{//横向相加
-								var start=se[0].match(/[A-Z]+/),end=se[1].match(/[A-Z]+/),rowCount="r"+se[0].match(/[0-9]+/);
+								var start=se[0].match(/[A-Z]+/).toString(),end=se[1].match(/[A-Z]+/).toString(),rowCount="r"+se[0].match(/[0-9]+/);
 								if(!userFuns.checkLineCounts(start,end))throw Error;
 								for(var i=start,v,j=true;i!=addLineCount(end);i=addLineCount(i),j=true){
 									v=getElementByClassNames(i,rowCount).innerText;
@@ -2055,7 +2055,33 @@
 							}
 							td=document.createElement("td");
 							td.className=tds[i].className.replace(lastLineCount,lineCount);
+							td.className=td.className.replace(/(\s+r[0-9]+)+/,getClassName(td," r[0-9]+")[0]);
 							tds[i].parentNode.insertBefore(td,tds[i]);
+							if(tds[i].rowSpan&&tds[i].rowSpan>1){
+								var lc=getClassName(tds[i].nextSibling,"[A-Z]+")[0]
+								,rc=+getClassName(tds[i],"[0-9]+")
+								,lc2=addLineCount(getClassName(tds[i],"[A-Z]+")[0],true)
+								,rs=tds[i].rowSpan;
+								for(var i2=1,v,_lc=lc;i2<rs;i2++){
+									v=getElementByClassNames(_lc,"r"+(rc+i2));
+									while(v.rowSpan&&v.rowSpan>1&&getClassName(v,"r[0-9]+")[0]!="r"+(rc+i2)){
+										_lc=addLineCount(_lc);
+										if(getLineCount(_lc)>getLineCount(dragCell.lineCount)){
+											v=null;
+											break;
+										}
+										v=getElementByClassNames(_lc,"r"+(rc+i2));
+									}
+									td=document.createElement("td");
+									td.className=lc2+" r"+(rc+i2);
+									if(!v){
+										var _node=document.getElementsByClassName("rowCount").getElementByInnerText((rc+i2)+"");
+										_node.parentNode.appendChild(td);
+									}else{
+										v.parentNode.insertBefore(td,v);
+									}
+								}
+							}
 						}
 						
 						//增加列数
