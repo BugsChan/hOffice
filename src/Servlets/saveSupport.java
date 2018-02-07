@@ -4,9 +4,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import Dao.FileSave;
 import Service.Doc;
 import Service.DocService;
@@ -36,6 +38,32 @@ public class saveSupport extends BaseServlet{
 	}
 	
 	
+	public String append(HttpServletRequest req,HttpServletResponse res){
+		String uuid=req.getParameter("uuid");
+		if(uuid==null){
+			try {
+				res.sendError(404);
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+		}
+		String path=DocService.getPath(uuid);
+		if(path==null){
+			try {
+				res.sendError(404);
+			} catch (IOException e) {
+				throw new RuntimeException(e);
+			}
+		}
+		try{
+			boolean boo=FileSave.save(req.getInputStream(), path, req.getServletContext(), 1024*1024, true, false);
+			return "{\"isOk\":true}";
+		}catch(Exception e){
+			return "{\"errorMsg\":\"保存中出现IO异常,请再试一次\"}";
+		}
+		
+	}
+	
 	public String webSave(HttpServletRequest req,HttpServletResponse res){
 		int userid=-1;
 		try{
@@ -58,8 +86,8 @@ public class saveSupport extends BaseServlet{
 			if(userDocs.get(i).getName().equals(name)){
 				doc=userDocs.get(i);
 				try {
-					if(FileSave.save(req.getInputStream(), doc.getPath(), getServletContext(),1024*1024*30)){
-						return "{\"isOk\":true}";
+					if(FileSave.save(req.getInputStream(), doc.getPath(), getServletContext(),1024*1024*30,false,false)){
+						return "{\"isOk\":true,\"uuid\":\""+doc.getRealUUID()+"\"}";
 					}else{
 						return "{\"isOk\":false,\"errorMsg\":\"您的文件不符合规范(文件大于30M),请保存在本地或者去掉不必要的照片,谢谢!\"}";
 					}
@@ -71,9 +99,9 @@ public class saveSupport extends BaseServlet{
 		if(doc==null)doc=new Doc(name,userid);
 		try {
 			if(doc.save(req.getInputStream(), getServletContext())){
-				return "{\"isOk\":true}";
+				return "{\"isOk\":true,\"uuid\":\""+doc.getRealUUID()+"\"}";
 			}else{
-				return "{\"isOk\":false,\"errorMsg\":\"您的文件不符合规范(文件名超过20字或文件大于6M),请保存在本地或者去掉不必要的照片,谢谢!\"}";
+				return "{\"isOk\":false,\"errorMsg\":\"您的文件不符合规范(文件名超过20字或文件大于30M),请保存在本地或者去掉不必要的照片,谢谢!\"}";
 			}
 		} catch (IOException e) {
 			return "{\"isOk\":false,\"errorMsg\":\"嗯...出了一点问题,请再试试看!\"}";
@@ -88,7 +116,7 @@ public class saveSupport extends BaseServlet{
 			try {
 				String title=req.getParameter("title");
 				if(title==null)throw new IOException();
-				FileSave.save(req.getInputStream(), "WEB-INF/Files/ScratchFile/"+session.getId()+".scr", getServletContext(), 1024*1024*6);
+				FileSave.save(req.getInputStream(), "WEB-INF/Files/ScratchFile/"+session.getId()+".scr",getServletContext(),1024*1024*6,false,true);
 				session.setAttribute("title", title);
 			} catch (IOException e) {
 				return "{\"isOk\":false,\"errorMsg\":\"嗯...出了一点问题,请再试试看!\"}";

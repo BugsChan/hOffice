@@ -37,6 +37,7 @@ public class BaseServlet extends HttpServlet{
 			}
 			try {
 				String res_str=(String)method.invoke(this, req, res);
+				if(res_str==null)return;
 				res.getWriter().write(res_str);
 			} catch (Exception e){}
 		}

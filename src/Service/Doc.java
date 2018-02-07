@@ -34,7 +34,7 @@ public class Doc {
 	}
 	public boolean save(InputStream input,ServletContext context){
 		if(name.length()>40)return false;
-		if(FileSave.save(input, path, context,1024*1024*6)){
+		if(FileSave.save(input,path,context,1024*1024*30,false,true)){
 			QueryRunner qr=new QueryRunner(JdbcUtils.getDataSource());
 			String sql="insert into docs values(?,?,?)";
 			try {

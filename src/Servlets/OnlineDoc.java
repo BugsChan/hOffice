@@ -1,12 +1,17 @@
 package Servlets;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
-import javax.management.RuntimeErrorException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.io.IOUtils;
 
 import Service.Doc;
 import Service.DocService;
@@ -40,8 +45,22 @@ public class OnlineDoc extends BaseServlet{
 			rd=req.getRequestDispatcher("/onlineDocs/hWord_online.jsp");
 		}else if(path.endsWith("xls.html")){
 			rd=req.getRequestDispatcher("/onlineDocs/hExcel_online.jsp");
-		}else{
+		}else if(path.endsWith("ppt.html")){
 			rd=req.getRequestDispatcher("/onlineDocs/hPPT_online.jsp");
+		}else{
+			InputStream input=null;
+			OutputStream output=null;
+			try {
+				input=new FileInputStream(req.getServletContext().getRealPath(path));
+				output=res.getOutputStream();
+				IOUtils.copy(input, output);
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}finally{
+				IOUtils.closeQuietly(input);
+				IOUtils.closeQuietly(output);
+			}
+			return null;
 		}
 		try {
 			rd.forward(req, res);
@@ -60,7 +79,6 @@ public class OnlineDoc extends BaseServlet{
 	 */
 	public String delete(HttpServletRequest req,HttpServletResponse res){
 		String userid=req.getParameter("userid");
-		String password=req.getParameter("password");
 		String uuid=req.getParameter("uuid");
 		if(!UserService.testPassword(req, res)){
 			return "{\"isOk\":false,\"errorMsg\":\"Sorry,你尚未登录,请重新登录后再删除\"}";
