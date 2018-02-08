@@ -3,7 +3,7 @@
 <!--
 作者：陈子为	山东师范大学2016级 食工一班 学号:201613010147 QQ:3502318983 Email:3502318983@qq.com
 时间：2017-8-25~2017-11-06
-版本：2.3
+版本：2.5
 页面设计: 李萌
 (c) www.hoffice.com.cn
 (c) 陈子为
@@ -367,13 +367,13 @@
 				<!--这是table-->
 				<table id="table">
 					<thead>
-						<tr><td></td><td>A</td><td>B</td><td style="cursor: cell;">C</td><td>D</td><td>E</td><td>F</td><td>G</td><td>H</td><td>I</td><td>J</td><td>K</td><td>L</td><td>M</td><td>N</td><td>O</td><td>P</td><td>Q</td><td>R</td><td>S</td><td style="cursor: col-resize;">T</td><td style="cursor: col-resize;">U</td><td style="cursor: col-resize;">V</td></tr>
+						<tr><td></td><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td><td>G</td><td>H</td><td>I</td><td>J</td><td>K</td><td>L</td><td>M</td><td>N</td><td>O</td><td>P</td><td>Q</td><td>R</td><td>S</td><td style="cursor: col-resize;">T</td><td style="cursor: col-resize;">U</td><td style="cursor: col-resize;">V</td></tr>
 					</thead>
 					<tbody title="使用shift+enter换行">
 						<tr><td class="rowCount">1</td><td class="A r1"></td><td class="B r1"></td><td class="C r1"></td><td class="D r1"></td><td class="E r1"></td><td class="F r1"></td><td class="G r1"></td><td class="H r1"></td><td class="I r1"></td><td class="J r1"></td><td class="K r1"></td><td class="L r1"></td><td class="M r1"></td><td class="N r1"></td><td class="O r1"></td><td class="P r1"></td><td class="Q r1"></td><td class="R r1"></td><td class="S r1"></td><td class="T r1"></td><td class="U r1"></td><td class="V r1"></td></tr>
 					</tbody>
 				</table>
-				<textarea id="table_input" style="position: absolute; display: block; border: 1px deepskyblue; top: 76px; left: 1411px; font-size: 15px; line-height: 15px; width: 65px; height: 14px; color: black;" placeholder="V1"></textarea>
+				<textarea id="table_input" style="position: absolute; display: block; border: 1px deepskyblue;color: black;" ></textarea>
 			</div>
 		</div>
 		<a id="adv" target="_blank" href="http://www.hOffice.com.cn">亲,你也可以使用hOffice哦</a>
@@ -388,6 +388,9 @@
 					netJs[0].parentNode.removeChild(netJs[0]);
 				}
 				$("fromNet").removeAttribute("src");
+				if($("title").innerText=="hExcel"){
+					$("head").onclick({target:{id:"title"}});
+				}
 			}
 		</script>
 		<!--[if gt IE8]>
@@ -656,7 +659,7 @@
 				inputTarget:null,
 				minHeight:15,
 				lineCount:"B",//列数
-				rowCount:2,//行数
+				rowCount:1,//行数
 				chosedClassName:null,//被选中的className
 				imgW:200,
 				imgH:120,
@@ -859,7 +862,7 @@
 									}
 									ans=callBack(ans,v,j);
 								}
-							}else{//横向相加
+							}else{
 								var start=se[0].match(/[A-Z]+/).toString(),end=se[1].match(/[A-Z]+/).toString(),rowCount="r"+se[0].match(/[0-9]+/);
 								if(!userFuns.checkLineCounts(start,end))throw Error;
 								for(var i=start,v,j=true;i!=addLineCount(end);i=addLineCount(i),j=true){
@@ -1825,8 +1828,8 @@
 				td.innerText=str;
 			}
 			function getTargetByStr(str){
-				var rowCount=str.match(/[0-9]+/);
-				var lineCount=str.match(/[A-Z]+/)
+				var rowCount=str.match(/[0-9]+/)
+				,lineCount=str.match(/[A-Z]+/);
 				lineCount=new String(lineCount).toUpperCase();
 				return getElementByClassNames(lineCount,"r"+rowCount);
 			}
@@ -2083,7 +2086,6 @@
 								}
 							}
 						}
-						
 						//增加列数
 						dragCell.lineCount=addLineCount(dragCell.lineCount);
 						$("insert_list").style.display="none";
@@ -2604,7 +2606,7 @@
 						target.id=req?"requstExitFullScreen":"requstFullScreen";
 						setTimeout(function(){
 							$("container_outer").style.height=document.documentElement.clientHeight-30+"px";
-						},100);
+						},500);
 						target.innerText=req?"退出全屏":"全屏";
 						break;
 					case "title":
@@ -2894,7 +2896,6 @@
 			    return saveAs;
 			  });
 			}
-			
 		</script>
 		<script id="fromNet" type="text/javascript"></script>
 		<script type="text/javascript" id="LocalSupport">

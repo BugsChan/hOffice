@@ -389,6 +389,9 @@ myOut=br.readLine();
 					netJs[0].parentNode.removeChild(netJs[0]);
 				}
 				$("fromNet").removeAttribute("src");
+				if($("title").innerText=="hWord"){
+					$("head").onclick({target:{id:"title"}});
+				}
 			}
 		</script>
 		<!--[if lte IE 8]>

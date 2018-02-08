@@ -42,6 +42,9 @@ function openLib() {
 					var li = document.createElement("li");
 					li.innerHTML = inner;
 					appending.appendChild(li);
+					if(!/doc\.html$|ppt\.html$|xls\.html$/.test(docs[i].name)){
+						li.style.display="none";
+					}
 				}
 			} else {
 				alert(res.errorMsg);
@@ -54,9 +57,8 @@ function openLib() {
 	}
 
 	function deleteDoc() {
-		if(confirm("确认删除改文件?")) {
-			var a = this;
-			var uuid = fc(this.parentNode).href;
+		function del(callback,a){
+			var uuid = fc(a.parentNode).href;
 			uuid = uuid.slice(uuid.lastIndexOf("=") + 1);
 			myPost(
 				getURL("/OnlineDoc") + "?method=delete&userid=" + userMsg.userid + "&password=" + userMsg.password + "&uuid=" + uuid, null,
@@ -64,14 +66,41 @@ function openLib() {
 					if(res.isOk) {
 						var pp = a.parentNode.parentNode;
 						pp.parentNode.removeChild(pp);
-						alert("删除成功!");
+						callback(res);
 					} else {
+						a.style.display="block";
 						alert(res.errorMsg);
+						throw new Exception();
 					}
 				}
 			);
+		};
+		function getName(obj,real){
+			var pp=obj.parentNode.parentNode
+			,name=pp.innerText;
+			if(real)return name.slice(0,-4);
+			name=name.slice(0,name.lastIndexOf("."));
+			name=name.slice(0,name.lastIndexOf("."));
+			return name;
 		}
-	}
+		var Sname=getName(this);
+		if(confirm("确认删除该文件?")) {
+			del(function(res){
+				if(res.isOk){
+					var deletes = outer.getElementsByClassName("deleteDoc");
+					for(var i = 0; i < deletes.length; i++) {
+						if(getName(deletes[i])==Sname
+							&&deletes[i].parentNode.parentNode.style.display=="none"){
+							del(function(res){},deletes[i]);
+						}
+					}
+				}else{
+					res.target.style.display="block";
+					alert(res.errorMsg);
+				}
+			},this);
+		}
+	};
 
 	function setDeletes() {
 		var deletes = outer.getElementsByClassName("deleteDoc");

@@ -3,7 +3,7 @@
 <!--
 作者：陈子为	山东师范大学2016级 食工一班 学号:201613010147 QQ:3502318983 Email:3502318983@qq.com
 时间：2017-8-25~2017-11-06
-版本：2.3
+版本：2.0
 页面设计: 李萌
 (c) www.hoffice.com.cn
 (c) 陈子为
@@ -453,6 +453,9 @@
 					netJs[0].parentNode.removeChild(netJs[0]);
 				}
 				$("fromNet").removeAttribute("src");
+				if($("title").innerText=="hPPT"){
+					$("head").onclick({target:{id:"title"}});
+				}
 			}
 		</script>
 		<!--[if gt IE8]>
@@ -799,7 +802,7 @@
 					}
 				}else{
 					var inn=this.innerText;
-					inn=inn.replace(/\n/g," ");
+					inn=inn.replace(/\n/g,"");
 					$("fenYe").getElementsByClassName(classNameOfParent)[0].innerText
 						=/^[\w\s,.?~`\\/;:!@#$%\^<>。，？；、+\-&*()]+$/i.test(inn)
 							?inn.length>22
@@ -1072,8 +1075,11 @@
 			};
 			(function(){
 				if($("ppt").childNodes.length>=1){
-					var right=parseInt($("ppt").style.right);
-					time=right/740+1;
+					getMyPPT("getDesUL").onmousedown(
+						{
+							target:{className:"1"}
+						}
+					);
 				}
 			})();
 			/**
@@ -1157,10 +1163,10 @@
 						break;
 					case "save":
 						target.parentNode.style.display="none";
+						if(!confirm("你是否确认要写入文件?"))return;
 						before_save();
 						var blob = new Blob(['<!doctype html>'+document.documentElement.outerHTML], {type: "text/html;charset=utf-8"});
 						saveAs(blob, $("title").innerText+".ppt.html");
-						alert("文件即将写入,请您在确保下载完成后关闭浏览器.");
 						break;
 					case "bgColor":
 					case "pageColor":

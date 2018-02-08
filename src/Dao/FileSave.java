@@ -1,13 +1,13 @@
 package Dao;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
 import javax.servlet.ServletContext;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
 public class FileSave {
@@ -43,7 +43,7 @@ public class FileSave {
 	{
 		File file=new File(realPath);
 		try {
-			if(!save(input,new FileOutputStream(file,append),max)){
+			if(!save(input,FileUtils.openOutputStream(file),max)){
 				if(file.exists()&&remove)file.delete();
 				return false;
 			}

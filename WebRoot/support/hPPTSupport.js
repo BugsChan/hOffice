@@ -42,7 +42,7 @@ function support() {
 				}
 			}
 		);
-	}
+	};
 	
 	//根据ppt给ul添加li
 	(function(){

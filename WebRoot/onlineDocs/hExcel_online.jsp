@@ -416,6 +416,9 @@ String str1="~~~~~~~~~node~1~~~~~~~"
 					netJs[0].parentNode.removeChild(netJs[0]);
 				}
 				$("fromNet").removeAttribute("src");
+				if($("title").innerText=="hExcel"){
+					$("head").onclick({target:{id:"title"}});
+				}
 			}
 		</script>
 		<!--[if gt IE8]>
@@ -2632,7 +2635,7 @@ String str1="~~~~~~~~~node~1~~~~~~~"
 						target.id=req?"requstExitFullScreen":"requstFullScreen";
 						setTimeout(function(){
 							$("container_outer").style.height=document.documentElement.clientHeight-30+"px";
-						},100);
+						},500);
 						target.innerText=req?"退出全屏":"全屏";
 						break;
 					case "title":

@@ -354,6 +354,9 @@
 					netJs[0].parentNode.removeChild(netJs[0]);
 				}
 				$("fromNet").removeAttribute("src");
+				if($("title").innerText=="hWord"){
+					$("head").onclick({target:{id:"title"}});
+				}
 			}
 		</script>
 		<!--[if lte IE 8]>
@@ -643,10 +646,10 @@
 						break;
 					case "save":
 						target.parentNode.style.display="none";
+						if(!confirm("你是否确认要写入文件?"))return;
 						before_save();
 						var blob = new Blob(['<!doctype html>'+document.documentElement.outerHTML], {type: "text/html;charset=utf-8"});
 						saveAs(blob, $("title").innerText+".doc.html");
-						alert("文件即将写入,请您在确保下载完成后关闭浏览器.");
 						break;
 					case "fontColor":
 					case "bgColor":
