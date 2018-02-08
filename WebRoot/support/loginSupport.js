@@ -10,7 +10,7 @@ function getUserMsg() {
 	}
 	return !document.userMsg ? null : JSON.parse(document.userMsg);
 }
-
+//auto login
 (function(){
 	try {
 		var userMsg = getUserMsg();
@@ -26,14 +26,19 @@ function setCookie(_key, _value) {
 	if(_key == "userMsg") document[_key] = _value;
 }
 
-function myPost(_url, content, callback) {
+function myPost(_url,content,callback,type,noUseJSON) {
+	if(!type)type="POST";
 	var req = new XMLHttpRequest();
-	req.open("POST", _url /*URL*/ );
+	req.open(type, _url /*URL*/ );
 	req.send(content);
 	var ret;
 	req.onreadystatechange = function() {
 		if(req.readyState != 4) return;
-		callback(JSON.parse(req.responseText));
+		if(!noUseJSON){
+			callback(JSON.parse(req.responseText));
+		}else{
+			callback(req.responseText);
+		}
 	}
 }
 

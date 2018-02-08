@@ -49,10 +49,12 @@ function setCookie(_key, _value) {
  * @param {String} _url 发送目标url
  * @param {Object} content 发送的内容
  * @param {Function} callback 回调函数,参数为结果对象
+ * @param {string} type 发送请求种类
  */
-function myPost(_url, content, callback) {
+function myPost(_url,content,callback,type) {
+	if(!type)type="POST";
 	var req = new XMLHttpRequest();
-	req.open("POST", _url /*URL*/ );
+	req.open(type, _url /*URL*/ );
 	req.send(content);
 	var ret;
 	req.onreadystatechange = function() {

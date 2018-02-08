@@ -50,6 +50,7 @@ function openLib() {
 				alert(res.errorMsg);
 			}
 		}
+		,"GET"
 	);
 
 	function fc(_node) {

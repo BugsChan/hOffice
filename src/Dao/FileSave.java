@@ -1,6 +1,7 @@
 package Dao;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -43,7 +44,7 @@ public class FileSave {
 	{
 		File file=new File(realPath);
 		try {
-			if(!save(input,FileUtils.openOutputStream(file),max)){
+			if(!save(input,openOutputStream(file,append),max)){
 				if(file.exists()&&remove)file.delete();
 				return false;
 			}
@@ -68,6 +69,27 @@ public class FileSave {
 			IOUtils.closeQuietly(input);
 		}
 	}
+	
+	
+	private static FileOutputStream openOutputStream(File file,boolean append) throws IOException 
+	{
+        if (file.exists()) {
+            if (file.isDirectory()) {
+                throw new IOException("File '" + file + "' exists but is a directory");
+            }
+            if (file.canWrite() == false) {
+                throw new IOException("File '" + file + "' cannot be written to");
+            }
+        } else {
+            File parent = file.getParentFile();
+            if (parent != null && parent.exists() == false) {
+                if (parent.mkdirs() == false) {
+                    throw new IOException("File '" + file + "' could not be created");
+                }
+            }
+        }
+        return new FileOutputStream(file,append);
+    }
 	
 	private static boolean copy(InputStream input, OutputStream output,int max)
             throws IOException
