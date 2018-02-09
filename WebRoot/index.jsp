@@ -97,7 +97,7 @@ HomepageService ser=new HomepageService(getServletContext());
 							<div id="help_logo">
 								<div class="logo">
 									<div class="img"></div>
-									<span>查看帮助文档</span>
+									<span>创建调查表</span>
 								</div>
 								<hr>
 								<a href="/downLoads/install.exe" download="install.exe">安装包下载<br>仅支持windows</a>
@@ -112,7 +112,7 @@ HomepageService ser=new HomepageService(getServletContext());
 			<div class="leftSide">
 				<p>Site is powerd by Bugs </p>
 				<p><a href=""> 主页 </a>|<a href="#products"> 产品 </a>|<a target="_blank" href="/msg/aboutUs.doc.html"> 关于我们 </a>|<a target="_blank" href="/msg/aboutProgramers.doc.html"> 开发者需知 </a>|
-<a href="/msg/PolicyMsg.doc.html"> 法律声明 </a>|<a href="/reviews.html"> 用户反馈 </a>
+<a href="/OnlineDoc?method=onlineDocument&uuid=a3f763bf13d74e5793b043d7127b1cef"> 法律声明 </a>|<a href="/reviews.html"> 用户反馈 </a>
 				</p>
 				<p><a target="_blank" href="http://www.miitbeian.gov.cn/">鲁ICP备18001086号</a></p>
 			</div>

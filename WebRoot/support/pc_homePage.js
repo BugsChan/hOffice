@@ -35,13 +35,21 @@ setInterval(function() {
 		}, 3);
 	}catch(e){}
 }, 5000);
-$("hWord_logo").onclick = $("hExcel_logo").onclick = $("hPPT_logo").onclick = $("help_logo").onclick = function(event) {
+$("hWord_logo").onclick = $("hExcel_logo").onclick = $("hPPT_logo").onclick =  function(event) {
 	event = event || window.event;
 	var target = event.srcElement || event.target;
 	if(/logo|img/i.test(target.className) || /span/i.test(target.tagName)) {
 		var src = this.id;
 		src = src.slice(0, src.indexOf('_')) + ".html";
 		location.assign(src);
+	}
+}
+
+$("help_logo").onclick=function(){
+	if(getUserMsg()!=null){
+		location.assign("/OnlineDoc?method=onlineDocument&uuid=dc3424ce6b40495ebaca23e968a62014");
+	}else{
+		alert("请先登录或注册!!!");
 	}
 }
 

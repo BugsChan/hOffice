@@ -344,6 +344,7 @@ function openLib() {
 							throw new Exception();
 						}
 					}
+					,"GET"
 				);
 			};
 			function getName(obj,real){

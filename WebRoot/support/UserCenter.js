@@ -4,15 +4,8 @@ function openUserCenter() {
 		$("login").onclick();
 		return;
 	}
-	this.innerText = "主页";
-	var relHtml = $("center").innerHTML;
 	this.onclick = function() {
-		this.innerText = "用户中心";
-		$("center").innerHTML = relHtml;
-		this.onclick = openUserCenter;
-		var head = document.head;
-		var last = head.lastChild.nodeName != "#text" ? head.lastChild : head.lastChild.previousSibling;
-		head.removeChild(last);
+		location.assign("/index.html");
 	}
 	var html = '<div>用户中心</div>' +
 		'<p>在这里,你可以修改你的个人信息</p>' +

@@ -615,6 +615,9 @@ String str1="~~~~~~~~~node~1~~~~~~~"
 				return msg;
 			};
 			function myRequestFullScreen(isNotExit,noAlert){
+				try{
+					if(isMobile())return;
+				}catch(e){}
 				if(isNotExit){
 					//进入全屏
 					var docElm = document.documentElement;
@@ -1215,7 +1218,8 @@ String str1="~~~~~~~~~node~1~~~~~~~"
 									var div=getDiv(userRange.startContainer);
 									div.style.backgroundColor=target.style.backgroundColor+"";
 								}else if(this.target.id=="pageColor"){
-									$("ppt").style.backgroundColor=target.style.backgroundColor+"";
+									var div=$("ppt").getElementsByClassName(time+"")[0];
+									div.style.backgroundColor=target.style.backgroundColor+"";
 								}
 								this.style.display="none";
 								this.onclick=null;
