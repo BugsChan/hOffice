@@ -11,7 +11,7 @@ function isMobile() {
 		var docEl = doc.documentElement,
 			clientWidth = docEl.clientWidth || document.body.clientWidth;
 		docEl.style.fontSize = 100 * (clientWidth / 640) + 'px';
-		$("papers").onkeydown({
+		$("papers").onkeyup({
 			target: $("papers").firstElementChild.firstElementChild
 		});
 	}

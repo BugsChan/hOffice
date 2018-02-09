@@ -51,7 +51,7 @@ function setCookie(_key, _value) {
  * @param {Function} callback 回调函数,参数为结果对象
  * @param {string} type 发送请求种类
  */
-function myPost(_url,content,callback,type) {
+function myPost(_url,content,callback,type,noUseJSON) {
 	if(!type)type="POST";
 	var req = new XMLHttpRequest();
 	req.open(type, _url /*URL*/ );
@@ -59,7 +59,11 @@ function myPost(_url,content,callback,type) {
 	var ret;
 	req.onreadystatechange = function() {
 		if(req.readyState != 4) return;
-		callback(JSON.parse(req.responseText));
+		if(!noUseJSON){
+			callback(JSON.parse(req.responseText));
+		}else{
+			callback(req.responseText);
+		}
 	}
 }
 /**
@@ -315,6 +319,7 @@ function openLib() {
 				alert(res.errorMsg);
 			}
 		}
+		,"GET"
 	);
 
 	function fc(_node) {
@@ -330,7 +335,7 @@ function openLib() {
 					getURL("/OnlineDoc") + "?method=delete&userid=" + userMsg.userid + "&password=" + userMsg.password + "&uuid=" + uuid, null,
 					function(res) {
 						if(res.isOk) {
-							var pp = a.parentNode.parentNode;
+							var pp = a.parentNode;
 							pp.parentNode.removeChild(pp);
 							callback(res);
 						} else {

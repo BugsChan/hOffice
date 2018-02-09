@@ -64,7 +64,7 @@ function sub(){
 		for(var i2=0;i2<v.length;i2++){
 			if(/input/i.test(v[i2].tagName)){
 				if(v[i2].type=="checkbox"){
-					inner+=v[i2].checked?"是":"否"+"\t";
+					inner+=(v[i2].checked?"是":"否")+"\t";
 				}else{
 					inner+=v[i2].value.replace(/\t|\n/g,"")+"\t";
 				}
