@@ -56,6 +56,9 @@
 #homepage #hExcel div{
 	background-position-x: -1.6rem;
 }
+#homepage #search div{
+	background-position-x: -2.4rem;
+}
 #homepage #bottom a span{
 	float: left;
 	color: black;
@@ -163,4 +166,8 @@ hr{
 	float: right;
 	margin-right: 0.35rem;
 	font-size: 0.3rem;
+}
+#placeHolder{
+	display: block !important;
+	height: 1.5rem;
 }

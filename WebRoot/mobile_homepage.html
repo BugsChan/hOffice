@@ -1,16 +1,8 @@
-<%@ page session="false" language="java" import="java.util.*,Service.HomepageService" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-HomepageService ser=new HomepageService(getServletContext());
-%>
 <!DOCTYPE HTML>
 <html>
 	<head>
 		<meta charset="utf-8"/>
-		<title><%=ser.getPageTitle() %></title>
-		<meta name="keywords" content="<%=ser.getKeywords()%>"/>
-		<meta name="description" content="<%=ser.getPageDes()%>"/>
+		<title>hOffice</title>
 		<link rel="stylesheet" type="text/css" href="css/mobile_homepage.css" />
 	</head>
 	<body>
@@ -18,21 +10,15 @@ HomepageService ser=new HomepageService(getServletContext());
 		<div id="homepage" style="display: block;">
 			<div id="imgs">
 				<div>
-					<%
-					List<String> urls=ser.getImgURLs();
-					for(String url:urls){
-					 %>
-						<div style="background-image: url(<%=url%>);"></div>
-					<%} %>
+					<div style="background-image: url(img/logos.jpg);"></div><div style="background-image: url(img/footLogos.png);"></div><div style="background-image: url(img/logos.jpg);"></div>
 				</div>
 			</div>
 			<div id="bottom">
 				<p>产品中心</p>
 				<div>
-					<a ontouchstart="sure_before_work();" href="hWord.html" id="hWord"><div></div><span>新建hWord网络文件</span></a><div><hr></div>
-					<a ontouchstart="sure_before_work();" href="hPPT.html" id="hPPT"><div></div><span>新建hPPT网络文件</span></a><div><hr></div>
-					<a ontouchstart="sure_before_work();" href="hExcel.html" id="hExcel"><div></div><span>新建hExcel网络文件</span></a><div><hr></div>
-					<a ontouchstart="sure_before_work();" href="http://www.hoffice.com.cn/OnlineDoc?method=onlineDocument&uuid=dc3424ce6b40495ebaca23e968a62014" id="search"><div></div><span>创建调查表</span></a><div><hr></div>
+					<a href="hWord.html" id="hWord"><div></div><span>新建hWord网络文件</span></a><div><hr></div>
+					<a href="hPPT.html" id="hPPT"><div></div><span>新建hPPT网络文件</span></a><div><hr></div>
+					<a href="hExcel.html" id="hExcel"><div></div><span>新建hExcel网络文件</span></a><div><hr></div>
 				</div>
 			</div>
 		</div>
@@ -74,6 +60,5 @@ HomepageService ser=new HomepageService(getServletContext());
 			<div><a href="javascript:openPage('homepage');">首页</a></div><div><a href="javascript:pageLogin();">登录</a></div><div><a href="javascript:openUserCenter();">用户中心</a></div><div><a href="javascript:openLib();">文件管理</a></div>
 		</div>
 		<script type="text/javascript" src="support/mobileSupport.js"></script>
-		<script type="text/javascript" src="support/adv_homepage_mobile.js"></script>
 	</body>
 </html>

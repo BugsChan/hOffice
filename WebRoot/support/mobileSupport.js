@@ -56,7 +56,6 @@ function myPost(_url,content,callback,type,noUseJSON) {
 	var req = new XMLHttpRequest();
 	req.open(type, _url /*URL*/ );
 	req.send(content);
-	var ret;
 	req.onreadystatechange = function() {
 		if(req.readyState != 4) return;
 		if(!noUseJSON){
@@ -348,7 +347,7 @@ function openLib() {
 				);
 			};
 			function getName(obj,real){
-				var pp=obj.parentNode.parentNode
+				var pp=obj.parentNode
 				,name=pp.innerText;
 				if(real)return name.slice(0,-4);
 				name=name.slice(0,name.lastIndexOf("."));
@@ -362,7 +361,7 @@ function openLib() {
 						var deletes = outer.getElementsByClassName("deleteDoc");
 						for(var i = 0; i < deletes.length; i++) {
 							if(getName(deletes[i])==Sname
-								&&deletes[i].parentNode.parentNode.style.display=="none"){
+								&&deletes[i].parentNode.style.display=="none"){
 								del(function(res){},deletes[i]);
 							}
 						}
