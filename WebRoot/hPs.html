@@ -1253,6 +1253,8 @@
 						_img.style.display="block";
 						_img.style.width=width+"px";
 						_img.style.height=height+"px";
+						img.work_context.fillStyle="white";
+						img.work_context.fillRect(0,0,width*2,height*2);
 						setTimeout(function(){
 							img.work_context.drawImage(_img,0,0,width*2,height*2);
 						},500);

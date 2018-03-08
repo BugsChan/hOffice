@@ -47,7 +47,6 @@
 			function(res2) {
 				if(res2.isOk) {
 					alert("文件保存成功!!");
-					location.assign(getURL("/OnlineDoc?method=onlineDocument&uuid=")+res2.uuid);
 				} else {
 					alert(res2.errorMsg);
 				}
