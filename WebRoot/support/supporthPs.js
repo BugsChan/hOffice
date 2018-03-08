@@ -13,6 +13,9 @@
 			img.helperImg.style.display='none';
 			img.helperImg.removeAttribute("src");
 		}
+		if($("title").innerText=="Hello world,this is hPs"){
+			$("title").onclick();
+		}
 		//ajax code
 		var title = $("title").innerText;
 		var userMsg = getUserMsg();

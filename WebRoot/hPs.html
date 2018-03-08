@@ -726,7 +726,7 @@
 			
 			//为title绑定方法
 			$("title").onclick=function(){
-				var name=prompt("请输入文件名:");
+				var name=prompt("请输入文件名:",this.innerText);
 				$("title").innerText=name.replace(/\n+|\s+/g," ");
 			};
 			//为document_list绑定方法
