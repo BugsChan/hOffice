@@ -1604,6 +1604,10 @@
 						setTimeout(function(){
 							var width=_img.clientWidth;
 							var height=_img.clientHeight;
+							if(width>800){
+								width=800;
+								height=height*800/width;
+							}
 							var can=img.workspace;
 							can.width=width*2;
 							can.height=height*2;
