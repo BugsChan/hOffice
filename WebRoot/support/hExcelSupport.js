@@ -67,7 +67,7 @@ function support() {
 				}
 			}
 		);
-	}
+	};
 	$("unable_to_save").onclick = function() {
 		//本地保存(回调方式)
 		window.before_save(false);
@@ -101,3 +101,55 @@ function support() {
 	document.body.insertBefore(lib, loginSupport);
 }
 support();
+
+$("chart").onclick=function(){
+	var start=prompt("请输入起始行号或列号:","");
+	var end=prompt("请输入结束行号或列号:","");
+	start=start.toUpperCase();
+	end=end.toUpperCase();
+	try{
+		var data=[];
+		if(/^[A-Z]+$/.test(start)){
+			if(!/^[A-Z]+$/.test(end)){
+				throw new Error("input error");
+			}else{
+				//go
+				for(var i=getLineCount(start);i<=getLineCount(end);i++){
+					var nodes=document.getElementsByClassName(getLineCount(i));
+					var arr=[];
+					for(var i2=0;i2<nodes.length;i2++){
+						if(/^\s*$/.test(nodes[i2].innerText))break;
+						arr.push(nodes[i2].innerText);
+					}
+					data.push(arr);
+				}
+			}
+		}else if(/^[0-9]+$/.test(start)){
+			if(!/^[0-9]+$/.test(end)){
+				throw new Error("input error");
+			}else{
+				for(var i=+start;i<=+end;i++){
+					var nodes=document.getElementsByClassName("r"+i);
+					var arr=[];
+					for(var i2=0;i2<nodes.length;i2++){
+						if(/^\s*$/.test(nodes[i2].innerText))break;
+						arr.push(nodes[i2].innerText);
+					}
+					data.push(arr);
+				}
+			}
+		}else{
+			throw new Error("input error");
+		}
+		window.impress={};
+		window.impress.data=data;
+		console.log(data);
+		var hps=window.open("hPs.html");
+//		hps.onunload=function(){
+//			var src=window.impress.photo;
+//			
+//		};
+	}catch(e){
+		alert("Sorry ,你的输入好像有问题?");
+	}
+};

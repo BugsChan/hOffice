@@ -13,32 +13,28 @@
 		<meta charset="UTF-8">
 		<title>hWord</title>
 		<style id="printStylesheet" media="print">
-			#head{
-				display: none;
-			}
-			#lists{
+			#head,#lists,#note,#adv{
 				display: none;
 			}
 			#papers{
 				margin: 0px auto 0px auto;
 				width: 100%;
 			}
-			#note{
-				display: none !important;
-			}
-			#adv{
-				display: none;
+			body{
+				background-color: white !important;
 			}
 		</style>
 		<style type="text/css">
 			*{
 				padding: 0px;
 				margin: 0px;
-				background-color: #ebe9e2;
 				font-family:"Consolas","courier new","微软雅黑";
 				font-size: 12px;
 			}
-			#items{/*head中的按钮栏89+36+27*/
+			body{
+				background-color: #ebe9e2;
+			}
+			#items{
 				background-color: inherit;
 				margin-left: 152px;
 				margin-top: 6px;
@@ -202,7 +198,7 @@
 				background-color: #b9c8ca;
 			}
 		</style>
-		<link class="mobile" rel="stylesheet" type="text/css" href="css/hWord_mobile.css" />
+		<!--<link class="mobile" rel="stylesheet" type="text/css" href="css/hWord_mobile.css" />-->
 	</head>
 	<body>
 		<!--该div为标题栏,包括了关闭按钮,文件名和操作按钮-->
@@ -1751,7 +1747,7 @@
 				var _location=location.pathname;
 				_location=/^http/.test(location.toString())?_location.slice(0,_location.lastIndexOf("/")):"http://www.hOffice.com.cn";
 				return _location+relativeURL;
-			}
+			};
 			(function(){
 				var fromNet=$("fromNet");
 				fromNet.src=getURL("/support/hWordSupport.js");

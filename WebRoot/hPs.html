@@ -1,0 +1,1788 @@
+<!DOCTYPE html>
+<html>
+<!---->
+	<head>
+		<meta charset="UTF-8">
+		<title>hPs</title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+				font-size: 12px;
+				font-family: "微软雅黑";
+			}
+			body{
+				background-color: #cdd6e5;
+			}
+			#head{
+				background-color: white;
+				cursor: default;
+			}
+			#container_outer{
+				overflow: auto;
+				position: relative;
+			}
+			#top_attention{
+				height: 25px;
+				line-height: 25px;
+				margin-left: 30px;
+				cursor: pointer;
+				overflow: hidden;
+			}
+			#top_attention *{
+				display: inline-block;
+				width: 50px;
+				text-align: center;
+			}
+			#username{
+				width: 80px;
+				overflow: hidden;
+				float: left;
+			}
+			#title{
+				display: inline;
+			}
+			#buttons{
+				cursor: pointer;
+			}
+			#buttons span{
+				height: 23px;
+				line-height: 23px;
+				width: 53px;
+				text-align: center;
+				display: inline-block;
+			}
+			#buttons span:hover{
+				width: 52px;
+				border: solid gainsboro 0.5px;
+				border-bottom: none;
+			}
+			#document:hover{
+				background-color: #298ce1;
+			}
+			#document{
+				background-color: #1979ca;
+				color: white;
+			}
+			.onShow{
+				width: 52px !important;
+				border: solid gainsboro 0.5px;
+				border-bottom: none;
+				background-color: #f5f6f7;
+			}
+			#document_list{
+				width: 420px;
+				height: 190px;
+				background-color: #f5f6f7;
+				border: solid gainsboro 0.5px;
+				position: absolute;
+				top: 48.5px;
+				z-index: 2000;
+			}
+			#document_list ul{
+				float: left;
+				list-style: none;				
+				width: 159px;
+				background-color: #fbfcfd;
+				border: solid gainsboro 0.5px;
+			}
+			#document_list li{
+				height: 37.5px;
+				line-height: 37.5px;
+				text-align: center;
+				padding: 5px;
+			}
+			#document_list li:hover{
+				background-color: #def4fc;
+				border: solid deepskyblue 0.5px;
+				height: 36.5px;
+			}
+			#document_list img{
+				width: 30px;
+				height: 37.5px;
+				float: left;
+				background-image: url(img/hPs/files-spite.png);
+			}
+			#createNew img{
+				background-position-y:-37.5px;
+			}
+			#open img{
+				background-position-y:-75px;
+			}
+			#print img{
+				background-position-y: -112.5px;
+			}
+			#document_list ol{
+				margin: 0px 0px 0px 160px;
+				width: 259px;
+				border: solid gainsboro 0.5px;
+				list-style: none;
+			}
+			#lists{
+				height: 87.5px;
+				background-color: #f5f6f7;
+				padding: 2px 0px;
+			}
+			.typeChose{
+				height: 100%;
+				border-right: solid gainsboro 1px;
+				float: left;
+				display: none;
+			}
+			.type-top{
+				height: 62.5px;
+				padding: 5px 0px;
+			}
+			.type-bottom{
+				height: 15px;
+				text-align: center;
+				color: #5a5a5a;
+			}
+			.big-button{
+				width:40px;
+				text-align: center;
+				margin:0px 8px;
+				border: solid #c4d3e2 0.5px;
+				opacity: 0.6;
+				float: left;
+			}
+			.big-button:hover{
+				border-color: #62a2e4;
+			}
+			.big-button .icon{
+				width: 30px;
+				height: 37.5px;
+				margin: 3px 5px;
+				background-image: url(img/hPs/files-spite.png);
+			}
+			.small-btns{
+				float: left;
+				opacity: 0.6;
+				padding-right: 5px;
+			}
+			.small-btns .icon{
+				background-image: url(img/hPs/tools-spite.png);
+				width: 12px;
+				height: 12px;
+				margin: 4px;
+				float: left;
+			}
+			.canuse{
+				opacity: 1;
+			}
+			.canuse:hover{
+				background-color: #c9e0f7;
+			}
+			.canuse.checked{
+				background-color: #c9e0f7;
+			}
+			.small-btns:hover{
+				background-color: #f5f6f7;
+			}
+			.small-btns>div{
+				height: 20px;
+				line-height: 20px;
+				padding-right: 5px;
+				border: solid #f6f7f8 0.5px;
+			}
+			.canuse>div:hover{
+				background-color: #c9e0f7;
+				border-color: #62a2e4;
+			}
+			.canuse>.checked{
+				background-color: #c9e0f7;
+				border-color: #62a2e4;
+			}
+			#cut .icon{
+				background-position-y: -24px;
+			}
+			#copy .icon{
+				background-position-y: -36px;
+			}
+			#toBigger .icon{
+				background-position-y: -214px;
+			}
+			#toSmaller .icon{
+				background-position-y: -176px;
+			}
+			#toTransparent .icon{
+				background-position-y: -126px;
+			}
+			#toUntransparent .icon{
+				background-position-y: -138px;
+			}
+			#xuanzhuan .icon{
+				background-position-y: -12px;
+			}
+			#pencil .icon{
+				background-position-y: -49px;
+			}
+			#eraser .icon{
+				background-position-y: -87.5px;
+			}
+			#paintPot .icon{
+				background-position-y: -61px;
+			}
+			#writer .icon{
+				background-position-y: -76px;
+			}
+			#drag .icon{
+				background-position-y: -113px;
+			}
+			#remove .icon{
+				background-position-y:-152px;
+			}
+			#opacityChange .icon{
+				background-position-y: -164px;
+			}
+			#lineWeight .icon{
+				background-position-y: -186px;
+				background-size: 30px 366px;
+			}
+			.small-btns select{
+				margin: 5px 8px;
+				display: block;
+			}
+			#fontStyle-container>div{
+				float:left;
+				padding-left: 4px;
+			}
+			#borderColor .icon,#innerColor .icon{
+				background-image: none;
+				border: solid gray 0.5px;
+			}
+			#colorChecker{
+				float: left;
+			}
+			#colorChecker:hover{
+				background-color: #F5F6F7;
+			}
+			#colorChecker td{
+				width: 18px;
+				height: 18px;
+				border: solid #b2b3b4 1px;
+			}
+			#colorChecker td input{
+				width: 100%;
+				height: 100%;
+				border: none;
+				display: block;
+				cursor: default;
+			}
+			#colorChecker td:hover{
+				border: solid #62a2e4 1px;
+			}
+			#otherColor .icon{
+				cursor: pointer !important;
+				background-image: none;
+			}
+			#workSpace{
+				display: block;
+				margin: 0px auto 60px auto;
+			}
+			#container_inner{
+				overflow: hidden;
+			}
+			#dataShow{
+				text-align: center;
+				height: 18px;
+				line-height: 18px;
+				background-color: white;
+			}
+			#work_helper_div{
+				display: none;
+				position: absolute;
+				top: 0px;
+				width: 100px;
+				height: 50px;
+				text-align: left;
+				word-break:break-all;
+			}
+			#work_helper_div *{
+				background-color: inherit;
+				font-size: inherit;
+				font-family: inherit;
+				text-align: left;
+				word-break:break-all;
+			}
+			#work_helper_img{
+				top:0px;
+				display: none;
+				position: absolute;
+			}
+			/*以下是统计用的叠层样式表*/
+			#tongji_list .icon{
+				background-image: url(img/hPs/tongji-spite.png);
+			}
+			#zexiantu .icon{
+				background-position-y: -12px;
+			}
+			#bingtu .icon{
+				background-position-y: -24px;
+			}
+			#tiaoxingtu .icon{
+				background-position-y: -36px;
+			}
+			#mianjitu .icon{
+				background-position-y: -48px;
+			}
+			#sandiantu .icon{
+				background-position-y: -60px;
+			}
+			#tongji_helper{
+				position: relative;
+				display: block;
+				top: -45px;
+				border-collapse: collapse;
+			}
+			#tongji_helper td{
+				display: inline-block;
+				width: 60px;
+				height: 15px;
+				font-size: 15px;
+				line-height: 15px;
+				border: dashed gray 0.5px;
+			}
+			#tongji_helper_div{
+				display: block;
+				margin: 0px auto 60px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<!--这是操作栏-->
+		<div id="head">
+			<p id="top_attention"><span id="username">未登录</span>|<span id="login">登录</span>|<a href="http://www.baidu.com" target="_blank" style="color: black;text-decoration: none;">关于hPs</a>-<span id="title">Hello world,this is hPs</span></p>
+			<p id="buttons"><span id="document">文件</span><span id="main" class="onShow">主页</span><span id="fonts">字体</span><span id="tongji">统计</span><span id="fullScreen">全屏</span><span id="up">收起</span></p>
+			<div id="lists">
+				<!--剪贴板模块-->
+				<!--使用canuse类型可以使图标变清晰
+				,使用checked类型可以使按钮出现.canuse:hover的效果
+				但checked类型仅限使用在 .big-button>.btn-top 和 .small-btns>* 中-->
+				<div class="typeChose main fonts tongji" style="display: block;">
+					<div class="type-top">
+						<div id="past" class="big-button">
+							<div class="btn-top"><p class="icon"></p></div>
+							<div class="btn-des">粘贴</div>
+						</div>
+						<div class="small-btns">
+							<div id="cut"><p class="icon"></p>剪切</div>
+							<div id="copy"><p class="icon"></p>复制</div>
+							<div id="remove"><p class="icon"></p>删除</div>
+						</div>
+					</div>
+					<p class="type-bottom">剪贴板</p>
+				</div>
+				
+				<!--这是统计用的按钮-->
+				<div id="tongji_list" class="typeChose tongji">
+					<div class="type-top">
+						<div class="small-btns canuse">
+							<div id="zhuxingtu"><p class="icon"></p>柱形图</div>
+							<div id="zexiantu"><p class="icon"></p>折线图</div>
+							<div id="bingtu"><p class="icon"></p>饼图</div>
+						</div>
+						<div class="small-btns canuse">
+							<div id="mianjitu"><p class="icon"></p>面积图</div>
+							<div id="sandiantu"><p class="icon"></p>散点图</div>
+						</div>
+					</div>
+					<p class="type-bottom">统计</p>
+				</div>
+				
+				<div class="typeChose fonts">
+					<div class="type-top" style="width: 160px;">
+						<div style="width: 50px;overflow: visible;" class="small-btns canuse">
+							<select id="fontFamily"></select>
+							<select style="display: inline;" id="fontSize"></select>
+						</div>
+						<div id="fontStyle-container" style="margin-top:32px;" class="small-btns canuse">
+							<div style="font-weight: bold;" id="bold">B</div>
+							<div id="italic" style="font-style: italic;">L</div>
+						</div>
+					</div>
+					<p class="type-bottom">字体</p>
+				</div>
+				<div class="typeChose fonts">
+					<div class="type-top">
+						<div class="small-btns canuse">
+							<div id="toUntransparent"><p class="icon"></p>不透明</div>
+							<div id="toTransparent" class="checked"><p class="icon"></p>透明</div>
+						</div>
+					</div>
+					<p class="type-bottom">背景</p>
+				</div>
+				<div class="typeChose main" style="display: block;">
+					<div class="type-top">
+						<div id="choseSth" class="big-button canuse">
+							<div class="btn-top"><p class="icon" style="border: dotted black 1px;background-image: none;"></p></div>
+							<div class="btn-des">选择</div>
+						</div>
+						<div class="small-btns">
+							<div id="cut_toNew"><p class="icon"></p>裁剪为新图像</div>
+							<div id="xuanzhuan"><p class="icon"></p>旋转</div>
+							<div id="opacityChange"><p class="icon"></p>减淡</div>
+						</div>
+					</div>
+					<p class="type-bottom">图像</p>
+				</div>
+				<div class="typeChose main" style="display: block;">
+					<div class="type-top">
+						<div class="small-btns canuse" style="margin-left: 5px;">
+							<div id="pencil" class="checked"><p class="icon"></p></div>
+							<div id="eraser"><p class="icon"></p></div>
+						</div>
+						<div class="small-btns canuse">
+							<div id="paintPot"><p class="icon"></p></div>
+							<div id="drag"><p class="icon"></p></div>
+						</div>
+						<div class="small-btns canuse">
+							<div id="writer"><p class="icon"></p></div>
+						</div>
+					</div>
+					<p class="type-bottom">工具</p>
+				</div>
+				<!--<div class="typeChose main">
+					<div id="draw_img" class="type-top">
+						<div class="small-btns">
+							<div class="icon"></div>
+						</div>
+					</div>
+					<p class="type-bottom">形状</p>
+				</div>-->
+				<div class="typeChose main" style="display: block;">
+					<div class="type-top">
+						<div id="lineWeight" class="big-button canuse">
+							<div class="btn-top"><p class="icon"></p></div>
+							<div class="btn-des">粗细</div>
+							<select id="lineWeight_list" style="display: none;">
+								<option>1px</option>
+								<option>2px</option>
+								<option>3px</option>
+								<option>5px</option>
+								<option>8px</option>
+							</select>
+						</div>
+					</div>
+					<p class="type-bottom"></p>
+				</div>
+				<div class="typeChose main fonts" style="display: block;">
+					<div class="type-top">
+						<div id="borderColor" class="big-button canuse checked">
+							<div class="btn-top"><p style="background-color: black;" class="icon"></p></div>
+							<div class="btn-des">边框色</div>
+						</div>
+						<div id="innerColor" class="big-button canuse">
+							<div class="btn-top"><p style="background-color: white;" class="icon"></p></div>
+							<div class="btn-des">内部色</div>
+						</div>
+						<table id="colorChecker" class="canuse"></table>
+						<div id="otherColor" class="big-button canuse">
+							<div class="btn-top"><input type="text" class="icon jscolor {onFineChange:'setColor(this)'}" /></div>
+							<div class="btn-des">其它</div>
+						</div>
+					</div>
+					<p class="type-bottom">颜色</p>
+				</div>
+			</div>
+			<div id="document_list" style="display: none;">
+				<ul>
+					<li id="createNew"><img>新建</li>
+					<li id="open"><img>打开</li>
+					<li id="save"><img>保存</li>
+					<li id="print"><img>打印</li>
+				</ul>
+				<ol id="save_list" style="display: none;">
+					<li class="png">PNG图片(质量较高)</li>
+					<li class="jpeg">JPEG图片(质量较高)</li>
+					<li class="gif">GIF图片(质量较低)</li>
+					<li id="saveInServie">存为网络图片</li>
+				</ol>
+				<ol id="open_list" style="display: none;">
+					<li id="lib">网络图片</li>
+					<li class="local">
+						<label for="file" style="display: block;width: 100%;height: 100%;">本地图片</label>
+						<input type="file" id="file" name="" style="display: none">
+					</li>
+				</ol>
+			</div>
+		</div>
+		<!--这是绘图板边栏-->
+		<div id="container_outer">
+			<div id="container_inner">
+				<canvas id="workSpace" width="1000" height="600" style="width: 500px;height: 300px;">对不起,你的浏览器不支持canvas组件,请升级您的浏览器!</canvas>
+				<img id="work_helper_img" style="display: none;">
+				<div contenteditable="true" id="work_helper_div" style="font-family: '微软雅黑';font-size: 16px;color: black;"></div>
+				<div id="tongji_helper_div" style="display: none;"></div>
+				<table id="tongji_helper" style="display: none;">
+					<tr>
+						<td><div contenteditable="true">自变量</div></td><td><div contenteditable="true"></div></td><td><div contenteditable="true"></div></td><td><div contenteditable="true"></div></td><td><div contenteditable="true"></div></td><td><div contenteditable="true"></div></td><td><div contenteditable="true"></div></td><td><a href="javascript:img.addLine();">增加一列</a></td>
+					</tr>
+					<tr>
+						<td><div contenteditable="true">因变量</div></td><td><div contenteditable="true"></div></td><td><div contenteditable="true"></div></td><td><div contenteditable="true"></div></td><td><div contenteditable="true"></div></td><td><div contenteditable="true"></div></td><td><div contenteditable="true"></div></td><td><a href="javascript:img.addRow();">增加一行</a></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div id="dataShow" hidefocus="true">
+			<a target="_blank" href="http://www.hoffice.com.cn">亲,你也可以使用hOffice喔!</a> 宽度:<span id="width">500</span>px|高度:<span id="height">300</span>px|鸣谢: <a target="_blank" href="http://jscolor.com/">jscolor</a>,<a target="_blank" href="http://echarts.baidu.com/">百度ECharts</a>
+		</div>
+		<script type="text/javascript">
+			function $(id_str){
+				return document.getElementById(id_str);
+			};
+			function setContainerHeight(){
+				var headHeight=160;//140;
+				if($("up").innerText=="放下")headHeight=68.5;//48.5;
+				$("container_outer").style.height=document.documentElement.clientHeight-headHeight+"px";
+			}
+			//init
+			(function(){
+				//设置container的高度
+				setContainerHeight();
+				//封锁head的鼠标点击事件
+				$("head").onmousedown=function(e){
+					e=e||window.event;
+					var target=e.target||e.srcElement;
+					if(!/select/i.test(target.tagName)||!include("canuse",target,"className"))return false;
+				};
+				//封锁dataShow的鼠标点击事件
+				$("dataShow").ondragstart=function(e){return false};
+				//添加字体
+				var fontFamilys=[
+					"Consolas","courier new","微软雅黑","宋体","隶书"
+					,"等线","等线 light","方正兰亭超细黑简体","方正舒体"
+					,"方正姚体","仿宋","华文彩云","华文行楷","华文仿宋"
+					,"华文琥珀","楷体"
+				];
+				var ff=$("fontFamily");
+				var _option;
+				for(var i=0;i<fontFamilys.length;i++){
+					_option=document.createElement("option");
+					_option.style.fontFamily=fontFamilys[i];
+					_option.innerText=fontFamilys[i];
+					ff.appendChild(_option);
+				}
+				var fontSizes=[
+					8,9,10,11,12,14,16,18,20,22,24,26,28,36,48,72
+				];
+				ff=$("fontSize");
+				for(var i=0;i<fontSizes.length;i++){
+					_option=document.createElement("option");
+					_option.innerText=fontSizes[i];
+					ff.appendChild(_option);
+				}
+				
+				//为colorChecker中添加颜色
+				var init_colors=[
+					[
+						"#000","#7f7f7f","#880015","#ed1c24","#ff7f27","#fff200"
+						,"#22b14c","#00a2e8","#3f48cc","#a349a4"
+					]
+					,[
+						"#999","#a1a1a1","#a03d61","#f66576","#ffa41a","#f7eb58"
+						,"#6bcb34","#4cbde9","#576dc5","#b584c5"
+					]
+					,[
+						'#fff',"#c3c3c3","#b97a57","#ffaec9","#ffc90e","#efe4b0"
+						,"#b5e61d","#99d9ea","#7092be","#c8bfe7"
+					]
+				];
+				var cc_inner="<tr>";//cc means colorChecker
+				for(var i=0;i<3;i++){
+					for(var i2=0;i2<10;i2++){
+						cc_inner+="<td style='background-color:"+init_colors[i][i2]+"'></td>";
+					}
+					cc_inner+="</tr><tr>";
+				}
+				cc_inner+="</tr>";
+				$("colorChecker").innerHTML=cc_inner;
+			})();
+			
+			//操作栏选项的鼠标事件
+			$("buttons").onclick=function(e){
+				e=e||window.event;
+				var target=e.target||e.srcElement;
+				function listCtrl(ctrler){
+					if(ctrler.id=="document"){
+						var list=$("document_list");
+						if(list.style.display!="none"){
+							list.style.display="none";
+						}else{
+							list.style.display="block";
+						}
+					}else{
+						if($("up").innerText=="放下")listsUp();
+						var lists=document.getElementsByClassName("typeChose");
+						var regecp=new RegExp("\\b"+ctrler.id+"\\b");
+						for(var i=0;i<lists.length;i++){
+							if(regecp.test(lists[i].className)){
+								lists[i].style.display="block";
+							}else{
+								lists[i].style.display="none";
+							}
+						}
+						var onshow=document.getElementsByClassName('onShow')[0];
+						onshow.removeAttribute("class");
+						ctrler.className="onShow";
+						$("document_list").style.display="none";
+					}
+				};
+				switch(target.id){
+					case "up":
+						listsUp();
+						break;
+					case "fullScreen":
+						requestFullScreen();
+						break;
+					case "document":
+					case "main":
+					case "fonts":
+					case "tongji":
+					case "check":
+						listCtrl(target);
+						if(target.id=="tongji"){
+							$("tongji_helper").style.display="block";
+							img.tongjiInit();
+						}else{
+							$("tongji_helper").style.display="none";
+							img.tongjiEnd();
+						}
+						break;
+				}
+			};
+			function listsUp(ctrl){
+				ctrl=ctrl||$("up");
+				if(ctrl.innerText=="收起"){
+					ctrl.innerText="放下";
+					$("lists").style.display="none";
+				}else{
+					ctrl.innerText="收起";
+					$("lists").style.display="block";
+				}
+				setTimeout(setContainerHeight,500);
+			};
+			function requestFullScreen(ctrl){
+				ctrl=ctrl||$("fullScreen");
+				if(ctrl.innerText=="全屏"){
+					//进入全屏
+					var docElm = document.documentElement;
+					if(docElm.requestFullscreen){  
+					    docElm.requestFullscreen();  
+					}else if (docElm.mozRequestFullScreen) {  
+					    docElm.mozRequestFullScreen();  
+					}else if (docElm.webkitRequestFullScreen) {  
+					    docElm.webkitRequestFullScreen();  
+					}else if (docElm.msRequestFullscreen) {
+					  	document.body.msRequestFullscreen();
+					  	alert("我们已为您跳转到了全屏模式,但您的浏览器对我们设置的全屏不完全兼容,如由异常,请退出全屏再按f11手动进入全屏.");
+					}else{
+						alert("对不起,因为浏览器版本原因,我们无法为你设置全屏,请按f11进入全屏");
+						return;
+					}
+					ctrl.innerText="退出全屏";
+				}else{
+					//退出全屏
+					var de = document;
+				    if (de.exitFullscreen) {
+				        de.exitFullscreen();
+				    } else if (de.mozCancelFullScreen) {
+				        de.mozCancelFullScreen();
+				    } else if (de.webkitCancelFullScreen) {
+				        de.webkitCancelFullScreen();
+				    }else if(de.msExitFullscreen){
+				    	de.msExitFullscreen();
+				    }else{
+				    	alert("对不起,因为浏览器版本原因,我们无法为你设置全屏,请按f11退出全屏");
+						return;
+				    }
+				    ctrl.innerText="全屏";
+				}
+				setTimeout(setContainerHeight,500);
+			};
+			
+			function include(outer,inner,type){
+				function compare(_outer,_inner,_type){
+					if(type=="self"||!type){
+						return _outer==_inner;
+					}else if(type=="id"){
+						return _outer==_inner.id;
+					}else if(type=="tagName"){
+						return new RegExp(_outer,"i").test(_inner.tagName);
+					}else if(type=="className"||type=="class"){
+						return new RegExp("\\b"+_outer+"\\b").test(_inner.className);
+					}
+				};
+				var body=document.body;
+				while(inner!=body){
+					if(compare(outer,inner,type)){
+						return true;
+					}else{
+						inner=inner.parentNode;
+					}
+				}
+				return false;
+			};
+			
+			//为title绑定方法
+			$("title").onclick=function(){
+				var name=prompt("请输入文件名:");
+				$("title").innerText=name.replace(/\n+|\s+/g," ");
+			};
+			//为document_list绑定方法
+			$("document_list").onmouseover=function(e){
+				e=e||window.event;
+				var target=e.target||e.srcElement;
+				if(include("ol",target,"tagName")||/ul/i.test(target.tagName))return;
+				function openOl(ctrler){
+					var c=$("document_list").childNodes;
+					for(var i=0;i<c.length;i++){
+						if(/ol/i.test(c[i].tagName)){
+							if(c[i].id==ctrler.id+"_list"){
+								c[i].style.display="block";
+							}else{
+								c[i].style.display="none";
+							}
+						}
+					}
+				};
+				openOl(target);
+			};
+			//这个方法会被jscolor调用
+			function setColor(e){
+				e=e||window.event;
+				var target=e.valueElement||e.srcElement||e.target;
+				var color;
+				if(/input/i.test(target.tagName)&&include("jscolor",target,"className")){
+					target.value="";
+				}
+				color=target.style.backgroundColor;
+				function checkedSet(id){
+					if(include("checked",$(id),"class")){
+						$(id).getElementsByClassName("icon")[0].style.backgroundColor=color;
+						if(id=="borderColor"){
+							img.helperDiv.style.color=color;
+						}else if(id=="innerColor"&&include("checked",$("toUntransparent"),"class")){
+							img.helperDiv.style.backgroundColor=color;
+						}
+					}
+				}
+				checkedSet("borderColor");
+				checkedSet("innerColor");
+			};
+			
+			//这个是img的类
+			var img={
+				workspace:$("workSpace")
+				,helperImg:$("work_helper_img")
+				,helperDiv:$("work_helper_div")
+				,width_data:$("width")
+				,height_data:$("height")
+				,lineWidth:2
+				,startX:null
+				,startY:null
+				,borderColor:$("borderColor").getElementsByClassName("icon")[0]
+				,innerColor:$("innerColor").getElementsByClassName("icon")[0]
+				,filter_go:true
+				,work_context:null
+				,pastWidth:0
+				,pastHeight:0
+				,status:"pencil"
+				
+				/*This status can make the drawer work,There are these kind of status:
+				 * drag: mouse click to change the size of workspace
+				 * pencil: mouse down and move to draw a line
+				 * writer: mouse down and move to move the writer space,on key down to write
+				 * 
+				 */
+				,data:null
+				,hasTongji:false
+				,myChart:null
+				,getX:function(e){
+					if(typeof e!=="number"){
+						e=e.clientX;
+					}
+					e=e+$("container_outer").scrollLeft-img.workspace.offsetLeft;
+					return e;
+				}
+				,getY:function(e){
+					if(typeof e!=="number"){
+						e=e.clientY;
+					}
+					var outer=$("container_outer");
+					e=e+outer.scrollTop-img.workspace.offsetTop-outer.offsetTop;
+					return e;
+				}
+				,drawLine:function(context,startX,startY,endX,endY,width,color){
+					context.lineWidth=width;
+					context.strokeStyle=color;
+					context.lineJoin="round";
+					context.beginPath();
+					context.moveTo(startX,startY);
+					context.lineTo(endX,endY);
+					context.closePath();
+					context.stroke();
+				}
+				,drag:function(obj,x,y){
+					obj.width=x*2;
+					obj.height=y*2;
+					obj.style.width=x+"px";
+					obj.style.height=y+"px";
+					if(obj==img.workspace){
+						img.width_data.innerText=parseInt(x);
+						img.height_data.innerText=parseInt(y);
+					}
+				}
+				//This function is to help helperDiv and helperImg to change their style when mouse down and move
+				,helperDrag:function(e){
+					/* This div can not only point a div but also point a img,
+					 * call it div is because this function is firstly defined
+					 * as a div(really div in html)'s mousemove function, and
+					 * i'm a little lazy to change it.
+					 */
+					var div=this;
+					function getX(event){
+						event=event||window.event;
+						return img.getX(event)+img.workspace.offsetLeft-div.offsetLeft;
+					};
+					function getY(event){
+						event=event||window.event;
+						return img.getY(event)+img.workspace.offsetTop-div.offsetTop;
+					};
+					function winEnd(callback){
+						window.onmouseup=function(){
+							window.onmousemove=window.onmouseup=null;
+							if(callback)callback();
+						};
+					};
+					if(getX(e)<5){
+						div.style.cursor="w-resize";
+						div.onmousedown=function(){
+							if(/img/i.test(div.tagName)&&img.status=="choseSth")img.clearImg(img.helperImg);
+							window.onmousemove=function(e2){
+								var x=getX(e2);
+								div.style.left=div.offsetLeft+x+"px";
+								div.style.width=div.clientWidth-x+"px";
+							};
+							winEnd();
+							return false;
+						};
+					}else if(getY(e)<5){
+						div.style.cursor="n-resize";
+						div.onmousedown=function(){
+							if(/img/i.test(div.tagName)&&img.status=="choseSth")img.clearImg(img.helperImg);
+							window.onmousemove=function(e2){
+								var y=getY(e2);
+								div.style.top=div.offsetTop+y+"px";
+								div.style.height=div.clientHeight-y+"px";
+							};
+							winEnd();
+							return false;
+						};
+					}else if(div.clientWidth-getX(e)<5){
+						div.style.cursor="w-resize";
+						div.onmousedown=function(){
+							if(/img/i.test(div.tagName)&&img.status=="choseSth")img.clearImg(img.helperImg);
+							window.onmousemove=function(e2){
+								div.style.width=getX(e2)+"px";
+							};
+							winEnd();
+							return false;
+						};
+					}else if(div.clientHeight-getY(e)<5){
+						div.style.cursor="n-resize";
+						div.onmousedown=function(){
+							if(/img/i.test(div.tagName)&&img.status=="choseSth")img.clearImg(img.helperImg);
+							window.onmousemove=function(e2){
+								div.style.height=getY(e2)+"px";
+							};
+							winEnd();
+							return false;
+						};
+					}else{
+						div.style.cursor="all-scroll";
+						div.onmousedown=function(e1){
+							if(/img/i.test(div.tagName)&&img.status=="choseSth")img.clearImg(img.helperImg);
+							img.startX=getX(e1);
+							img.startY=getY(e1);
+							window.onmousemove=function(e2){
+								div.style.top=getY(e2)-img.startY+div.offsetTop+"px";
+								div.style.left=getX(e2)-img.startX+div.offsetLeft+"px";
+							};
+							winEnd(function(){
+								img.startX=img.startY=null;
+							});
+							if(!/div/i.test(div.tagName))return false;
+						};
+					}
+				}
+				
+				,filter:function(){
+					if(img.filter_go===true){
+						img.filter_go=false;
+						return true;
+					}else{
+						return false;
+					}
+				}
+				//把整个canvas的图片下沉到helperImg中去
+				,downToImg:function(){
+					var width=img.workspace.clientWidth
+					,height=img.workspace.clientHeight;
+					var hStyle=img.helperImg.style;
+					hStyle.display="block";
+					hStyle.backgroundColor="white";
+					hStyle.left=img.workspace.offsetLeft+"px";
+					hStyle.width=width+"px";
+					hStyle.height=height+"px";
+					img.helperImg.src=img.workspace.toDataURL("image/png");
+					img.data=img.work_context.getImageData(0,0,width*2,height*2);
+					hStyle.zIndex="-1";
+					img.workspace.style.opacity="0.5";
+					img.workspace.style.border="solid black 0.5px";
+				}
+				//将img的图片重绘到canvas上来
+				,restore:function(){
+					var width=img.workspace.clientWidth
+					,height=img.workspace.clientHeight
+					,iwidth=img.helperImg.clientWidth
+					,iheight=img.helperImg.clientHeight
+					,context=img.work_context;
+					context.restore();
+					context.putImageData(img.data,0,0);
+					img.workspace.style.opacity="1";
+					img.helperImg.style.display="none";
+					img.helperImg.removeAttribute("src");
+					img.helperImg.removeAttribute("width");
+					img.helperImg.removeAttribute("height");
+					img.helperImg.style.zIndex="2000";
+					img.workspace.style.border="none";
+					img.data=null;
+				}
+				,clearHelperDiv:function(e){
+					var div=img.helperDiv
+					,maxLineWidth=div.clientWidth*2
+					,fontSize=parseInt(div.style.fontSize)*2
+					,x=(div.offsetLeft-img.workspace.offsetLeft)*2
+					,y=div.offsetTop*2
+					,txt=div.innerText;
+					var font=fontSize+"px "+div.style.fontFamily;
+					if(include("checked",$("bold"),"class")){
+						font="bold "+font;
+					}
+					if(include("checked",$("italic"),"class")){
+						font="italic "+font;
+					}
+					var context=img.work_context;
+					context.restore();
+					context.font=font;
+					if(include("checked",$("toUntransparent"),"class")){
+						context.fillStyle=div.style.backgroundColor;
+						context.fillRect(x,y,maxLineWidth,div.clientHeight*2);
+					}
+					context.fillStyle=div.style.color;
+					var arr=txt.split("\n");
+					for(var i=0,i3=0;i<arr.length;i++){
+						for(var i2=2;i2<arr[i].length;i2++){
+							if( context.measureText( arr[i].slice(0,i2) ).width > maxLineWidth){
+								context.fillText( arr[i].slice(0,i2-1) , x , y+(fontSize+6)*(i+i3+1));
+								arr[i]=arr[i].slice(i2-1);
+								i2=2;
+								i3++;
+							}
+						}
+						context.fillText(arr[i],x,y+(fontSize+5)*(i+i3+1));
+					}
+					div.innerHTML="";
+					div.style.width="5px";
+					div.style.height="5px";
+				}
+				,cutToImg:function(_img){
+					var x=_img.offsetLeft-img.workspace.offsetLeft
+					,y=_img.offsetTop-img.workspace.offsetTop
+					,width=_img.clientWidth
+					,height=_img.clientHeight;
+					//hCanvas & hContext means helper canvas & helper context.
+					var hCanvas=document.createElement("canvas");
+					hCanvas.width=width*2;
+					hCanvas.height=height*2;
+					hCanvas.style.width=width+"px";
+					hCanvas.style.height=height+"px";
+					img.data=img.work_context.getImageData(x*2,y*2,width*2,height*2);
+					var hContext=hCanvas.getContext("2d");
+					hContext.putImageData(img.data,0,0);
+					_img.src=hCanvas.toDataURL("image/png");
+					_img.style.backgroundColor="white";
+					img.data=hCanvas=hContext=null;
+				}
+				,clearImg:function(_img){
+					var x=_img.offsetLeft-img.workspace.offsetLeft
+					,y=_img.offsetTop-img.workspace.offsetTop
+					,width=_img.clientWidth
+					,height=_img.clientHeight;
+					img.work_context.clearRect(x*2+2,y*2,width*2,height*2);
+					_img.style.backgroundColor="rgba(0,0,0,0)";
+				}
+				,reDrawImg:function(_img){
+					if(!_img.src||_img.src==""){
+						_img.style.display="none";
+						return;
+					}
+					var x=_img.offsetLeft-img.workspace.offsetLeft
+					,y=_img.offsetTop-img.workspace.offsetTop;
+					var context=img.work_context;
+					context.restore();
+					context.drawImage(_img,x*2,y*2,_img.clientWidth*2,_img.clientHeight*2);
+					_img.removeAttribute("src");
+					_img.style.display="none";
+					_img.style.top="0px";
+					_img.style.border="none";
+				}
+				,totleCtrl:function(e){
+					e=e||window.event;
+					function winEnd(callback){
+						window.onmouseup=function(){
+							window.onmousemove=null;
+							img.workspace.onmousedown=null;
+							if(callback)callback();
+						};
+					}
+					if(img.status=="drag"){
+						/**
+						 * 该方法用于设置拖动(改变大小)方法
+						 * @param {number} x -指定宽度,使workspace的宽度不随鼠标改变
+						 * @param {number} y -同x
+						 */
+						function setWindowMouseEvent(x,y){
+							window.onmousemove=function(e){
+								e=e||window.event;
+								img.drag(img.workspace,x||img.getX(e),y||img.getY(e));
+								img.helperImg.style.left=img.workspace.offsetLeft+"px";
+								$("container_outer").scrollTop=$("container_inner").clientHeight;
+							};
+							winEnd();
+						};
+						if(img.workspace.clientHeight-img.getY(e)<5
+							&&img.workspace.clientWidth-img.getX(e)<5)
+						{
+							img.workspace.style.cursor="nw-resize";
+							img.workspace.onmousedown=function(){
+								setWindowMouseEvent();
+							};
+						}else if(img.workspace.clientHeight-img.getY(e)<5){
+							img.workspace.style.cursor="n-resize";
+							img.workspace.onmousedown=function(){
+								setWindowMouseEvent(img.workspace.clientWidth);
+							};
+						}else if(img.workspace.clientWidth-img.getX(e)<5){
+							img.workspace.style.cursor="e-resize";
+							img.workspace.onmousedown=function(){
+								setWindowMouseEvent(null,img.workspace.clientHeight);
+							};
+						}else{
+							img.workspace.style.cursor="default";
+							img.workspace.onmousedown=null;
+						}
+						if(!img.filter())return;
+						img.downToImg();
+					}else if(img.status=="pencil"){
+						img.workspace.style.cursor="crosshair";
+						img.workspace.onmousedown=function(e1){
+							e1=e1||window.event;
+							img.startX=img.getX(e1);
+							img.startY=img.getY(e1);
+							var horizontal=null;//horizontal: 水平线
+							window.onmousemove=function(e2){
+								e2=e2||window.event;
+								//,e means end
+								var ex=img.getX(e2)
+								,ey=img.getY(e2);
+								if(e2.shiftKey){
+									if(horizontal===null){
+										if(Math.abs(ey-img.startY)<3)return;
+										if(Math.abs(ey-img.startY)<Math.abs(ex-img.startX)){
+											horizontal=true;
+										}else{
+											horizontal=false;
+										}
+									}else if(horizontal===true){
+										if(Math.abs(ey-img.startY)-Math.abs(ex-img.startX)>200){
+											horizontal=false;
+										}
+									}else{
+										if(Math.abs(ex-img.startX)-Math.abs(ey-img.startY)>200){
+											horizontal=true;
+										}
+									}
+									if(horizontal){
+										ey=img.startY;
+									}else{
+										ex=img.startX;
+									}
+								}
+								img.drawLine(img.work_context,img.startX*2,img.startY*2,ex*2,ey*2,img.lineWidth*2,img.borderColor.style.backgroundColor);
+								img.startX=ex
+								,img.startY=ey;
+							}
+							winEnd(function(){
+								img.startX=img.startY=null;
+							});
+						};
+					}else if(img.status=="eraser"){
+						img.workspace.style.cursor="cell";
+						img.workspace.onmousedown=function(e1){
+							e1=e1||window.event;
+							img.work_context.restore();
+							img.work_context.clearRect(img.getX(e1)*2-6,img.getY(e1)*2-6,20,20);
+							window.onmousemove=function(e2){
+								img.work_context.clearRect(img.getX(e2)*2-6,img.getY(e2)*2-6,20,20);
+							}
+							winEnd(function(){
+								img.startX=img.startY=null;
+							});
+						};
+					}else if(img.status=="writer"){
+						$("buttons").onclick({target:$("fonts")});
+						img.workspace.onmousedown=function(e1){
+							if(img.helperDiv.innerText!=""){
+								img.clearHelperDiv(e1);
+							}
+							var _style=img.helperDiv.style;
+							_style.display="block";
+							_style.border="dashed black 1px";
+							img.startX=img.getX(e1);
+							img.startY=img.getY(e1);
+							_style.left=img.startX+img.workspace.offsetLeft+"px";
+							_style.top=img.startY+img.workspace.offsetTop+"px";
+							window.onmousemove=function(e2){
+								_style.width=img.getX(e2)-img.startX+"px";
+								_style.height=img.getY(e2)-img.startY+"px";
+							};
+							winEnd(function(){
+								img.startX=img.startY=null;
+								//为写字框绑定函数
+								img.helperDiv.onmousemove=img.helperDrag;
+							});
+						};
+					}else if(img.status=="choseSth"){
+						img.workspace.onmousedown=function(e1){
+							var helperImg=img.helperImg;
+							if(helperImg.style.display!="none"){
+								img.reDrawImg(helperImg);
+							}
+							var _style=img.helperImg.style;
+							_style.display="block";
+							_style.border="dashed black 1px";
+							_style.backgroundColor="rgba(0,0,0,0)";
+							img.startX=img.getX(e1);
+							img.startY=img.getY(e1);
+							_style.left=img.startX+img.workspace.offsetLeft+"px";
+							_style.top=img.startY+img.workspace.offsetTop+"px";
+							window.onmousemove=function(e2){
+								_style.width=img.getX(e2)-img.startX+"px";
+								_style.height=img.getY(e2)-img.startY+"px";
+								return false;
+							};
+							winEnd(function(){
+								img.startX=img.startY=null;
+								img.helperImg.onmousemove=img.helperDrag;
+								img.cutToImg(img.helperImg);
+							});
+						};
+					}
+				}
+				,getElement:function(obj,type){
+					if(type=="firstChild"){
+						return obj.firstChild.nodeName=="#text"?obj.firstChild.nextSibling:obj.firstChild;
+					}else if(type=="lastChild"){
+						return obj.lastChild.nodeName=="#text"?obj.lastChild.previousSibling:obj.lastChild;
+					}
+				}
+				,addLine:function(){
+					var tbody=img.getElement($("tongji_helper"),"firstChild");
+					var trs=tbody.childNodes;
+					for(var i=0;i<trs.length;i++){
+						if(trs[i].nodeName!="#text"){
+							//这是tr
+							var td=document.createElement("td");
+							td.innerHTML="<div contenteditable='true'></div>";
+							var last=trs[i].lastChild;
+							if(last.nodeName=="#text")last=last.previousSibling;
+							trs[i].insertBefore(td,last);
+						}
+					}
+				}
+				,addRow:function(){
+					var tbody=img.getElement($("tongji_helper"),"firstChild");
+					var tr=document.createElement("tr");
+					var str='';
+					var first=img.getElement(tbody,"firstChild");
+					var children=first.childNodes;
+					for(var i=0;i<children.length;i++){
+						if(children[i].nodeName!="#text"){
+							str+='<td><div  contentEditable="true"></div></td>';
+						}
+					}
+					tr.innerHTML=str;
+					tbody.appendChild(tr);
+				}
+				,tongjiInit:function(){
+					if(img.myChart===null){
+						var div=$("tongji_helper_div");
+						div.style.width="500px";
+						div.style.height="300px";
+						div.style.display="block";
+						div.style.backgroundColor="white";
+						img.myChart=echarts.init(div);
+					}
+					img.workspace.style.display="none";
+				}
+				,tongjiEnd:function(){
+					var wp=img.workspace;
+					if(img.hasTongji){
+						var canvas=img.getElement($("tongji_helper_div"),"firstChild");
+						canvas=img.getElement(canvas,"firstChild");//获取canvas
+						var width=canvas.clientWidth;
+						var height=canvas.clientHeight;
+						wp.width=width*2;
+						wp.height=height*2;
+						wp.style.width=width+"px";
+						wp.style.height=height+"px";
+						var _img=img.helperImg;
+						_img.src=canvas.toDataURL("image/png");
+						_img.style.display="block";
+						_img.style.width=width+"px";
+						_img.style.height=height+"px";
+						setTimeout(function(){
+							img.work_context.drawImage(_img,0,0,width*2,height*2);
+						},500);
+						$("tongji_helper_div").style.display="none";
+						_img.style.display="none";
+						setTimeout(function(){
+							_img.removeAttribute("src");
+						},800);
+						img.hasTongji=false;
+					}
+					wp.style.display="block";
+				}
+				,getOption:function(type,hasShandow){
+					
+					var op={
+						animation:false,
+						title:{
+							text:prompt("请输入统计图名称")
+						},
+						tooltip:{},
+						legend:{
+							data:[]
+						},
+						xAxis:{
+							data:[]
+						},
+						yAxis:{},
+						series:[]
+					};
+					//get trs
+					var tbody=img.getElement($("tongji_helper"),"firstChild");
+			    	var _trs=tbody.childNodes;
+			    	var trs=[];
+			    	for(var i=0;i<_trs.length;i++){
+			    		if(_trs[i].nodeName!="#text"&&!/^\s*$/.test(_trs[i].innerText)){
+			    			trs.push(_trs[i]);
+			    		}
+			    	}
+			    	if(type=="bar"||type=="line"||type=="scatter"){
+			    		for(var i=1,inTxt;i<trs.length;i++){
+							inTxt=img.getElement(trs[i],"firstChild").innerText;
+							op.legend.data.push(inTxt);
+							if(hasShandow){
+								op.series.push({name:inTxt,type:type,data:[],areaStyle:{color:"auto"}});
+							}else{
+								op.series.push({name:inTxt,type:type,data:[]});
+							}
+							var children=trs[i].childNodes;
+							for(var i2=0,txt,inNum;i2<children.length;i2++){
+								if(children[i2].nodeName!="#text"){
+									txt=children[i2].innerText;
+									if(txt==""){
+										inNum=0;
+									}else if(isNaN(+txt)){
+										inNum=0
+									}else{
+										inNum=+txt;
+									}
+									op.series[i-1].data.push(inNum);
+								}
+							}
+							op.series[i-1].data.shift();
+							op.series[i-1].data.pop();
+						}
+						var children=trs[0].childNodes;
+						for(var i=0;i<children.length;i++){
+							if(children[i].nodeName!="#text"&&!/^\s*$/.test(children[i].innerText)){
+								op.xAxis.data.push(children[i].innerText);
+							}
+						}
+						op.xAxis.data.shift();
+						op.xAxis.data.pop();
+						var len=op.xAxis.data.length;
+						for(var i=0;i<op.series.length;i++){
+							while(op.series[i].data.length>len){
+								op.series[i].data.pop();
+							}
+						}
+					}else if(type=="pie"){
+						var sIn={
+							name:op.title.text
+							,type:"pie"
+							,radius:"55%"
+							,data:[]
+						};
+						var line1=trs[0].childNodes;
+						var line2=trs[1].childNodes;
+						var l1=[]
+						,l2=[];
+						for(var i=0;i<line1.length;i++){
+							if(line1[i].nodeName!="#text"){
+								l1.push(line1[i]);
+							}
+						}
+						for(var i=0;i<line2.length;i++){
+							if(line2[i].nodeName!="#text"){
+								l2.push(line2[i]);
+							}
+						}
+						line1=line2=null;
+						for(var i=0;i<l1.length;i++){
+							if(!/^\s*$/.test(l1[i].innerText)){
+								sIn.data.push(
+									{
+										value:isNaN(+l2[i].innerText)?0:+l2[i].innerText
+										,name:l1[i].innerText
+									}
+								);
+							}
+						}
+						sIn.data.pop();
+						sIn.data.shift();
+						op.xAxis.show=false;
+						op.yAxis.show=false;
+						op.series=sIn;
+					}
+				    return op;   
+				}
+				,init:function(){
+					img.workspace.style.backgroundColor="#fff";
+					img.work_context=img.workspace.getContext("2d");
+					img.work_context.save();
+					img.workspace.onmousemove=img.totleCtrl;
+				}
+			};
+			img.init();
+			
+			function rmClass(obj,rmdClass){
+				var reg=new RegExp("\\s*"+rmdClass+"\\s*");
+				obj.className=obj.className.replace(reg," ");
+			};
+			function addClass(obj,newClass){
+				var reg=new RegExp("\\b"+newClass+"\\b");
+				if(!reg.test(obj.className)){
+					obj.className+=" "+newClass;
+					return true;
+				}else{
+					return false;
+				}
+			};
+			function getId(obj){
+				while(obj!=document.body){
+					if(obj.id&&obj.id!==""){
+						return obj.id;
+					}else{
+						obj=obj.parentNode;
+					}
+				}
+			};
+			
+			
+			//为lists绑定点击方法
+			$("lists").onclick=function(e){
+				e=e||window.event;
+				var target=e.target||e.srcElement;
+				if(!include("canuse",target,"class"))return false;
+				//This function is to make helper vanish
+				function vanishHelper(){
+					//make the img and div vanish
+					if(img.status=="writer"){
+						if(img.helperDiv.innerText!="")img.clearHelperDiv();
+						img.helperDiv.onmousemove=null;
+						img.helperDiv.style.display="none";
+					}
+					if(img.status=="drag"&&img.helperImg.style.display!="none")img.restore();
+					if(img.status=="choseSth"||img.status=="past"){
+						img.reDrawImg(img.helperImg);
+					}
+					if(img.status=="download"){
+						img.helperImg.style.display='none';
+						img.helperImg.removeAttribute("src");
+					}
+				};
+				var tools=["pencil","eraser","paintPot","writer","drag"];
+				switch(getId(target)){
+					case "colorChecker":
+						setColor(e);//为table绑定setColor方法
+						break;
+					case "borderColor":
+						rmClass($("innerColor"),"checked");
+						addClass($('borderColor'),"checked");
+						break;
+					case "innerColor":
+						rmClass($("borderColor"),"checked");
+						addClass($("innerColor"),"checked");
+						break;
+					case "lineWeight":
+						$("lineWeight_list").style.display="block";
+						break;
+					case "pencil":
+					case "eraser":
+					case "paintPot":
+					case "writer":
+					case "drag":
+						vanishHelper();
+						img.status=getId(target);
+						for(var i=0;i<tools.length;i++){
+							if(tools[i]!=img.status){
+								rmClass($(tools[i]),"checked");
+							}else{
+								addClass($(tools[i]),"checked");
+							}
+						}
+						rmClass($("choseSth"),"checked");
+						rmClass($("cut").parentNode,"canuse");
+						rmClass($("past"),"canuse");
+						rmClass($("cut_toNew").parentNode,"canuse");
+						img.pastData=null;
+						img.filter_go=true;
+						break;
+					case "toTransparent":
+					case "toUntransparent":
+						if(getId(target)=="toTransparent"){
+							img.helperDiv.style.backgroundColor="initial";
+							rmClass($("toUntransparent"),"checked");
+							addClass($("toTransparent"),"checked");
+						}else{
+							img.helperDiv.style.backgroundColor
+							=$("innerColor").getElementsByClassName("icon")[0].style.backgroundColor;
+							addClass($("toUntransparent"),"checked");
+							rmClass($("toTransparent"),"checked");
+						}
+						break;
+					case "bold":
+						if(!addClass($("bold"),"checked")){
+							img.helperDiv.style.fontWeight="normal";
+							rmClass($("bold"),"checked");
+						}else{
+							img.helperDiv.style.fontWeight="bold";
+						}
+						break;
+					case "italic":
+						if(!addClass($("italic"),"checked")){
+							img.helperDiv.style.fontStyle="normal";
+							rmClass($("italic"),"checked");
+						}else{
+							img.helperDiv.style.fontStyle="italic";
+						}
+						break;
+					case "choseSth":
+						vanishHelper();
+						if(addClass($("choseSth"),"checked")){
+							addClass($("cut").parentNode,"canuse");
+							img.status="choseSth";
+							for(var i=0;i<tools.length;i++){
+								rmClass($(tools[i]),"checked");
+							}
+							addClass($("cut_toNew").parentNode,"canuse");
+						}else{
+							rmClass($("choseSth"),"checked");
+							img.status="pencil";
+							addClass($("pencil"),'checked');
+						}
+						break;
+					case "cut":
+						img.clearImg(img.helperImg);
+					case "copy":
+						//获取图片的data
+						img.pastData=img.helperImg.src;
+						img.pastWidth=img.helperImg.clientWidth;
+						img.pastHeight=img.helperImg.clientHeight;
+						addClass($("past"),"canuse");
+						if(getId(target)=="cut"){
+							img.helperImg.style.display="none";
+							img.helperImg.removeAttribute("src");
+						}
+						break;
+					case "past":
+						vanishHelper();
+						img.status="past";
+						var _img=img.helperImg;
+						_img.src=img.pastData;
+						_img.style.width=img.pastWidth+"px";
+						_img.style.height=img.pastHeight+"px";
+						_img.style.left=img.workspace.offsetLeft+"px";
+						_img.style.top=img.workspace.offsetTop+"px";
+						_img.style.border="dashed 1px black";
+						_img.style.backgroundColor="rgba(0,0,0,0)";
+						_img.onmousemove=img.helperDrag;
+						_img.style.display="block";
+						break;
+					case "remove":
+						img.clearImg(img.helperImg);
+						img.helperImg.removeAttribute("src");
+						img.helperImg.style.display="none";
+						break;
+					case "cut_toNew":
+						//裁剪为新图像
+						var _img=img.helperImg;
+						if(_img.style.display=="none"||_img.src=="")return;
+						var wspace=img.workspace;
+						var width=_img.clientWidth;
+						var height=_img.clientHeight;
+						wspace.width=width*2;
+						wspace.height=height*2;
+						wspace.style.width=width+"px";
+						wspace.style.height=height+"px";
+						img.work_context.drawImage(_img,0,0,width*2,height*2);
+						_img.style.display="none";
+						_img.style.border="none";
+						_img.style.top="0px";
+						_img.removeAttribute("src");
+						break;
+					case "zhuxingtu":
+						var op=img.getOption("bar");
+						img.hasTongji=true;
+						img.myChart.setOption(op,true);
+						break;
+					case "bingtu":
+						var op=img.getOption("pie");
+						img.hasTongji=true;
+						img.myChart.setOption(op,true);
+						break;
+					case "zexiantu":
+						var op=img.getOption("line");
+						img.hasTongji=true;
+						img.myChart.setOption(op,true);
+						break;
+					case "mianjitu":
+						var op=img.getOption("line",true);
+						img.hasTongji=true;
+						img.myChart.setOption(op,true);
+						break;
+					case "sandiantu":
+						var op=img.getOption("scatter");
+						img.hasTongji=true;
+						img.myChart.setOption(op,true);
+						break;
+				}
+			};
+			
+			$("file").onchange=function(){
+				var file=this.files[0];
+				if(!/image\/\w+/.test(file.type)){
+					alert("Sorry ,你选择的不是照片!");
+				}else if(confirm("导入照片将会覆盖以前的内容,任然确定导入照片?")){
+					var fr=new FileReader();
+					fr.readAsDataURL(file);
+					fr.onload=function(e){
+						var _img=img.helperImg;
+						_img.removeAttribute("height");
+						_img.removeAttribute("width");
+						_img.style.width="auto";
+						_img.style.height="auto";
+						_img.style.display="block";
+						_img.src=this.result;
+						setTimeout(function(){
+							var width=_img.clientWidth;
+							var height=_img.clientHeight;
+							var can=img.workspace;
+							can.width=width*2;
+							can.height=height*2;
+							can.style.width=width+"px";
+							can.style.height=height+"px";
+							img.work_context.drawImage(_img,0,0,width*2,height*2);
+							_img.removeAttribute("src");
+							_img.style.display="none";
+						},500);
+					}
+				}
+			}
+			
+			$("document_list").onclick=function(e){
+				e=e||window.event;
+				var target=e.target||e.srcElement;
+				switch(getId(target)){
+					case "open_list":
+						break;
+					case "save_list":
+						if(target.className!="netWork"){
+							var _img=img.helperImg;
+							_img.style.width=img.workspace.clientWidth+"px";
+							_img.style.height=img.workspace.clientHeight+"px";
+							_img.src=img.workspace.toDataURL("image/"+target.className);
+							_img.style.display="block";
+							_img.style.left=img.workspace.offsetLeft+"px";
+							_img.style.top=img.workspace.offsetTop+"px";
+							_img.style.backgroundColor="white";
+							img.status="download";
+							alert("请右击工作区下载图片(不同浏览器可能稍有区别)");
+						}
+						break;
+					case "createNew":
+						if(confirm("确定抛弃现有的图片?")){
+							location.reload();
+						}
+						break;
+				}
+				
+			}
+			
+			img.helperImg.onfocus=function(){this.blur();};
+			
+			//为粗细选择框绑定函数
+			$("lineWeight_list").onchange=function(){
+				img.lineWidth=parseInt(this.options[this.selectedIndex].value);
+				this.style.display="none";
+			};
+			$("fontFamily").onchange=function(){
+				img.helperDiv.style.fontFamily=this.options[this.selectedIndex].value;
+			};
+			$("fontSize").onchange=function(){
+				img.helperDiv.style.fontSize=this.options[this.selectedIndex].value+"px";
+			};
+			$("tongji_helper").onkeydown=function(e){
+				e=e||window.event;
+				if(e.keyCode==13)return false;
+			};
+			
+		</script>
+		<script class="fromNet" type="text/javascript" src="support/jscolor.min.js"></script>
+		<script type="text/javascript" id="Echarts" src="support/echarts.min.js"></script>
+		<script type="text/javascript" src="support/loginSupport.js"></script>
+		<script id="LocalSupport" type="text/javascript">
+			function getURL(relativeURL){
+				var _location=location.pathname;
+				_location=/^http/.test(location.toString())?_location.slice(0,_location.lastIndexOf("/")):"http://www.hOffice.com.cn";
+				return _location+relativeURL;
+			};
+			(function(){
+				function urlSearch(){
+					var href=location.href;
+					var cutPoint=href.indexOf("?");
+					if(cutPoint<=0){
+						return false;
+					}else{
+						href=href.slice(cutPoint+1);
+					}
+					cutPoint=href.indexOf("=");
+					if(cutPoint<=0||!/^uuid=/.test(href)){
+						return false;
+					}else{
+						href=href.slice(cutPoint+1);
+					}
+					return href;
+				};
+				if(urlSearch()!=false){
+					var uuid=urlSearch();
+					myPost(
+						getURL("/OnlineDoc?method=onlineDocument&uuid=")+uuid
+						,null
+						,function(src){
+							img.helperImg.src=src;
+							setTimeout(function(){
+								img.work_context.drawImage(img.helperImg,0,0,1000,600);
+								img.helperImg.removeAttribute("src");
+							},500);
+						}
+						,"GET"
+						,true
+					);
+				}else if(window.opener){//如果有opener,则获取opener传递的数据
+					var impress=window.opener.impress;
+					if(impress.photo){
+						img.helperImg.src=impress.photo;
+						setTimeout(function(){
+							img.work_context.drawImage(img.helperImg,0,0,1000,600);
+							img.helperImg.removeAttribute("src");
+						},500);
+					}else if(impress.data){
+						$("buttons").onclick({target:$('tongji')});
+						var data=impress.data;
+						var tbody=img.getElement($("tongji_helper"),"firstChild");
+						
+						function getNodes(obj){
+							var _trs=obj.childNodes;
+							var trs=[];
+							for(var i=0;i<_trs.length;i++){
+								if(_trs[i].nodeName!="#text"){
+									trs.push(_trs[i]);
+								}
+							}
+							return trs;
+						};
+						function getTd_len(trs){
+							var _tds=trs[0].childNodes;
+							var td_len=0;
+							for(var i=0;i<_tds.length;i++){
+								if(_tds[i].nodeName!="#text"){
+									td_len++;
+								}
+							}
+							td_len--;
+							return td_len;
+						};
+						var trs=getNodes(tbody);
+						var tr_len=trs.length;
+						var td_len=getTd_len(trs);
+						
+						for(var i=0;i<data.length;i++){
+							while(td_len<=data[i].length){
+								td_len++;
+								img.addLine();
+							}
+						}
+						while(tr_len<data.length){
+							tr_len++;
+							img.addRow();
+						}
+						trs=getNodes(tbody);
+						//填数据
+						var test=false;
+						if(isNaN(+data[1][0])){
+							test=true;
+						}
+						for(var i=0;i<data.length;i++){
+							var tds=getNodes(trs[i]);
+							if(test){
+								//从第一格开始填
+								var len=data[i].length;
+								for(var i2=0;i2<len;i2++){
+									img.getElement(tds[i2],"firstChild").innerText=data[i][i2];
+								}
+							}else{
+								//从第二格开始填
+								var len=data[i].length;
+								for(var i2=0;i2<len;i2++){
+									img.getElement(tds[i2+1],"firstChild").innerText=data[i][i2];
+								}
+							}
+						}
+						window.onbeforeunload=function(){
+							var canvas=img.getElement($("tongji_helper_div"),"firstChild");
+							canvas=img.getElement(canvas,"firstChild");//获取canvas
+							window.opener.impress.photo=canvas.toDataURL();
+						};
+					}
+				}
+			})();
+		</script>
+		<script type="text/javascript" src="support/supporthPs.js"></script>
+	</body>
+</html>

@@ -269,6 +269,7 @@ String str1="~~~~~~~~~node~1~~~~~~~"
 					<input type="file" id="file" name="" style="display:none;">
 				</li>
 				<li id="link">超链接</li>
+				<li id="chart">导出统计图</li>
 				<li id="addRow">增加一行</li>
 				<li id="addLine">增加一列</li>
 			</ul>

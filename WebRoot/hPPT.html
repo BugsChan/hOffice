@@ -1997,7 +1997,7 @@
 				var _location=location.pathname;
 				_location=/^http/.test(location.toString())?_location.slice(0,_location.lastIndexOf("/")):"http://www.hOffice.com.cn";
 				return _location+relativeURL;
-			}
+			};
 			(function(){
 				var fromNet=$("fromNet");
 				fromNet.src=getURL("/support/hPPTSupport.js");
