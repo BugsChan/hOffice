@@ -523,6 +523,9 @@ String str1="~~~~~~~~~node~1~~~~~~~"
 					return false;
 				}
 			}
+			$("main_content").onclick=function(){
+				$("lists").style.display="none";
+			};
 			
 			$("head").onmousedown
 			=$("lists").onmousedown
@@ -1130,6 +1133,7 @@ String str1="~~~~~~~~~node~1~~~~~~~"
 				}
 			}
 			function changeDisplay(obj){
+				$("lists").style.display="block";
 				if(!obj.style.display||obj.style.display=="none"){
 					obj.style.display="block";
 				}else{

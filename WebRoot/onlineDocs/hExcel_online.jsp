@@ -533,6 +533,7 @@ String str1="~~~~~~~~~node~1~~~~~~~"
 				}
 			}
 			function changeDisplay(obj){
+				$("lists").style.display="block";
 				if(!obj.style.display||obj.style.display=="none"){
 					obj.style.display="block";
 				}else{
@@ -566,6 +567,9 @@ String str1="~~~~~~~~~node~1~~~~~~~"
 			window.onclick=function(event){
 				event=event||window.event;
 				var target=event.target||event.srcElement;
+				if(target.parentNode.id!="items"){
+					$("lists").style.display="none";
+				}
 				if(target.id!="table_input"&&!/td/i.test(target.tagName)&&!contains($("head"),target)&&!contains($("lists"),target)){
 					var input=$("table_input");
 					$("table").puttedIn(input);

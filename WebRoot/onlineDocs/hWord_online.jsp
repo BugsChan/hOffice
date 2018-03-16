@@ -400,12 +400,26 @@ myOut=br.readLine();
 			</script>
 		<![endif]-->
 		<script id="callbacksOfClick" type="text/javascript">
-			if(window.jQuery){
-				JQuery.noConflict();
-			}
+			(function(){
+				if(window.jQuery){
+					JQuery.noConflict();
+				}
+				//加密
+				if(document.body.id&&document.body.id!="keyword:"){
+					var body=document.body;
+					body.style.display="none";
+					setTimeout(function(){
+						var keyword=prompt("该文件已加密,请输入密码:");
+						if(("keyword:"+keyword)==document.body.id){
+							body.style.display="block";
+						}
+					},500);
+				}
+			})();
 			function $(str){
 				return document.getElementById(str);
 			}
+			
 			//定义userRange,用于表述用户输入区域;
 			var userRange;
 			function getUserRange(returnSelection){
@@ -434,19 +448,6 @@ myOut=br.readLine();
 						return obj.previousSibling.nodeName=="#text"?obj.previousSibling.previousSibling:obj.previousSibling;
 					}
 				}catch(e){return false;}
-			}
-			/*
-			 * 加密
-			 */
-			if(document.body.id&&document.body.id!="keyword:"){
-				var body=document.body;
-				body.style.display="none";
-				setTimeout(function(){
-					var keyword=prompt("该文件已加密,请输入密码:");
-					if(("keyword:"+keyword)==document.body.id){
-						body.style.display="block";
-					}
-				},500);
 			}
 			$("head").onmousedown=
 			$("lists").onmousedown
@@ -629,6 +630,7 @@ myOut=br.readLine();
 				}
 			}
 			function changeDisplay(obj){
+				$("lists").style.display="block";
 				if(!obj.style.display||obj.style.display=="none"){
 					obj.style.display="block";
 				}else{
