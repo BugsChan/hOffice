@@ -283,7 +283,7 @@
 				background-color: #E3C9BA;
 			}
 		</style>
-		<!--<link class="mobile" rel="stylesheet" type="text/css" href="css/hPPT_mobile.css" />-->
+		<link class="mobile" rel="stylesheet" type="text/css" href="css/hPPT_mobile.css" />
 	</head>
 	<body>
 		<div id="head">
@@ -490,6 +490,10 @@
 					return false;
 				}
 			}
+			
+			$("main_content").onclick=function(){
+				$("lists").style.display="none";
+			};
 			
 			$("head").onmousedown
 			=$("lists").onmousedown
@@ -1100,6 +1104,7 @@
 				}
 			}
 			function changeDisplay(obj){
+				$("lists").style.display="block";
 				if(!obj.style.display||obj.style.display=="none"){
 					obj.style.display="block";
 				}else{

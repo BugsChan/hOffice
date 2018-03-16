@@ -198,7 +198,7 @@
 				background-color: #b9c8ca;
 			}
 		</style>
-		<!--<link class="mobile" rel="stylesheet" type="text/css" href="css/hWord_mobile.css" />-->
+		<link class="mobile" rel="stylesheet" type="text/css" href="css/hWord_mobile.css" />
 	</head>
 	<body>
 		<!--该div为标题栏,包括了关闭按钮,文件名和操作按钮-->
@@ -361,12 +361,35 @@
 			</script>
 		<![endif]-->
 		<script id="callbacksOfClick" type="text/javascript">
-			if(window.jQuery){
-				JQuery.noConflict();
-			}
+			(function(){
+				if(window.jQuery){
+					JQuery.noConflict();
+				}
+				/*
+				 * 加密
+				 */
+				if(document.body.id&&document.body.id!="keyword:"){
+					var body=document.body;
+					body.style.display="none";
+					setTimeout(function(){
+						var keyword=prompt("该文件已加密,请输入密码:");
+						if(("keyword:"+keyword)==document.body.id){
+							body.style.display="block";
+						}
+					},500);
+				}
+				window.onclick=function(event){
+					event=event||window.event;
+					var target=event.target||event.srcElement;
+					if(target.parentNode.id!="items"){
+						$("lists").style.display="none";
+					}
+				};
+			})();
+				
 			function $(str){
 				return document.getElementById(str);
-			}
+			};
 			//定义userRange,用于表述用户输入区域;
 			var userRange;
 			function getUserRange(returnSelection){
@@ -382,7 +405,7 @@
 				}else{
 					alert("Sorry,您的浏览器版本过低,暂不支持该功能,请升级您的浏览器,谢谢!");
 				}
-			}
+			};
 			function getElement(obj,description_str){
 				try{
 					if(description_str=="lastElementChild"){
@@ -395,20 +418,8 @@
 						return obj.previousSibling.nodeName=="#text"?obj.previousSibling.previousSibling:obj.previousSibling;
 					}
 				}catch(e){return false;}
-			}
-			/*
-			 * 加密
-			 */
-			if(document.body.id&&document.body.id!="keyword:"){
-				var body=document.body;
-				body.style.display="none";
-				setTimeout(function(){
-					var keyword=prompt("该文件已加密,请输入密码:");
-					if(("keyword:"+keyword)==document.body.id){
-						body.style.display="block";
-					}
-				},500);
-			}
+			};
+			
 			$("head").onmousedown=
 			$("lists").onmousedown
 			=function(event){
@@ -427,6 +438,7 @@
 					searchTimeCopy=0;
 				}
 			}
+			//拖动图片
 			var drag={
 				paperMouseMove:function(event){
 					event=event||window.event;
@@ -590,6 +602,7 @@
 				}
 			}
 			function changeDisplay(obj){
+				$("lists").style.display="block";
 				if(!obj.style.display||obj.style.display=="none"){
 					obj.style.display="block";
 				}else{
