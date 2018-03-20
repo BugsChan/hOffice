@@ -567,7 +567,7 @@ String str1="~~~~~~~~~node~1~~~~~~~"
 			window.onclick=function(event){
 				event=event||window.event;
 				var target=event.target||event.srcElement;
-				if(target.parentNode.id!="items"){
+				if(target.parentNode.id!="items"&&target.id!="fontColor"&&target.id!="bgColor"){
 					$("lists").style.display="none";
 				}
 				if(target.id!="table_input"&&!/td/i.test(target.tagName)&&!contains($("head"),target)&&!contains($("lists"),target)){

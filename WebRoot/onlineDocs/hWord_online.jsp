@@ -415,6 +415,13 @@ myOut=br.readLine();
 						}
 					},500);
 				}
+				window.onclick=function(event){
+					event=event||window.event;
+					var target=event.target||event.srcElement;
+					if(target.parentNode.id!="items"&&target.id!="fontColor"&&target.id!="bgColor"){
+						$("lists").style.display="none";
+					}
+				};
 			})();
 			function $(str){
 				return document.getElementById(str);

@@ -381,7 +381,7 @@
 				window.onclick=function(event){
 					event=event||window.event;
 					var target=event.target||event.srcElement;
-					if(target.parentNode.id!="items"){
+					if(target.parentNode.id!="items"&&target.id!="fontColor"&&target.id!="bgColor"){
 						$("lists").style.display="none";
 					}
 				};
