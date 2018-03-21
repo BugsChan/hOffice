@@ -525,7 +525,7 @@
 			</div>
 		</div>
 		<div id="dataShow" hidefocus="true">
-			<a target="_blank" href="http://www.hoffice.com.cn">亲,你也可以使用hOffice喔!</a> 宽度:<span id="width">500</span>px|高度:<span id="height">300</span>px|鸣谢: <a target="_blank" href="http://jscolor.com/">jscolor</a>,<a target="_blank" href="http://echarts.baidu.com/">百度ECharts</a>
+			<a target="_blank" href="http://www.hoffice.com.cn">亲,你也可以使用hOffice喔!</a> 宽度:<span id="width">1000</span>px|高度:<span id="height">600</span>px|鸣谢: <a target="_blank" href="http://jscolor.com/">jscolor</a>,<a target="_blank" href="http://echarts.baidu.com/">百度ECharts</a>
 		</div>
 		<script type="text/javascript">
 			function $(id_str){
@@ -829,8 +829,8 @@
 					obj.style.width=x+"px";
 					obj.style.height=y+"px";
 					if(obj==img.workspace){
-						img.width_data.innerText=parseInt(x);
-						img.height_data.innerText=parseInt(y);
+						img.width_data.innerText=parseInt(x)*2;
+						img.height_data.innerText=parseInt(y)*2;
 					}
 				}
 				//This function is to help helperDiv and helperImg to change their style when mouse down and move
@@ -863,6 +863,7 @@
 								var x=getX(e2);
 								div.style.left=div.offsetLeft+x+"px";
 								div.style.width=div.clientWidth-x+"px";
+								$("width").innerText=(div.clientWidth-x)*2;
 							};
 							winEnd();
 							return false;
@@ -875,6 +876,7 @@
 								var y=getY(e2);
 								div.style.top=div.offsetTop+y+"px";
 								div.style.height=div.clientHeight-y+"px";
+								$("height").innerText=(div.clientHeight-y)*2;
 							};
 							winEnd();
 							return false;
@@ -885,6 +887,7 @@
 							if(/img/i.test(div.tagName)&&img.status=="choseSth")img.clearImg(img.helperImg);
 							window.onmousemove=function(e2){
 								div.style.width=getX(e2)+"px";
+								$("width").innerText=getX(e2)*2;
 							};
 							winEnd();
 							return false;
@@ -895,6 +898,7 @@
 							if(/img/i.test(div.tagName)&&img.status=="choseSth")img.clearImg(img.helperImg);
 							window.onmousemove=function(e2){
 								div.style.height=getY(e2)+"px";
+								$("height").innerText=getY(e2)*2;
 							};
 							winEnd();
 							return false;
@@ -996,6 +1000,8 @@
 					div.innerHTML="";
 					div.style.width="5px";
 					div.style.height="5px";
+					$("width").innerText=img.workspace.clientWidth*2;
+					$("height").innerText=img.workspace.clientHeight*2;
 				}
 				,cutToImg:function(_img){
 					var x=_img.offsetLeft-img.workspace.offsetLeft
@@ -1037,6 +1043,8 @@
 					_img.style.display="none";
 					_img.style.top="0px";
 					_img.style.border="none";
+					$("width").innerText=img.workspace.clientWidth*2;
+					$("height").innerText=img.workspace.clientHeight*2;
 				}
 				,totleCtrl:function(e){
 					e=e||window.event;
@@ -1157,6 +1165,8 @@
 							window.onmousemove=function(e2){
 								_style.width=img.getX(e2)-img.startX+"px";
 								_style.height=img.getY(e2)-img.startY+"px";
+								$("width").innerText=(img.getX(e2)-img.startX)*2;
+								$("height").innerText=(img.getY(e2)-img.startY)*2;
 							};
 							winEnd(function(){
 								img.startX=img.startY=null;
@@ -1181,6 +1191,8 @@
 							window.onmousemove=function(e2){
 								_style.width=img.getX(e2)-img.startX+"px";
 								_style.height=img.getY(e2)-img.startY+"px";
+								$("width").innerText=(img.getX(e2)-img.startX)*2;
+								$("height").innerText=(img.getY(e2)-img.startY)*2;
 								return false;
 							};
 							winEnd(function(){
