@@ -418,7 +418,7 @@ myOut=br.readLine();
 				window.onclick=function(event){
 					event=event||window.event;
 					var target=event.target||event.srcElement;
-					if(target.parentNode.id!="items"&&target.id!="fontColor"&&target.id!="bgColor"){
+					if(target.parentNode.id!="items"&&target.id!="fontColor"&&target.id!="bgColor"&&target.tagName!="INPUT"&&target.id!="input"){
 						$("lists").style.display="none";
 					}
 				};
