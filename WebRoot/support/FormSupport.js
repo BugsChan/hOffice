@@ -33,15 +33,35 @@ function isMobile() {
  * 此方法用于获取用户的uid
  */
 function getUid(){
-	var cookieStr = decodeURI(document.cookie);
-	var cookies = cookieStr.split(";");
-	for(var i=0;i<cookies.length;i++){
-		if(/uid/.test(cookies[i])) {
-			var value = cookies[i].slice(cookies[i].indexOf("=") + 1);
+	function readCookie(){
+		var value=null;
+		if(window.localStorage){
+			value=localStorage.getItem("uid");
+		}
+		if(!value){
+			var cookieStr = decodeURI(document.cookie);
+			var cookies = cookieStr.split(";");
+			for(var i=0;i<cookies.length;i++){
+				if(/uid/.test(cookies[i])) {
+					var value = cookies[i].slice(cookies[i].indexOf("=") + 1);
+					return value;
+				}
+			}
+			return null;
+		}else{
 			return value;
 		}
+	};
+	
+	var uid=readCookie();
+	if(uid!==null){
+		return uid;
 	}
+		
 	function setCookie(_key,_value){
+		if(window.localStorage){
+			localStorage.setItem(_key,_value);
+		}
 		var _date = new Date();
 		_date.setDate(_date.getDate() + 120);
 		document.cookie = encodeURI(_key + "=" + _value) + ";expires=" + _date.toGMTString();
@@ -52,7 +72,7 @@ function getUid(){
 		}
 		return s4()+s4()+s4()+s4()+s4()+s4()+s4()+s4();
 	}
-	var uid=getGuid();
+	uid=getGuid();
 	setCookie("uid",uid);
 	return uid;
 }
