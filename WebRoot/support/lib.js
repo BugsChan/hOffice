@@ -1,5 +1,5 @@
 function openLib() {
-	var userMsg = getUserMsg();
+	var userMsg = Win10.getUserMsg();
 	if(!userMsg) {
 		alert("您尚未登录,请先登录或注册!");
 		return;
@@ -31,9 +31,10 @@ function openLib() {
 		searchInput = outer.getElementsByTagName("input")[0],
 		searchSure = outer.getElementsByTagName("a")[0],
 		unload = outer.getElementsByTagName("img")[0];
-	myPost(
-		getURL("/OnlineDoc") + "?method=lib&userid=" + userMsg.userid + "&password=" + userMsg.password, null,
+	$.get(
+		getURL("/OnlineDoc") + "?method=lib&userid=" + userMsg.userid + "&password=" + userMsg.password,
 		function(res) {
+			res=JSON.parse(res);
 			if(res.isOk) {
 				var docs = res.docs;
 				var content = getURL("/OnlineDoc") + "?method=onlineDocument&uuid=";
@@ -50,7 +51,6 @@ function openLib() {
 				alert(res.errorMsg);
 			}
 		}
-		,"GET"
 	);
 
 	function fc(_node) {
@@ -61,9 +61,10 @@ function openLib() {
 		function del(callback,a){
 			var uuid = fc(a.parentNode).href;
 			uuid = uuid.slice(uuid.lastIndexOf("=") + 1);
-			myPost(
-				getURL("/OnlineDoc") + "?method=delete&userid=" + userMsg.userid + "&password=" + userMsg.password + "&uuid=" + uuid, null,
+			$.get(
+				getURL("/OnlineDoc") + "?method=delete&userid=" + userMsg.userid + "&password=" + userMsg.password + "&uuid=" + uuid,
 				function(res) {
+					res=JSON.parse(res);
 					if(res.isOk) {
 						var pp = a.parentNode.parentNode;
 						pp.parentNode.removeChild(pp);
@@ -74,7 +75,6 @@ function openLib() {
 						throw new Exception();
 					}
 				}
-				,"GET"
 			);
 		};
 		function getName(obj,real){
@@ -147,4 +147,4 @@ function openLib() {
 		})
 	};
 }
-$("myDoc").onclick = openLib;
+$("#myDoc").click(openLib);

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>应用商店</title>
+		<script type="text/javascript" src="support/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript" src="support/win10.child.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/ui.css"/>
+		<style type="text/css">
+			.theme_icon img{
+			    width: 80px;
+			    height: 80px;
+			}
+		</style>
+	</head>
+	<body>
+<div id="theme_body">
+    <div id="theme_area" class="theme_area">
+        
+	</div>
+	<p style="float: left;width: 100%;text-align: center;"><button>确定</button></p>
+</div>
+		<script type="text/javascript">
+			function _nametest(name,data){
+				try{
+					for(var i=0;i<data.length;i++){
+						if(name==data[i].appname){
+							return true;
+						}
+					}
+				}catch(e){}
+				return false;
+			};
+			$.get("support/apps.json",function(res){
+				var _dstatus;
+				try{
+					_dstatus=JSON.parse(localStorage.getItem("desktop")).data;
+				}catch(e){
+					_status=[];
+				}
+				
+				res=res.data;
+				for(var i=0;i<res.length;i++){
+					$("#theme_area").append(
+						'<a href="javascript:;" data-pic="'+res[i].url+'" class="theme_setting">'+
+							'<div class="theme_icon"><img src="'+res[i].icon+'"></div>'+
+							'<div class="theme_text"><input type="checkbox"/>'+res[i].appname+'</div>'+
+				    	'</a>'
+					);
+				}
+				$("a").click(function(){
+					var _cbox=$(this).find("input[type='checkbox']");
+					if(_cbox.is(":checked")){
+						_cbox.prop("checked",false);
+					}else{
+						_cbox.prop("checked",true);
+					}
+				});
+				console.log(_dstatus);
+				$("a").each(function(num,ele){
+					var _text=$(ele).text();
+					if(_nametest(_text,_dstatus))
+						$(ele).find("input[type='checkbox']").prop("checked",true);
+				})
+				
+			});
+			$("button").click(function(){
+				var thems=$("#theme_area").find(".theme_setting");
+				var config="{\"data\":[";
+				for(var i=0;i<thems.length;i++){
+					if($(thems[i]).find("input").is(':checked')){
+						config+='{"appname":"'+$(thems[i]).find(".theme_text").text()+'","icon":"'+$(thems[i]).find("img").attr("src")+'","url":"'+$(thems[i]).data("pic")+'"},'
+					}
+				}
+				config=config.slice(0,-1);
+				config+="]}";
+				localStorage.setItem("desktop",config);
+				Win10_parent.resetApps();
+			});
+		</script>
+	</body>
+</html>

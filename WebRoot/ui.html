@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <title>主题切换</title>
+    <link rel="stylesheet" type="text/css" href="css/ui.css"/>
+    <script type="text/javascript" src="support/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="support/win10.child.js"></script>
+   
+</head>
+<body>
+<!--主题设置-->
+<div id="theme_body">
+    <div id="theme_area" class="theme_area">
+        <!--主题图片-->
+    <a href="javascript:;" data-pic="img/bg/bg1.jpg" class="theme_setting ">
+            <div class="theme_icon"><img src="./img/bg/bg1_small.jpg"></div>
+            <div class="theme_text">win10</div>
+        </a><a href="javascript:;" data-pic="img/bg/bg2.jpg" class="theme_setting ">
+            <div class="theme_icon"><img src="./img/bg/bg2_small.jpg"></div>
+            <div class="theme_text">梦幻光影</div>
+        </a><a href="javascript:;" data-pic="img/bg/bg3.jpg" class="theme_setting ">
+            <div class="theme_icon"><img src="./img/bg/bg3_small.jpg"></div>
+            <div class="theme_text">扬帆起航</div>
+        </a><a href="javascript:;" data-pic="img/bg/bg4.jpg" class="theme_setting ">
+            <div class="theme_icon"><img src="./img/bg/bg4_small.jpg"></div>
+            <div class="theme_text">乡土气息</div>
+        </a><a href="javascript:;" data-pic="img/bg/bg5.jpg" class="theme_setting ">
+            <div class="theme_icon"><img src="./img/bg/bg5_small.jpg"></div>
+            <div class="theme_text">绿色清新</div>
+        </a><a href="javascript:;" data-pic="img/bg/bg6.jpg" class="theme_setting ">
+            <div class="theme_icon"><img src="./img/bg/bg6_small.jpg"></div>
+            <div class="theme_text">Win8</div>
+        </a><a href="javascript:;" data-pic="img/bg/bg7.jpg" class="theme_setting ">
+            <div class="theme_icon"><img src="./img/bg/bg7_small.jpg"></div>
+            <div class="theme_text">蓝色海岸</div>
+        </a><a href="javascript:;" data-pic="img/bg/bg8.jpg" class="theme_setting ">
+            <div class="theme_icon"><img src="./img/bg/bg8_small.jpg"></div>
+            <div class="theme_text">冰天雪地</div>
+        </a><a href="javascript:;" data-pic="img/bg/bg9.jpg" class="theme_setting ">
+            <div class="theme_icon"><img src="./img/bg/bg9_small.jpg"></div>
+            <div class="theme_text">繁花满树</div>
+        </a><a href="javascript:;" data-pic="img/bg/bg10.jpg" class="theme_setting ">
+            <div class="theme_icon"><img src="./img/bg/bg10_small.jpg"></div>
+            <div class="theme_text">精灵小鸟</div>
+        </a><a href="javascript:;" data-pic="img/bg/bg11.jpg" class="theme_setting ">
+            <div class="theme_icon"><img src="./img/bg/bg11_small.jpg"></div>
+            <div class="theme_text">炫酷跑车</div>
+        </a><a href="javascript:;" data-pic="img/bg/bg12.jpg" class="theme_setting ">
+            <div class="theme_icon"><img src="./img/bg/bg12_small.jpg"></div>
+            <div class="theme_text">中国风</div>
+        </a>
+</div>
+</div>
+<div class="clear"></div>
+ <script type="text/javascript">
+    	var theme_area=$("#theme_area");
+	    theme_area.on('click','.theme_setting',function () {
+	    	var pic=$(this).data('pic');
+	    	Win10_parent.setBgUrl({main:pic});
+	    	localStorage.setItem("ui",pic);
+		});
+
+    </script>
+
+</body></html>

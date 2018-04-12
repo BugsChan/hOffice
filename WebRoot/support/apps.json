@@ -1,0 +1,15 @@
+{"data":[
+	{"appname":"创建-hWord","icon":"img/icon/W.ico","url":"http://www.hoffice.com.cn/hWord.html"}
+	,{"appname":"创建-hExcel","icon":"img/icon/E.ico","url":"http://www.hoffice.com.cn/hExcel.html"}
+	,{"appname":"创建-hPPT","icon":"img/icon/P.ico","url":"http://www.hoffice.com.cn/hPPT.html"}
+	,{"appname":"创建-调查表","icon":"img/icon/research.png","url":"http://www.hoffice.com.cn/OnlineDoc?method=onlineDocument&uuid=dc3424ce6b40495ebaca23e968a62014"}
+	,{"appname":"hPs","icon":"img/icon/hPs.png","url":"http://www.hoffice.com.cn/hPs.html"}
+	,{"appname":"百度","icon":"img/icon/baidu.png","url":"https://www.baidu.com"}
+	,{"appname":"搜狗搜索","icon":"https://www.sogou.com/images/logo/new/favicon.ico","url":"https://www.sogou.com"}
+	,{"appname":"微信","icon":"img/icon/Wechat.png","url":"https://wx.qq.com"}
+	,{"appname":"网易云音乐","icon":"img/icon/netease-music.png","url":"http://music.163.com/"}
+	,{"appname":"QQ音乐","icon":"img/icon/QQmusic.png","url":"https://y.qq.com/"}
+	,{"appname":"酷狗音乐","icon":"http://static.kgimg.com/public/root/images/logo.png","url":"http://www.kugou.com/"}
+	,{"appname":"腾讯视频","icon":"https://i.gtimg.cn/qqlive/images/20150608/logo_square.png","url":"https://v.qq.com"}
+	,{"appname":"优酷","icon":"http://static.youku.com/v1.0.166/index/img/favicon.ico","url":"http://www.youku.com/"}
+]}
