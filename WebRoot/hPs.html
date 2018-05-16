@@ -762,8 +762,12 @@
 						$(id).getElementsByClassName("icon")[0].style.backgroundColor=color;
 						if(id=="borderColor"){
 							img.helperDiv.style.color=color;
-						}else if(id=="innerColor"&&include("checked",$("toUntransparent"),"class")){
-							img.helperDiv.style.backgroundColor=color;
+						}else if(id=="innerColor"){
+							if(include("checked",$("toUntransparent"),"class"))
+								img.helperDiv.style.backgroundColor=color;
+							if(include("checked",$("pencil"),"class")&&confirm("是否将整个页面全部填充?"))
+								img.work_context.fillStyle=color;
+								img.work_context.fillRect(0,0,img.workspace.clientWidth*2,img.workspace.clientHeight*2);
 						}
 					}
 				}
