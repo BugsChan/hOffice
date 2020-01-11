@@ -1,10 +1,10 @@
-<%@page session="false" import="Service.HomepageService"%>
+<!-- <%@page session="false" import="Service.HomepageService"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 HomepageService ser=new HomepageService(getServletContext());
-%>
+%> -->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -111,7 +111,7 @@ HomepageService ser=new HomepageService(getServletContext());
 		<div id="footer">
 			<div class="leftSide">
 				<p>Site is powerd by Bugs </p>
-				<p><a href=""> 主页 </a>|<a href="#products"> 产品 </a>|<a target="_blank" href="/msg/aboutUs.doc.html"> 关于我们 </a>|<a target="_blank" href="/msg/aboutProgramers.doc.html"> 开发者需知 </a>|
+				<p><a href=""> 主页 </a>|<a href="#products"> 产品 </a>|<a target="_blank" href="/msg/aboutUs.doc.html"> 关于我们 </a>|<a target="_blank" href="/msg/aboutProgramers.doc.html"> 开发者需知 </a>|<a href="/allproducts.html">所有产品</a>
 <a href="/OnlineDoc?method=onlineDocument&uuid=a3f763bf13d74e5793b043d7127b1cef"> 法律声明 </a>|<a href="/reviews.html"> 用户反馈 </a>
 				</p>
 				<p><a target="_blank" href="http://www.miitbeian.gov.cn/">鲁ICP备18001086号</a></p>
