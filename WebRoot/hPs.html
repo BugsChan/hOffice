@@ -1253,6 +1253,7 @@
 						img.myChart=echarts.init(div);
 					}
 					img.workspace.style.display="none";
+					$("tongji_helper_div").style.display = "block";
 				}
 				,tongjiEnd:function(){
 					var wp=img.workspace;
@@ -1283,6 +1284,7 @@
 						img.hasTongji=false;
 					}
 					wp.style.display="block";
+					$("tongji_helper_div").style.display = "none";
 				}
 				,getOption:function(type,hasShandow){
 					

@@ -123,7 +123,7 @@ function importLoaginNode() {
 		myGetJsessionid(
 			function(jsessionid) {
 				img.src = getURL("/support") + "/sureImgSupport;jsessionid=" + jsessionid + "?c=" + new Date().getMilliseconds();
-			}, img
+			}
 		);
 	}
 	img.onclick();
